@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Girişimci Aksiyon Checklist</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#3B82F6',
+                        secondary: '#1E40AF',
+                        danger: '#EF4444',
+                        warning: '#F59E0B',
+                        success: '#10B981'
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="dark bg-gray-900 text-gray-100 font-sans">
+    <div class="max-w-4xl mx-auto p-6">
+        <header class="mb-8">
+            <h1 class="text-3xl font-bold text-primary mb-2">B2B Marketplace Girişimci Checklist</h1>
+            <p class="text-gray-400">İstoç → İstanbul → Ulusal → Global yol haritası</p>
+            <div class="mt-4 flex gap-4 text-sm">
+                <span class="bg-blue-900 px-3 py-1 rounded">Alibaba Model</span>
+                <span class="bg-green-900 px-3 py-1 rounded">B2B Marketplace</span>
+                <span class="bg-purple-900 px-3 py-1 rounded">Ölçekleme Odaklı</span>
+            </div>
+        </header>
+
+        <div class="space-y-8">
+            <!-- Faz 1: Temel & Strateji -->
+            <section class="bg-gray-800 rounded-lg p-6">
+                <h2 class="text-xl font-bold mb-4 text-primary">🎯 Faz 1: Temel & Strateji</h2>
+                <div class="space-y-4" id="phase1"></div>
+            </section>
+
+            <!-- Faz 2: Pazar & Müşteri -->
+            <section class="bg-gray-800 rounded-lg p-6">
+                <h2 class="text-xl font-bold mb-4 text-warning">🎯 Faz 2: Pazar & Müşteri</h2>
+                <div class="space-y-4" id="phase2"></div>
+            </section>
+
+            <!-- Faz 3: MVP & Test -->
+            <section class="bg-gray-800 rounded-lg p-6">
+                <h2 class="text-xl font-bold mb-4 text-success">🎯 Faz 3: MVP & Test</h2>
+                <div class="space-y-4" id="phase3"></div>
+            </section>
+
+            <!-- Faz 4: Ürün-Pazar Uyumu -->
+            <section class="bg-gray-800 rounded-lg p-6">
+                <h2 class="text-xl font-bold mb-4 text-danger">🎯 Faz 4: Ürün-Pazar Uyumu</h2>
+                <div class="space-y-4" id="phase4"></div>
+            </section>
+
+            <!-- Faz 5: Büyüme & Ölçekleme -->
+            <section class="bg-gray-800 rounded-lg p-6">
+                <h2 class="text-xl font-bold mb-4 text-purple-400">🎯 Faz 5: Büyüme & Ölçekleme</h2>
+                <div class="space-y-4" id="phase5"></div>
+            </section>
+        </div>
+
+        <div class="mt-8 p-4 bg-yellow-900 rounded-lg">
+            <p class="text-sm text-yellow-200">
+                <strong>Kritik Uyarı:</strong> Her faz %80 tamamlanmadan bir sonrakine geçme. PMF olmadan büyüme stratejisi anlamsız.
+            </p>
+        </div>
+    </div>
+
+    <script>
+        const checklistData = {
+            phase1: [
+                {
+                    text: "PESTEL + Trend Analizi",
+                    desc: "B2B pazarda dijital dönüşüm trendlerini analiz et. İstoç'tan globale giden yolda hangi dış faktörler etkili olacak?",
+                    priority: "high"
+                },
+                {
+                    text: "Vizyon/Misyon Tanımı",
+                    desc: "İstoç'tan başlayıp global B2B marketplace vizyonu. Golden Circle (Why-How-What) ile net hedef koy.",
+                    priority: "high"
+                },
+                {
+                    text: "Problem Tanımı (Jobs-to-be-Done)",
+                    desc: "İstoç'taki işletmelerin gerçek problemi ne? Tedarikte, satışta, görünürlükte hangi işi 'tamamlamak' istiyor?",
+                    priority: "critical"
+                },
+                {
+                    text: "Çözüm Hipotezi + Varsayımlar",
+                    desc: "Alibaba modelinin İstoç'ta işleyeceği varsayımları listele. Test edilmesi gereken hipotezler neler?",
+                    priority: "critical"
+                },
+                {
+                    text: "Value Proposition Canvas",
+                    desc: "Müşteri kazanımı-acıları-işleri vs ürün faydası eşlemesi. B2B'de güven, verimlilik, maliyet kritik.",
+                    priority: "high"
+                },
+                {
+                    text: "TAM-SAM-SOM Analizi",
+                    desc: "İstoç (SOM) → İstanbul (SAM) → Türkiye (TAM) pazar büyüklüğü hesapla. Aşamalı büyüme için kritik.",
+                    priority: "medium"
+                },
+                {
+                    text: "Rakip Matrisi + SWOT",
+                    desc: "Mevcut B2B platformları, geleneksel süreçler, uluslararası oyuncular. Farklılaşma noktası belirle.",
+                    priority: "high"
+                },
+                {
+                    text: "Risk Matrisi (Olasılık x Etki)",
+                    desc: "Teknik, ticari, operasyonel riskler. Özellikle network effect riskini değerlendir.",
+                    priority: "medium"
+                }
+            ],
+            phase2: [
+                {
+                    text: "Persona Kartları (Alıcı & Satıcı)",
+                    desc: "İstoç'taki alıcı-satıcı profilleri. Karar vericiler, etkileyiciler, kullanıcılar ayrı ayrı analiz et.",
+                    priority: "critical"
+                },
+                {
+                    text: "Mom Test Müşteri Görüşmeleri",
+                    desc: "İstoç'ta 20+ gerçek işletmeyle görüş. Önyargısız soru teknikleriyle gerçek ihtiyaçları öğren.",
+                    priority: "critical"
+                },
+                {
+                    text: "Pazar Doğrulama (Landing Page)",
+                    desc: "Ön-kayıt sayfası hazırla. İstoç'ta dağıt. Gerçek talep ölçümü için kritik.",
+                    priority: "high"
+                },
+                {
+                    text: "Customer Journey Mapping",
+                    desc: "Alıcı-satıcı yolculuğu haritala. Touchpoint'lerde ne yaşanıyor? Nerede kayıp oluyor?",
+                    priority: "medium"
+                },
+                {
+                    text: "Rekabet Stratejisi (Blue Ocean)",
+                    desc: "Hangi değer unsurlarını artıracak/azaltacak/kaldıracak/yaratacaksın? Alibaba'dan farklı ne sunacaksın?",
+                    priority: "high"
+                },
+                {
+                    text: "Network Effect Stratejisi",
+                    desc: "Marketplace'in gücü network effect. Tavuk-yumurta problemini nasıl çözeceksin? Hangi taraftan başlayacaksın?",
+                    priority: "critical"
+                }
+            ],
+            phase3: [
+                {
+                    text: "MVP Scope (MoSCoW)",
+                    desc: "Must/Should/Could/Won't özellikleri belirle. B2B'de arama, profil, mesajlaşma, güven sistemi must have.",
+                    priority: "critical"
+                },
+                {
+                    text: "Fake Door Test",
+                    desc: "Henüz olmayan özellikleri test et. Hangi özellikler gerçekten talep görüyor?",
+                    priority: "medium"
+                },
+                {
+                    text: "İlk Kanal Testleri",
+                    desc: "Facebook/Google reklamları, doğrudan satış, ortaklıklar. Hangi kanal İstoç'ta etkili?",
+                    priority: "high"
+                },
+                {
+                    text: "Temel KPI Dashboard",
+                    desc: "Kayıt, aktiflik, eşleşme, işlem oranları. Google Analytics + Mixpanel ile takip sistemi kur.",
+                    priority: "high"
+                },
+                {
+                    text: "MVP Gate Kriterleri",
+                    desc: "3 kritik metrik belirle. Örn: 100 kayıt, %20 aktiflik, 10 işlem. Bu geçilmeden ilerleme yok.",
+                    priority: "critical"
+                },
+                {
+                    text: "Build-Measure-Learn Döngüsü",
+                    desc: "Hızlı iterasyon sistemi. Haftada bir analiz, iki haftada bir güncelleme.",
+                    priority: "medium"
+                }
+            ],
+            phase4: [
+                {
+                    text: "Problem-Solution Fit",
+                    desc: "Müşteri gerçekten çözümünü seviyor mu? Kullanıcı yorumlarından kanıt topla.",
+                    priority: "critical"
+                },
+                {
+                    text: "PMF Survey (%40 Üzüntü)",
+                    desc: "'Bu platform olmazsa ne kadar üzülürsünüz?' %40+ 'çok üzülürüm' = PMF sinyali.",
+                    priority: "critical"
+                },
+                {
+                    text: "Ödeme Sistemi + Birim Ekonomi",
+                    desc: "Stripe/iyzico entegrasyonu. LTV > CAC pozitif mi? Contribution margin hesapla.",
+                    priority: "high"
+                },
+                {
+                    text: "Fiyatlandırma Testleri",
+                    desc: "Komisyon oranları, üyelik ücretleri. A/B test ile optimum fiyat bul.",
+                    priority: "medium"
+                },
+                {
+                    text: "Retention Analizi",
+                    desc: "Kullanıcılar ne kadar süre kalıyor? Churn rate, kullanım sıklığı analizi.",
+                    priority: "high"
+                },
+                {
+                    text: "Sistem Altyapısı (CRM/Support)",
+                    desc: "HubSpot, Crisp.chat, Zapier entegrasyonu. Müşteri desteği için sistem kur.",
+                    priority: "medium"
+                }
+            ],
+            phase5: [
+                {
+                    text: "Growth Loop Tasarımı",
+                    desc: "Her kullanıcı nasıl yeni kullanıcı getirecek? Referral sistemi, viral mekanizmalar.",
+                    priority: "critical"
+                },
+                {
+                    text: "Bullseye Framework (19 Kanal)",
+                    desc: "19 pazarlama kanalından 3 test et, en başarılısına odaklan. B2B'de content marketing güçlü.",
+                    priority: "high"
+                },
+                {
+                    text: "Coğrafi Genişleme Stratejisi",
+                    desc: "İstoç → İstanbul → Ankara/İzmir → Ulusal. Her adımda network density kritik.",
+                    priority: "high"
+                },
+                {
+                    text: "Scalability Audit",
+                    desc: "Teknik altyapı, operasyonel kapasite darboğazları. 1000x büyüme için hazır mı?",
+                    priority: "medium"
+                },
+                {
+                    text: "OKR/EOS Yönetim Sistemi",
+                    desc: "Quarterly hedefler, KPI takibi, ekip alignment. Büyürken kontrol kaybetme.",
+                    priority: "medium"
+                },
+                {
+                    text: "Global Expansion Roadmap",
+                    desc: "Türkiye lideri olduktan sonra hangi ülkeler? Benzer pazarlar, kültürel yakınlık.",
+                    priority: "low"
+                },
+                {
+                    text: "Exit Strategy",
+                    desc: "IPO, M&A, strategic partnership opsiyonları. Yatırımcı çekmek için gerekli.",
+                    priority: "low"
+                }
+            ]
+        };
+
+        function createChecklistItem(item, index) {
+            const priorityColors = {
+                critical: 'border-red-500 bg-red-900',
+                high: 'border-yellow-500 bg-yellow-900',
+                medium: 'border-blue-500 bg-blue-900',
+                low: 'border-green-500 bg-green-900'
+            };
+
+            const priorityTexts = {
+                critical: 'KRİTİK',
+                high: 'YÜKSEK',
+                medium: 'ORTA',
+                low: 'DÜŞÜK'
+            };
+
+            return `
+                <div class="border border-gray-700 rounded-lg p-4 hover:bg-gray-750 transition-all">
+                    <div class="flex items-start gap-3">
+                        <input type="checkbox"
+                               id="item-${index}"
+                               class="w-5 h-5 mt-1 rounded border-gray-600 bg-gray-800 text-primary focus:ring-primary"
+                               onchange="toggleItem(this, ${index})">
+                        <div class="flex-1 cursor-pointer" onclick="toggleCheckbox(${index})">
+                            <div class="flex items-center gap-2 mb-2">
+                                <label for="item-${index}" class="font-medium text-gray-100 cursor-pointer">
+                                    ${item.text}
+                                </label>
+                                <span class="text-xs px-2 py-1 rounded ${priorityColors[item.priority]} border">
+                                    ${priorityTexts[item.priority]}
+                                </span>
+                            </div>
+                            <p class="text-sm text-gray-400 leading-relaxed">
+                                ${item.desc}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function toggleCheckbox(index) {
+            const checkbox = document.getElementById(`item-${index}`);
+            checkbox.checked = !checkbox.checked;
+            toggleItem(checkbox, index);
+        }
+
+        function toggleItem(checkbox, index) {
+            const container = checkbox.closest('.border');
+            if (checkbox.checked) {
+                container.classList.add('opacity-50');
+                container.querySelector('label').classList.add('line-through');
+            } else {
+                container.classList.remove('opacity-50');
+                container.querySelector('label').classList.remove('line-through');
+            }
+        }
+
+        function initChecklist() {
+            let itemIndex = 0;
+            Object.keys(checklistData).forEach(phase => {
+                const container = document.getElementById(phase);
+                container.innerHTML = checklistData[phase]
+                    .map(item => createChecklistItem(item, itemIndex++))
+                    .join('');
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', initChecklist);
+    </script>
+</body>
+</html>
