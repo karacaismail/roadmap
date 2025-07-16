@@ -1,484 +1,581 @@
 <!DOCTYPE html>
-<html lang="tr" class="dark">
+<html lang="tr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Girişimci Aksiyon Planı - İstoç'tan Global'e</title>
+    <title>Türkiye TOPTAN B2B Modeli - [ İSTOÇ . COM ] Girişim Yol Haritası</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/@popperjs/core@2"></script>
     <script src="https://unpkg.com/tippy.js@6"></script>
     <style>
-        body {
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-        }
-        .tippy-box[data-theme~='custom'] {
-            background-color: #1f2937;
-            color: #d1d5db;
-            border: 1px solid #4b5563;
-            max-width: 350px;
-            font-size: 14px;
-            line-height: 1.4;
-        }
-        .tippy-box[data-theme~='custom'][data-placement^='top'] > .tippy-arrow::before {
-            border-top-color: #1f2937;
-        }
-        .tippy-box[data-theme~='custom'][data-placement^='bottom'] > .tippy-arrow::before {
-            border-bottom-color: #1f2937;
-        }
         .accordion-content {
             max-height: 0;
             overflow: hidden;
-            transition: max-height 0.5s cubic-bezier(0.25, 0.1, 0.25, 1.0), padding 0.5s;
-            padding-top: 0;
-            padding-bottom: 0;
+            transition: max-height 0.3s ease-out;
         }
-        .accordion-content.open {
-            max-height: 8000px;
-            padding-top: 1rem;
-            padding-bottom: 1rem;
+        .accordion-content.active {
+            max-height: 2000px;
+            transition: max-height 0.4s ease-in;
         }
-        .info-icon {
-            cursor: pointer;
-            display: inline-block;
-            margin-left: 4px;
-            font-style: normal;
-            color: #60a5fa;
-            font-size: 12px;
+        .completed {
+            opacity: 0.6;
+            text-decoration: line-through;
+        }
+        .tooltip-icon {
+            cursor: help;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 24px;
+            height: 12px;
+            border-radius: 50%;
+            background: #3b82f6;
+            color: white;
+            font-size: 8px;
             font-weight: bold;
+            margin-left: 6px;
+            transition: all 0.15s ease;
+            flex-shrink: 0;
+            padding: 24px;
         }
-        .checkbox-item {
-            transition: opacity 0.3s ease;
+        .tooltip-icon:hover {
+            transform: scale(1.2);
+            background: #2563eb;
         }
-        .checkbox-item.completed {
-            opacity: 0.5;
+        .phase-badge {
+            background: linear-gradient(135deg, #f59e0b, #d97706);
+            color: white;
+            padding: 3px 10px;
+            border-radius: 15px;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
         }
         .progress-bar {
+            height: 6px;
+            background: #e5e7eb;
+            border-radius: 3px;
+            overflow: hidden;
+            box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
+        }
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #10b981, #059669);
+            transition: width 0.5s ease;
+            border-radius: 3px;
+        }
+        .item-card {
+            transition: all 0.2s ease;
+            border-left: 3px solid transparent;
+            border-radius: 8px;
+        }
+        .item-card:hover {
+            background: #f8fafc;
+            border-left-color: #3b82f6;
+            transform: translateX(4px);
+        }
+        .accordion-header {
+            background: linear-gradient(135deg, #f8fafc, #e2e8f0);
+            border: 1px solid #cbd5e1;
+            transition: all 0.2s ease;
+        }
+        .accordion-header:hover {
+            background: linear-gradient(135deg, #e2e8f0, #cbd5e1);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+        .accordion-header.active {
+            background: linear-gradient(135deg, #dbeafe, #bfdbfe);
+            border-color: #3b82f6;
+        }
+        .main-tooltip-icon {
+            background: #8b5cf6;
+            width: 16px;
+            height: 16px;
+            font-size: 10px;
+        }
+        .progress-indicator {
+            font-size: 12px;
+            color: #6b7280;
+            font-weight: 500;
+        }
+        .phase-progress {
+            height: 3px;
+            background: #e5e7eb;
+            border-radius: 1px;
+            overflow: hidden;
+        }
+        .phase-progress-fill {
+            height: 100%;
+            background: #10b981;
             transition: width 0.3s ease;
         }
-
-        body.bg-gray-900.text-gray-300.font-sans.p-4.sm\:p-8 {
-    max-width: 650px;
-    margin: 0 auto;
-}
-        
+        .sticky-header {
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid #e5e7eb;
+        }
+        .checkbox-custom {
+            appearance: none;
+            width: 18px;
+            height: 18px;
+            border: 2px solid #d1d5db;
+            border-radius: 4px;
+            background: white;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            flex-shrink: 0;
+        }
+        .checkbox-custom:checked {
+            background: #3b82f6;
+            border-color: #3b82f6;
+        }
+        .checkbox-custom:checked::after {
+            content: '✓';
+            color: white;
+            font-size: 12px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+        }
+        .item-number {
+            background: #f3f4f6;
+            color: #6b7280;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: 600;
+            flex-shrink: 0;
+        }
+        .phase-container {
+            border: 1px solid #e5e7eb;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+        }
     </style>
 </head>
-<body class="bg-gray-900 text-gray-300 font-sans p-4 sm:p-8">
-
-    <div class="max-w-6xl mx-auto">
-        <header class="text-center mb-10">
-            <h1 class="text-4xl font-bold text-white mb-2">Girişimci Aksiyon Planı</h1>
-            <p class="text-lg text-gray-400 mb-4">Erken Aşama Bir Girişimin Büyüme Yolculuğu: </ br> İstoç → İstanbul → Ulusal → Global</p>
-            <div class="bg-gray-800 rounded-lg p-4 mb-6">
-                <div class="flex justify-between items-center mb-2">
-                    <span class="text-sm text-gray-400">Genel İlerleme</span>
-                    <span id="progress-text" class="text-sm text-blue-400">0 / 0 tamamlandı</span>
+<body class="bg-gradient-to-br from-gray-50 to-blue-50 min-h-screen">
+    <div class="sticky-header py-4 mb-6">
+        <div class="max-w-4xl mx-auto px-6">
+            <div class="flex justify-between items-center">
+                <div>
+                    <h1 class="text-3xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+                        Türkiye TOPTAN B2B Modeli
+                    </h1>
+                    <div class="phase-badge mt-1">B2B Marketplace Girişim</div>
                 </div>
-                <div class="w-full bg-gray-700 rounded-full h-2">
-                    <div id="progress-bar" class="progress-bar bg-blue-500 h-2 rounded-full" style="width: 0%"></div>
+                <div class="flex items-center space-x-2">
+                    <span class="text-sm text-gray-600">Tooltip Rehberi</span>
+                    <span class="tooltip-icon main-tooltip-icon" data-tippy-content="Sayfadaki kısaltmalar ve terimler için üzerlerine gelin">?</span>
                 </div>
             </div>
-        </header>
 
-        <main id="action-plan-container" class="space-y-4">
-            <!-- Clusters will be dynamically inserted here -->
-        </main>
+            <div class="mt-4">
+                <div class="flex justify-between items-center mb-2">
+                    <span class="text-sm font-medium text-gray-700">Genel İlerleme</span>
+                    <span class="progress-indicator" id="progress-text">0 / 0 tamamlandı</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 0%" id="overall-progress"></div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-        <footer class="text-center mt-12 text-gray-500 text-sm">
-            <p>Türkiye girişimcilik ekosistemi ve Alibaba modeli ilham alınarak hazırlanmıştır.</p>
-            <p class="mt-2">Tailwind CSS & Tippy.js ile oluşturulmuştur.</p>
+    <div class="max-w-4xl mx-auto px-6 pb-8">
+        <div id="roadmap-container" class="space-y-6">
+        </div>
+
+        <footer class="mt-12 text-center text-sm text-gray-500">
+            <p>Global girişimcilik standartlarına uygun hazırlanmış yol haritası</p>
         </footer>
     </div>
 
     <script>
-    const clusters = [
-        {
-            title: "İstoç → Fikir ve Pazar Doğrulama",
-            description: "Girişimcilik yolculuğunun temelini oluşturan aşama. Odak noktası, pazarın gerçek ihtiyaçlarını anlamak, problemi doğru tanımlamak ve çözümün potansiyelini doğrulamaktır.",
-            items: [
-                { 
-                    title: "Makro Trend ve Foresight Analizi", 
-                    term: "PESTEL", 
-                    termDesc: "Political, Economic, Social, Technological, Environmental, Legal - Makro çevre analizi aracı", 
-                    why: "stratejik kör noktaları ortadan kaldırır, potansiyel riskleri ve fırsatları önceden görmeyi sağlar" 
-                },
-                { 
-                    title: "Niyet (Amaç) ve '5 Neden' Analizi", 
-                    term: "5 Whys", 
-                    termDesc: "Bir problemin temel nedenini bulmak için 'neden?' sorusunu art arda beş kez sorma tekniği", 
-                    why: "girişimin temel amacını netleştirir, uzun vadeli sürdürülebilirlik için sağlam temel oluşturur" 
-                },
-                { 
-                    title: "Vizyon, Misyon, Değerler Belirleme", 
-                    term: "Golden Circle", 
-                    termDesc: "Simon Sinek'in 'Neden-Nasıl-Ne' modeliyle amaç odaklı yaklaşım", 
-                    why: "şirket kültürünü şekillendirir, çalışanların ve müşterilerin markayla duygusal bağ kurmasını sağlar" 
-                },
-                { 
-                    title: "Problem Tanımı ve 'Jobs to Be Done'", 
-                    term: "JTBD", 
-                    termDesc: "Jobs to Be Done - Müşterinin gerçekte tamamlamak istediği işi anlama çerçevesi", 
-                    why: "yanlış probleme çözüm geliştirme riskini ortadan kaldırır, müşteri odaklı geliştirme süreci sağlar" 
-                },
-                { 
-                    title: "İş Fikri ve Çözüm Varsayımları", 
-                    term: "Elevator Pitch", 
-                    termDesc: "İş fikrini 30-60 saniyede net ve etkileyici şekilde açıklayan kısa sunum", 
-                    why: "iş fikrini net ve anlaşılır şekilde ifade etmeyi sağlar, test edilmesi gereken kritik varsayımları belirler" 
-                },
-                { 
-                    title: "Değer Önerisi ve 'Value Proposition Canvas'", 
-                    term: "VPC", 
-                    termDesc: "Value Proposition Canvas - Müşteri ihtiyaçları ile ürün faydalarını eşleştiren araç", 
-                    why: "ürün-pazar uyumunu sağlar, pazarlama ve satış mesajlarının etkinliğini artırır" 
-                },
-                { 
-                    title: "Pazar Araştırması ve Büyüklüğü", 
-                    term: "TAM/SAM/SOM", 
-                    termDesc: "Total/Serviceable Available/Serviceable Obtainable Market - Pazar büyüklüğü analizi", 
-                    why: "iş fikrinin pazar potansiyelini gösterir, büyüme stratejilerinin temelini oluşturur" 
-                },
-                { 
-                    title: "Rakip Analizi ve 'SWOT'", 
-                    term: "SWOT", 
-                    termDesc: "Strengths, Weaknesses, Opportunities, Threats - Güçlü/zayıf yönler ve fırsat/tehdit analizi", 
-                    why: "rekabet avantajını netleştirir, pazardaki boşlukları ve fırsatları ortaya çıkarır" 
-                },
-                { 
-                    title: "Müşteri Profillemesi ve 'Persona'", 
-                    term: "Persona", 
-                    termDesc: "Hedef kitlenin demografik, psikografik ve davranışsal özelliklerini temsil eden kurgusal karakter", 
-                    why: "pazarlama ve ürün geliştirme çabalarını daha odaklı hale getirir, müşteriyle empati kurmayı kolaylaştırır" 
-                },
-                { 
-                    title: "Pazar/Fikir Ön-Doğrulama ve 'The Mom Test'", 
-                    term: "The Mom Test", 
-                    termDesc: "Rob Fitzpatrick'in müşteri görüşmeleri yaklaşımı - geçmiş davranışlara odaklanma", 
-                    why: "kaynak israfını önler, yanlış varsayımlara dayalı ürün geliştirme riskini azaltır" 
-                }
-            ]
-        },
-        {
-            title: "İstanbul → MVP ve İlk Müşteriler",
-            description: "İş fikrinin somut bir ürüne dönüşmeye başladığı kritik dönem. Odak noktası, MVP geliştirerek pazar doğrulaması yapmak ve ilk kullanıcı geri bildirimlerini toplamaktır.",
-            items: [
-                { 
-                    title: "Strateji ve 'Business Model Canvas'", 
-                    term: "BMC", 
-                    termDesc: "Business Model Canvas - İş modelinin temel unsurlarını tek sayfada görselleştiren araç", 
-                    why: "iş modelinin bütünsel görünümünü sunar, stratejik boşlukları ve fırsatları belirler" 
-                },
-                { 
-                    title: "Risk Analizi ve Yönetim Matrisi", 
-                    term: "Risk Matrix", 
-                    termDesc: "Riskleri olasılık ve etki açısından görselleştiren ve önceliklendiren araç", 
-                    why: "potansiyel sorunlara karşı hazırlıklı olmayı sağlar, kriz anlarında hızlı müdahale imkanı sunar" 
-                },
-                { 
-                    title: "Kaynak Planlama ve 'RACI Matrisi'", 
-                    term: "RACI", 
-                    termDesc: "Responsible, Accountable, Consulted, Informed - Rol ve sorumluluk dağılım matrisi", 
-                    why: "kaynakların etkin kullanımını sağlar, ekip içi koordinasyonu artırır" 
-                },
-                { 
-                    title: "Hedef Belirleme ve 'OKR' Sistemi", 
-                    term: "OKR", 
-                    termDesc: "Objectives and Key Results - Amaçlar ve ölçülebilir anahtar sonuçlar sistemi", 
-                    why: "ekibin odaklanmasını sağlar, ilerlemeyi ölçülebilir hale getirir" 
-                },
-                { 
-                    title: "Yol Haritası ve 'Now-Next-Later' Modeli", 
-                    term: "Roadmap", 
-                    termDesc: "Stratejik hedeflere ulaşmak için belirlenen adımların zaman çizelgesi", 
-                    why: "stratejik öncelikleri netleştirir, ekibin ortak hedefe doğru ilerlemesini sağlar" 
-                },
-                { 
-                    title: "Minimum Uygulanabilir Ürün (MVP) Kapsamı", 
-                    term: "MVP", 
-                    termDesc: "Minimum Viable Product - Ana değer önerisini test etmek için yeterli en temel ürün", 
-                    why: "kaynak israfını önler, erken kullanıcı geri bildirimleriyle doğru yönde gelişim sağlar" 
-                },
-                { 
-                    title: "MVP Testi ve İlk Kanal Denemeleri", 
-                    term: "A/B Testing", 
-                    termDesc: "İki farklı versiyonu karşılaştırarak hangisinin daha iyi performans gösterdiğini test etme", 
-                    why: "pazarlama kanallarının etkinliğini doğrular, müşteri edinme maliyetlerini optimize eder" 
-                },
-                { 
-                    title: "Temel KPI'ların Belirlenmesi", 
-                    term: "KPI", 
-                    termDesc: "Key Performance Indicator - Başarıyı ölçmek için kullanılan temel performans göstergeleri", 
-                    why: "ilerlemeyi ölçülebilir hale getirir, veri odaklı karar almayı teşvik eder" 
-                },
-                { 
-                    title: "MVP Başarı Kriterleri (Gate)", 
-                    term: "MVP Gate", 
-                    termDesc: "MVP'nin başarılı olup olmadığını belirlemek için önceden tanımlanmış kritik eşikler", 
-                    why: "objektif karar alma süreçlerini destekler, pivot veya devam etme kararlarını kolaylaştırır" 
-                },
-                { 
-                    title: "Pivot veya İterasyon Kararı", 
-                    term: "Pivot", 
-                    termDesc: "Yeni bir temel hipotezi test etmek için yapılan yapılandırılmış yön değişikliği", 
-                    why: "pazarın değişen dinamiklerine hızlı adaptasyon sağlar, uzun vadeli başarı şansını artırır" 
-                }
-            ]
-        },
-        {
-            title: "Ulusal → Ürün-Pazar Uyumu ve Büyüme",
-            description: "MVP sonrası büyüme ve ürün-pazar uyumunu sağlamlaştırma dönemi. Odak noktası, yasal altyapıyı kurmak ve ulusal pazarda büyümeyi hızlandırmaktır.",
-            items: [
-                { 
-                    title: "Şirketleşme ve Yasal Süreçler", 
-                    term: "Incorporation", 
-                    termDesc: "Girişimin yasal bir tüzel kişilik kazanması için gerekli şirketleşme süreçleri", 
-                    why: "yasal riskleri minimize eder, gelecekteki yatırım süreçleri için sağlam temel sağlar" 
-                },
-                { 
-                    title: "Problem-Çözüm Uyumu Doğrulaması", 
-                    term: "Problem-Solution Fit", 
-                    termDesc: "Geliştirilen çözümün müşterinin problemine gerçekten uyup uymadığının doğrulanması", 
-                    why: "çözümün müşteri nezdindeki değerini kanıtlar, pazarlama mesajlarını güçlendirir" 
-                },
-                { 
-                    title: "Ürün-Pazar Uyumu (PMF) Ölçümü", 
-                    term: "PMF", 
-                    termDesc: "Product-Market Fit - Ürünün yeterince büyük pazarda yeterli müşteri ihtiyacını karşılaması", 
-                    why: "ölçeklenmeden önce ürünün pazar tarafından kabul edildiğini doğrular" 
-                },
-                { 
-                    title: "Ödeme Sistemleri Entegrasyonu", 
-                    term: "Payment Gateway", 
-                    termDesc: "E-ticaret siteleri için kredi kartı ödemelerini işleyen güvenli ödeme altyapısı", 
-                    why: "gelir akışlarını etkinleştirir, müşteri deneyimini iyileştirir" 
-                },
-                { 
-                    title: "Gelir Modeli ve Birim Ekonomisi", 
-                    term: "Unit Economics", 
-                    termDesc: "Her bir birim (müşteri, satış) başına düşen gelir ve maliyetlerin analizi", 
-                    why: "işin kârlılığını ve sürdürülebilirliğini gösterir, büyüme stratejilerinin finansal temelini oluşturur" 
-                },
-                { 
-                    title: "Fiyatlandırma Testleri", 
-                    term: "Pricing Strategy", 
-                    termDesc: "Ürün veya hizmetlerin fiyatını belirleme yöntemi ve stratejisi", 
-                    why: "gelirleri maksimize eder, pazarın fiyat hassasiyetini anlamayı sağlar" 
-                },
-                { 
-                    title: "Pazarlama Kanalları Optimizasyonu", 
-                    term: "Bullseye Framework", 
-                    termDesc: "En etkili pazarlama kanallarını belirleme yöntemi - 19 kanaldan 3'ünü test etme", 
-                    why: "müşteri edinme süreçlerini optimize eder, pazarlama harcamalarının geri dönüşünü artırır" 
-                },
-                { 
-                    title: "Operasyonel Altyapı Kurulumu (CRM, Destek)", 
-                    term: "CRM", 
-                    termDesc: "Customer Relationship Management - Müşteri ilişkilerini yönetmek için kullanılan sistem", 
-                    why: "müşteri memnuniyetini artırır, operasyonel yükü azaltır, ölçeklenebilir yapı oluşturur" 
-                },
-                { 
-                    title: "Kullanıcı Deneyimi (UX) İyileştirmeleri", 
-                    term: "UX", 
-                    termDesc: "User Experience - Kullanıcının ürün veya hizmetle etkileşimi sırasında yaşadığı deneyim", 
-                    why: "kullanıcı memnuniyetini ve elde tutma oranını artırır, rekabet avantajı sağlar" 
-                }
-            ]
-        },
-        {
-            title: "Global → Ölçekleme ve Sürdürülebilirlik",
-            description: "Ulusal başarıyı küresel ölçeğe taşıma ve uzun vadeli sürdürülebilirlik dönemi. Odak noktası, büyüme stratejilerini optimize etmek ve gelecekteki çıkış stratejilerini planlamaktır.",
-            items: [
-                { 
-                    title: "Büyüme Stratejisi ve 'Growth Loops'", 
-                    term: "Growth Loop", 
-                    termDesc: "Mevcut kullanıcıların yeni kullanıcılar getirmesini sağlayan kapalı büyüme sistemi", 
-                    why: "sürdürülebilir ve bileşik büyüme modeli oluşturur, müşteri edinme maliyetlerini düşürür" 
-                },
-                { 
-                    title: "Ölçeklenebilirlik (Scalability) Planı", 
-                    term: "Scalability", 
-                    termDesc: "Sistemin artan iş yükünü performans kaybı olmadan kaldırabilme yeteneği", 
-                    why: "gelecekteki büyüme için sağlam altyapı sağlar, operasyonel aksaklıkları önler" 
-                },
-                { 
-                    title: "Organizasyonel Yönetim ve Operasyon Sistemi", 
-                    term: "EOS", 
-                    termDesc: "Entrepreneurial Operating System - Girişimci işletme sistemi", 
-                    why: "şirket içi süreçleri standardize eder, sürdürülebilir şirket kültürü oluşturur" 
-                },
-                { 
-                    title: "Çıkış Stratejisi (Exit Strategy) Belirleme", 
-                    term: "Exit Strategy", 
-                    termDesc: "Yatırımcının şirketteki pozisyonunu nakde çevirme planı (IPO, M&A, vb.)", 
-                    why: "yatırımcılar için net getiri yolu sunar, şirketin uzun vadeli değerini maksimize eder" 
-                }
-            ]
+        const roadmapData = {
+            "Faz 1: Fikir ve Doğrulama": {
+                description: "Girişim fikrinizi doğrulayın ve temel strateji oluşturun. Makro trendleri analiz edin, gerçek problemi tanımlayın ve çözümünüzü şekillendirin.",
+                color: "from-red-100 to-pink-100",
+                borderColor: "border-red-200",
+                items: [
+                    {
+                        title: "Makro Trend ve Foresight Analizi",
+                        description: "3-5 yıllık dışsal risk/fırsat haritası oluşturun. Gelecek trendlerini ve makroekonomik faktörleri analiz edin.",
+                        tooltips: ["PESTEL"]
+                    },
+                    {
+                        title: "Niyet ve Sebep Analizi",
+                        description: "Başlama motivasyonunuzu derinlemesine inceleyin. Kişisel ve toplumsal motivasyonlarınızı netleştirin.",
+                        tooltips: []
+                    },
+                    {
+                        title: "Vizyon / Misyon / Değerler",
+                        description: "Uzun vadeli hedefleri, ulaşma yollarını ve temel ilkeleri tanımlayın.",
+                        tooltips: ["Vizyon", "Golden Circle"]
+                    },
+                    {
+                        title: "Problem Tanımı",
+                        description: "Hedef kitlenin gerçek, sürekli ve çözülmemiş problemini belirleyin.",
+                        tooltips: ["JTBD"]
+                    },
+                    {
+                        title: "İş Fikri ve Çözüm Varsayımları",
+                        description: "Problemi çözme yaklaşımınızı ve temel varsayımlarınızı tanımlayın.",
+                        tooltips: []
+                    },
+                    {
+                        title: "Değer Önerisi",
+                        description: "Müşteriye sunacağınız özgün faydayı ve tercih edilme sebebini belirleyin.",
+                        tooltips: ["VPC"]
+                    },
+                    {
+                        title: "Pazar Araştırması",
+                        description: "Pazar büyüklüğünü, dinamikleri ve potansiyeli analiz edin.",
+                        tooltips: ["TAM/SAM/SOM"]
+                    },
+                    {
+                        title: "Rakip Analizi",
+                        description: "Mevcut çözümler, rakipler ve farklılaşma noktalarını belirleyin.",
+                        tooltips: ["SWOT", "Blue Ocean"]
+                    },
+                    {
+                        title: "Müşteri Profillemesi",
+                        description: "Hedef kitle demografisini, davranışlarını ve özelliklerini analiz edin.",
+                        tooltips: []
+                    },
+                    {
+                        title: "Pazar Ön-Doğrulama",
+                        description: "Hedef müşterilerin probleme çözüm aradığını doğrulayın.",
+                        tooltips: []
+                    },
+                    {
+                        title: "Risk Analizi",
+                        description: "Ticari, teknik, finansal ve operasyonel riskleri belirleyin ve önlemler hazırlayın.",
+                        tooltips: []
+                    }
+                ]
+            },
+            "Faz 2: MVP ve İlk Çekiş": {
+                description: "Minimum değerli ürününüzü geliştirin ve pazarda test edin. İlk müşterilerinizi edinin ve öğrenme döngüsünü başlatın.",
+                color: "from-orange-100 to-yellow-100",
+                borderColor: "border-orange-200",
+                items: [
+                    {
+                        title: "Kaynak Planlama",
+                        description: "İnsan, finansal, teknik ve zaman kaynaklarını planlayın. Sorumluluk dağılımı yapın.",
+                        tooltips: ["RACI"]
+                    },
+                    {
+                        title: "Hedef Belirleme",
+                        description: "Ölçülebilir, ulaşılabilir ve zaman sınırlı hedefler belirleyin.",
+                        tooltips: ["OKR"]
+                    },
+                    {
+                        title: "Yol Haritası",
+                        description: "Hedefe ulaşmak için adımları sıralayın ve fazlara ayırın.",
+                        tooltips: []
+                    },
+                    {
+                        title: "MVP Kapsamı",
+                        description: "Temel değer önerisini test edecek özellikleri öncelik sırasına koyun.",
+                        tooltips: ["MVP", "MoSCoW"]
+                    },
+                    {
+                        title: "MVP Testi",
+                        description: "Ürünü pazarda test edin ve etkili kanalları belirleyin.",
+                        tooltips: []
+                    },
+                    {
+                        title: "Trafik ve Dönüşüm",
+                        description: "Kanal bazlı performans ölçümü yapın ve optimizasyon başlatın.",
+                        tooltips: []
+                    },
+                    {
+                        title: "Temel Metrikler",
+                        description: "Başarı göstergelerini takip etmek için pano oluşturun.",
+                        tooltips: ["KPI", "CAC", "LTV", "Churn"]
+                    },
+                    {
+                        title: "MVP Değerlendirme",
+                        description: "Başarı kriterlerini değerlendirin ve devam/pivot kararı verin.",
+                        tooltips: []
+                    },
+                    {
+                        title: "İş Fikri Güncelleme",
+                        description: "Öğrenilen derslerle strateji ve hedefleri gözden geçirin.",
+                        tooltips: []
+                    }
+                ]
+            },
+            "Faz 3: Ürün-Pazar Uyumu": {
+                description: "Ürün-pazar uyumunu doğrulayın ve ilk ölçekleme adımlarını atın. Operasyonel altyapıyı kurun.",
+                color: "from-green-100 to-emerald-100",
+                borderColor: "border-green-200",
+                items: [
+                    {
+                        title: "Operasyonel Hazırlık",
+                        description: "Şirket kurma, vergi, yasal süreçler için plan yapın.",
+                        tooltips: []
+                    },
+                    {
+                        title: "Problem-Çözüm Uyumu",
+                        description: "Çözümünüzün müşteri problemiyle uyumunu doğrulayın.",
+                        tooltips: []
+                    },
+                    {
+                        title: "Ürün-Pazar Uyumu",
+                        description: "Müşterilerin ürün yokluğunda üzülüp üzülmediğini ölçün.",
+                        tooltips: ["PMF"]
+                    },
+                    {
+                        title: "Ödeme Sistemi",
+                        description: "Ödeme entegrasyonu kurun ve birim ekonomiyi hesaplayın.",
+                        tooltips: ["LTV", "CAC"]
+                    },
+                    {
+                        title: "Fiyatlandırma Testleri",
+                        description: "Optimum fiyatı bulmak için A/B testleri yapın.",
+                        tooltips: []
+                    },
+                    {
+                        title: "Müşteri Tutma",
+                        description: "Kullanıcı kalma süresini ve sadakati analiz edin.",
+                        tooltips: ["Churn"]
+                    },
+                    {
+                        title: "Sistem Altyapısı",
+                        description: "CRM, destek ve otomasyon sistemlerini kurun.",
+                        tooltips: []
+                    },
+                    {
+                        title: "Rekabet Stratejisi",
+                        description: "Farklılaşma noktalarını belirleyin ve rekabetsiz alan yaratın.",
+                        tooltips: ["Blue Ocean"]
+                    }
+                ]
+            },
+            "Faz 4: Büyüme ve Ölçekleme": {
+                description: "Büyüme döngülerini tasarlayın ve ölçekleme stratejilerini uygulayın. Organizasyonel sistemleri kurun.",
+                color: "from-blue-100 to-indigo-100",
+                borderColor: "border-blue-200",
+                items: [
+                    {
+                        title: "Büyüme Döngüsü",
+                        description: "Viral mekanizmalar ve referral sistemleri tasarlayın.",
+                        tooltips: ["Growth Loop"]
+                    },
+                    {
+                        title: "Pazarlama Kanalları",
+                        description: "En etkili pazarlama kanallarını test edin ve optimize edin.",
+                        tooltips: ["Bullseye"]
+                    },
+                    {
+                        title: "Coğrafi Genişleme",
+                        description: "Bölgesel yayılma stratejisi geliştirin ve uygulayın.",
+                        tooltips: []
+                    },
+                    {
+                        title: "Ölçeklenebilirlik",
+                        description: "Teknik ve operasyonel kapasiteyi büyüme için hazırlayın.",
+                        tooltips: []
+                    },
+                    {
+                        title: "Organizasyon Yönetimi",
+                        description: "Ekip kültürü, hedef takibi ve yönetim sistemleri kurun.",
+                        tooltips: ["OKR", "EOS"]
+                    }
+                ]
+            },
+            "Faz 5: Uluslararasılaşma": {
+                description: "Uluslararası genişleme planlarını hayata geçirin ve exit stratejinizi belirleyin.",
+                color: "from-purple-100 to-pink-100",
+                borderColor: "border-purple-200",
+                items: [
+                    {
+                        title: "Global Genişleme",
+                        description: "Uluslararası pazar giriş stratejilerini geliştirin.",
+                        tooltips: []
+                    },
+                    {
+                        title: "Çıkış Stratejisi",
+                        description: "IPO, M&A veya stratejik ortaklık seçeneklerini değerlendirin.",
+                        tooltips: ["IPO", "M&A"]
+                    }
+                ]
+            }
+        };
+
+        const tooltipDefinitions = {
+            "MVP": { title: "Minimum Viable Product", content: "Temel özellikleri içeren, pazara sunulabilecek en sade ürün versiyonu" },
+            "PMF": { title: "Product-Market Fit", content: "Ürünün belirli pazardaki güçlü müşteri talebini karşılaması" },
+            "Vizyon": { title: "Vizyon", content: "Organizasyonun ulaşmak istediği uzun vadeli hedef ve ideal durum" },
+            "PESTEL": { title: "Political, Economic, Social, Technological, Environmental, Legal", content: "Dış çevre faktörlerini analiz eden stratejik araç" },
+            "RACI": { title: "Responsible, Accountable, Consulted, Informed", content: "Görev ve sorumlulukları net dağıtan matris" },
+            "VPC": { title: "Value Proposition Canvas", content: "Müşteri ihtiyaçları ile değer önerisinin uyumunu görselleştiren araç" },
+            "TAM/SAM/SOM": { title: "Total/Serviceable Addressable/Obtainable Market", content: "Pazar büyüklüğü analiz yöntemi" },
+            "KPI": { title: "Key Performance Indicator", content: "Hedeflere ulaşmadaki başarıyı gösteren ölçülebilir değerler" },
+            "LTV": { title: "Customer Lifetime Value", content: "Müşterinin yaşam boyu kazandıracağı tahmini gelir" },
+            "CAC": { title: "Customer Acquisition Cost", content: "Müşteri kazanma maliyeti" },
+            "Churn": { title: "Churn Rate", content: "Belirli dönemde ürünü bırakan müşteri yüzdesi" },
+            "Growth Loop": { title: "Growth Loop", content: "Mevcut kullanıcıların yeni kullanıcı çekmesini sağlayan mekanizma" },
+            "SWOT": { title: "Strengths, Weaknesses, Opportunities, Threats", content: "İç güçlü/zayıf yönler, dış fırsat/tehditler analizi" },
+            "MoSCoW": { title: "Must/Should/Could/Won't have", content: "Özellik önceliklendirme tekniği" },
+            "Golden Circle": { title: "Golden Circle", content: "Neden-Nasıl-Ne çerçevesinde motivasyon modeli" },
+            "JTBD": { title: "Jobs-to-be-Done", content: "Müşterilerin ürünü neden 'işe aldıklarını' anlama çerçevesi" },
+            "Blue Ocean": { title: "Blue Ocean Strategy", content: "Yeni ve rekabetsiz pazar alanları yaratma stratejisi" },
+            "Bullseye": { title: "Bullseye Framework", content: "En etkili pazarlama kanallarını belirleme yöntemi" },
+            "OKR": { title: "Objectives and Key Results", content: "Hedef belirleme ve ilerleme ölçüm çerçevesi" },
+            "EOS": { title: "Entrepreneurial Operating System", content: "İş yönetimi ve operasyonel verimlilik sistemi" },
+            "IPO": { title: "Initial Public Offering", content: "Şirket hisselerini halka arz etme işlemi" },
+            "M&A": { title: "Mergers and Acquisitions", content: "Şirket birleşmeleri ve satın alma işlemleri" }
+        };
+
+        function createAccordionItem(title, data, index) {
+            const accordionId = `phase-${index}`;
+            const phaseNumber = index + 1;
+
+            return `
+                <div class="phase-container">
+                    <button class="accordion-header w-full px-6 py-4 text-left transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500" onclick="toggleAccordion('${accordionId}')">
+                        <div class="flex justify-between items-center">
+                            <div class="flex items-center space-x-3">
+                                <span class="text-2xl font-bold text-gray-800">${phaseNumber}</span>
+                                <div>
+                                    <h2 class="text-lg font-bold text-gray-800">${title}</h2>
+                                    <p class="text-sm text-gray-600 mt-1">${data.description}</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center space-x-4">
+                                <div class="text-right">
+                                    <div class="text-sm text-gray-600" id="phase-progress-${index}">0 / ${data.items.length}</div>
+                                    <div class="phase-progress w-16 mt-1">
+                                        <div class="phase-progress-fill" style="width: 0%" id="phase-fill-${index}"></div>
+                                    </div>
+                                </div>
+                                <svg class="accordion-icon w-5 h-5 text-gray-600 transform transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                            </div>
+                        </div>
+                    </button>
+                    <div id="${accordionId}" class="accordion-content">
+                        <div class="px-6 py-4 bg-gray-50">
+                            <div class="space-y-3">
+                                ${data.items.map((item, itemIndex) => createChecklistItem(item, index, itemIndex)).join('')}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
         }
-    ];
 
-    const container = document.getElementById('action-plan-container');
-    let totalItems = 0;
-    let completedItems = 0;
+        function createChecklistItem(item, phaseIndex, itemIndex) {
+            const itemId = `phase-${phaseIndex}-item-${itemIndex}`;
+            const tooltipElements = item.tooltips ? item.tooltips.map(tooltip =>
+                `<span class="tooltip-icon" data-tippy-content="<strong>${tooltipDefinitions[tooltip]?.title}</strong><br>${tooltipDefinitions[tooltip]?.content}">${tooltip}</span>`
+            ).join('') : '';
 
-    // Calculate total items
-    clusters.forEach(cluster => {
-        totalItems += cluster.items.length;
-    });
+            return `
+                <div class="item-card flex items-start space-x-3 p-3 bg-white rounded-lg">
+                    <div class="item-number">${itemIndex + 1}</div>
+                    <input type="checkbox" id="${itemId}" class="checkbox-custom mt-1" onchange="toggleCompletion('${itemId}', ${phaseIndex})">
+                    <div class="flex-1 min-w-0">
+                        <label for="${itemId}" class="cursor-pointer block">
+                            <div class="font-medium text-gray-900 mb-1 flex items-center flex-wrap">
+                                <span class="mr-2">${item.title}</span>
+                                ${tooltipElements}
+                            </div>
+                            <div class="text-sm text-gray-600 leading-relaxed">${item.description}</div>
+                        </label>
+                    </div>
+                </div>
+            `;
+        }
 
-    function updateProgress() {
-        const progressBar = document.getElementById('progress-bar');
-        const progressText = document.getElementById('progress-text');
-        const percentage = totalItems > 0 ? (completedItems / totalItems) * 100 : 0;
-        
-        progressBar.style.width = percentage + '%';
-        progressText.textContent = `${completedItems} / ${totalItems} tamamlandı`;
-    }
+        function toggleAccordion(accordionId) {
+            const content = document.getElementById(accordionId);
+            const header = content.previousElementSibling;
+            const icon = header.querySelector('.accordion-icon');
 
-    clusters.forEach((cluster, clusterIndex) => {
-        const clusterDiv = document.createElement('div');
-        clusterDiv.className = 'border border-gray-700 rounded-lg bg-gray-800 shadow-md';
-
-        const header = document.createElement('div');
-        header.className = 'p-4 cursor-pointer flex justify-between items-center hover:bg-gray-750 transition-colors';
-        header.innerHTML = `
-            <div>
-                <h2 class="text-xl font-semibold text-blue-400 mb-1">${cluster.title}</h2>
-                <p class="text-sm text-gray-400">${cluster.description}</p>
-            </div>
-            <svg class="w-6 h-6 text-gray-400 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-            </svg>
-        `;
-
-        const content = document.createElement('div');
-        content.className = 'accordion-content px-4';
-        
-        const list = document.createElement('ul');
-        list.className = 'space-y-4';
-
-        cluster.items.forEach((item, itemIndex) => {
-            const listItem = document.createElement('li');
-            listItem.className = 'checkbox-item flex items-start transition-opacity duration-300 p-3 rounded-lg bg-gray-750 hover:bg-gray-700';
-            
-            const label = document.createElement('label');
-            label.className = 'flex items-start cursor-pointer w-full';
-            
-            const checkbox = document.createElement('input');
-            checkbox.type = 'checkbox';
-            checkbox.className = 'mt-1 h-5 w-5 rounded border-gray-600 bg-gray-700 text-blue-500 focus:ring-blue-600 focus:ring-2';
-            checkbox.id = `item-${clusterIndex}-${itemIndex}`;
-            
-            const textDiv = document.createElement('div');
-            textDiv.className = 'ml-3 flex-1';
-            
-            const titleSpan = document.createElement('span');
-            titleSpan.className = 'text-base text-gray-200 font-medium block mb-1';
-            titleSpan.textContent = item.title;
-
-            if (item.term) {
-                const infoIcon = document.createElement('span');
-                infoIcon.className = 'info-icon';
-                infoIcon.textContent = '(?)';
-                infoIcon.dataset.tippyContent = `<div class="text-left"><strong>${item.term}</strong><br/><em>${item.termDesc}</em><br/><br/><strong>Neden Önemli?</strong><br/>${item.why}</div>`;
-                titleSpan.appendChild(infoIcon);
-            }
-
-            const whySpan = document.createElement('p');
-            whySpan.className = 'text-sm text-gray-500 mt-1';
-            whySpan.textContent = `→ ${item.why}`;
-
-            textDiv.appendChild(titleSpan);
-            textDiv.appendChild(whySpan);
-            
-            label.appendChild(checkbox);
-            label.appendChild(textDiv);
-            listItem.appendChild(label);
-            list.appendChild(listItem);
-
-            checkbox.addEventListener('change', () => {
-                if (checkbox.checked) {
-                    listItem.classList.add('completed');
-                    completedItems++;
-                } else {
-                    listItem.classList.remove('completed');
-                    completedItems--;
-                }
-                updateProgress();
-                
-                // Save to localStorage
-                const savedState = JSON.parse(localStorage.getItem('actionPlanProgress') || '{}');
-                savedState[checkbox.id] = checkbox.checked;
-                localStorage.setItem('actionPlanProgress', JSON.stringify(savedState));
-            });
-
-            // Load from localStorage
-            const savedState = JSON.parse(localStorage.getItem('actionPlanProgress') || '{}');
-            if (savedState[checkbox.id]) {
-                checkbox.checked = true;
-                listItem.classList.add('completed');
-                completedItems++;
-            }
-        });
-
-        content.appendChild(list);
-        clusterDiv.appendChild(header);
-        clusterDiv.appendChild(content);
-        container.appendChild(clusterDiv);
-
-        header.addEventListener('click', () => {
-            const isOpen = content.classList.contains('open');
-            
-            // Close all other accordions
-            document.querySelectorAll('.accordion-content.open').forEach(openContent => {
-                if (openContent !== content) {
-                    openContent.classList.remove('open');
-                    openContent.previousElementSibling.querySelector('svg').classList.remove('rotate-180');
+            document.querySelectorAll('.accordion-content').forEach(acc => {
+                if (acc.id !== accordionId) {
+                    acc.classList.remove('active');
+                    acc.previousElementSibling.classList.remove('active');
+                    acc.previousElementSibling.querySelector('.accordion-icon').classList.remove('rotate-180');
                 }
             });
-            
-            if (!isOpen) {
-                content.classList.add('open');
-                header.querySelector('svg').classList.add('rotate-180');
+
+            content.classList.toggle('active');
+            header.classList.toggle('active');
+            icon.classList.toggle('rotate-180');
+        }
+
+        function toggleCompletion(itemId, phaseIndex) {
+            const checkbox = document.getElementById(itemId);
+            const label = checkbox.nextElementSibling;
+
+            if (checkbox.checked) {
+                label.classList.add('completed');
             } else {
-                content.classList.remove('open');
-                header.querySelector('svg').classList.remove('rotate-180');
+                label.classList.remove('completed');
             }
+
+            updateProgress();
+            updatePhaseProgress(phaseIndex);
+        }
+
+        function updateProgress() {
+            const totalItems = document.querySelectorAll('.checkbox-custom').length;
+            const completedItems = document.querySelectorAll('.checkbox-custom:checked').length;
+            const progressPercentage = totalItems > 0 ? (completedItems / totalItems) * 100 : 0;
+
+            document.getElementById('overall-progress').style.width = progressPercentage + '%';
+            document.getElementById('progress-text').textContent = `${completedItems} / ${totalItems} tamamlandı`;
+        }
+
+        function updatePhaseProgress(phaseIndex) {
+            const phaseItems = document.querySelectorAll(`input[id^="phase-${phaseIndex}-item-"]`);
+            const completedPhaseItems = document.querySelectorAll(`input[id^="phase-${phaseIndex}-item-"]:checked`);
+            const phaseProgressPercentage = phaseItems.length > 0 ? (completedPhaseItems.length / phaseItems.length) * 100 : 0;
+
+            document.getElementById(`phase-fill-${phaseIndex}`).style.width = phaseProgressPercentage + '%';
+            document.getElementById(`phase-progress-${phaseIndex}`).textContent = `${completedPhaseItems.length} / ${phaseItems.length}`;
+        }
+
+        function renderRoadmap() {
+            const container = document.getElementById('roadmap-container');
+            container.innerHTML = Object.entries(roadmapData)
+                .map(([title, data], index) => createAccordionItem(title, data, index))
+                .join('');
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            renderRoadmap();
+
+            tippy('[data-tippy-content]', {
+                theme: 'light-border',
+                placement: 'top',
+                arrow: true,
+                maxWidth: 350,
+                interactive: true,
+                delay: [200, 100],
+                allowHTML: true,
+                animation: 'fade'
+            });
+
+            updateProgress();
+            Object.keys(roadmapData).forEach((_, index) => updatePhaseProgress(index));
         });
-        
-        // Open first accordion by default
-        if (clusterIndex === 0) {
-            header.click();
-        }
-    });
-
-    // Initialize progress
-    updateProgress();
-
-    // Initialize tooltips
-    tippy('.info-icon', {
-        allowHTML: true,
-        theme: 'custom',
-        animation: 'shift-away',
-        interactive: true,
-        placement: 'top-start',
-        maxWidth: 350,
-        delay: [200, 100]
-    });
-
-    // Add reset functionality
-    const resetButton = document.createElement('button');
-    resetButton.className = 'fixed bottom-6 right-6 bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg shadow-lg transition-colors text-sm';
-    resetButton.textContent = 'İlerlemeyi Sıfırla';
-    resetButton.addEventListener('click', () => {
-        if (confirm('Tüm ilerleme sıfırlanacak. Emin misiniz?')) {
-            localStorage.removeItem('actionPlanProgress');
-            location.reload();
-        }
-    });
-    document.body.appendChild(resetButton);
     </script>
-
 </body>
 </html>
-
