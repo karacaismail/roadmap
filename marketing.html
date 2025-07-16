@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="tr" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MVP Pazarlama Checklist - Kapsamlı Pazarlama Rehberi</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/@popperjs/core@2"></script>
+    <script src="https://unpkg.com/tippy.js@6"></script>
+    <style>
+        body {
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        .tippy-box[data-theme~='custom'] {
+            background-color: #1f2937;
+            color: #d1d5db;
+            border: 1px solid #4b5563;
+            max-width: 350px;
+            font-size: 14px;
+            line-height: 1.4;
+        }
+        .tippy-box[data-theme~='custom'][data-placement^='top'] > .tippy-arrow::before {
+            border-top-color: #1f2937;
+        }
+        .tippy-box[data-theme~='custom'][data-placement^='bottom'] > .tippy-arrow::before {
+            border-bottom-color: #1f2937;
+        }
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s cubic-bezier(0.25, 0.1, 0.25, 1.0), padding 0.5s;
+            padding-top: 0;
+            padding-bottom: 0;
+        }
+        .accordion-content.open {
+            max-height: 8000px;
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+        }
+        .info-icon {
+            cursor: pointer;
+            display: inline-block;
+            margin-left: 4px;
+            font-style: normal;
+            color: #60a5fa;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        .checkbox-item {
+            transition: opacity 0.3s ease;
+        }
+        .checkbox-item.completed {
+            opacity: 0.5;
+        }
+        .progress-bar {
+            transition: width 0.3s ease;
+        }
+        .marketing-icon {
+            width: 20px;
+            height: 20px;
+            margin-right: 8px;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-gray-300 font-sans p-4 sm:p-8">
+
+    <div class="max-w-6xl mx-auto">
+        <header class="text-center mb-10">
+            <div class="flex items-center justify-center mb-4">
+                <svg class="w-12 h-12 text-blue-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
+                </svg>
+                <h1 class="text-4xl font-bold text-white">MVP Pazarlama Checklist</h1>
+            </div>
+            <p class="text-lg text-gray-400 mb-4">Mevcut MVP'niz için Kapsamlı Pazarlama Stratejisi ve Uygulama Rehberi</p>
+            <div class="bg-gray-800 rounded-lg p-4 mb-6">
+                <div class="flex justify-between items-center mb-2">
+                    <span class="text-sm text-gray-400">Pazarlama İlerleme</span>
+                    <span id="progress-text" class="text-sm text-blue-400">0 / 0 tamamlandı</span>
+                </div>
+                <div class="w-full bg-gray-700 rounded-full h-2">
+                    <div id="progress-bar" class="progress-bar bg-gradient-to-r from-blue-500 to-purple-600 h-2 rounded-full" style="width: 0%"></div>
+                </div>
+            </div>
+        </header>
+
+        <main id="marketing-checklist-container" class="space-y-4">
+            <!-- Marketing clusters will be dynamically inserted here -->
+        </main>
+
+        <footer class="text-center mt-12 text-gray-500 text-sm">
+            <p>MVP pazarlama stratejileri ve en iyi uygulamalar temel alınarak hazırlanmıştır.</p>
+            <p class="mt-2">Tailwind CSS & Tippy.js ile oluşturulmuştur.</p>
+        </footer>
+    </div>
+
+    <script>
+    const marketingClusters = [
+        {
+            title: "Pazar Doğrulama ve Müşteri Edinimi",
+            description: "MVP'nin pazardaki yerini sağlamlaştırmak ve ilk kullanıcıları edinmek için gerekli pazarlama adımları. Doğru hedef kitleyi belirlemek ve onlara ulaşmak kritik öneme sahiptir.",
+            icon: "🎯",
+            items: [
+                { 
+                    title: "Hedef Kitle ve Persona Tanımlaması", 
+                    term: "Persona", 
+                    termDesc: "Hedef kitlenin demografik, psikografik ve davranışsal özelliklerini temsil eden kurgusal karakter", 
+                    why: "pazarlama mesajlarınızı ve kanallarınızı doğru kişilere odaklamanızı sağlar, kaynak israfını önler" 
+                },
+                { 
+                    title: "Değer Önerisi Netleştirme ve Mesajlaşma", 
+                    term: "Value Proposition", 
+                    termDesc: "Ürünün müşteriye sunduğu benzersiz fayda ve problemi çözme şekli", 
+                    why: "müşterilerin ürününüzü neden tercih etmesi gerektiğini açıkça belirtir, pazarlama materyallerinizin temelini oluşturur" 
+                },
+                { 
+                    title: "MVP Pazarlama Stratejisi Oluşturma", 
+                    term: "Marketing Strategy", 
+                    termDesc: "MVP'yi pazara sunmak için belirlenen genel yaklaşım ve taktikler", 
+                    why: "pazarlama çabalarınıza yön verir, kaynakların verimli kullanılmasını sağlar" 
+                },
+                { 
+                    title: "Erken Benimseyenleri Belirleme ve Hedefleme", 
+                    term: "Early Adopters", 
+                    termDesc: "Yeni ürünleri ilk denemeye istekli, yeniliklere açık kullanıcı grubu", 
+                    why: "ilk geri bildirimleri toplamak, ürün-pazar uyumunu doğrulamak ve referanslar oluşturmak için kritik" 
+                },
+                { 
+                    title: "Landing Page Oluşturma ve Optimizasyon", 
+                    term: "Landing Page", 
+                    termDesc: "Belirli bir pazarlama kampanyası için tasarlanmış, dönüşüm odaklı web sayfası", 
+                    why: "potansiyel müşterileri yakalamak ve dönüşüm oranlarını artırmak için temel araç" 
+                },
+                { 
+                    title: "İlk Kanal Testleri (Organik ve Ücretli)", 
+                    term: "Channel Testing", 
+                    termDesc: "Farklı pazarlama kanallarının etkinliğini küçük bütçelerle test etme süreci", 
+                    why: "müşteri edinme maliyetlerini optimize etmek ve en verimli kanalları bulmak için gerekli" 
+                },
+                { 
+                    title: "Müşteri Edinme Maliyeti (CAC) Hesaplama", 
+                    term: "CAC", 
+                    termDesc: "Customer Acquisition Cost - Bir müşteriyi edinmek için harcanan toplam pazarlama ve satış maliyeti", 
+                    why: "pazarlama kampanyalarının finansal verimliliğini anlamanızı ve bütçenizi daha etkin yönetmenizi sağlar" 
+                },
+                { 
+                    title: "Dönüşüm Hunisi Analizi", 
+                    term: "Conversion Funnel", 
+                    termDesc: "Müşterilerin ürünle etkileşim kurduğu aşamaları gösteren huni modeli", 
+                    why: "müşteri yolculuğundaki darboğazları tespit etmenizi ve iyileştirme alanlarını belirlemenizi sağlar" 
+                },
+                { 
+                    title: "MVP Pazarlama Metrikleri Belirleme", 
+                    term: "KPI", 
+                    termDesc: "Key Performance Indicator - Pazarlama başarısını ölçen temel performans göstergeleri", 
+                    why: "pazarlama stratejilerinizin etkinliğini objektif olarak değerlendirmenizi ve veri odaklı kararlar almanızı sağlar" 
+                }
+            ]
+        },
+        {
+            title: "Büyüme ve Optimizasyon",
+            description: "İlk müşteri edinimi sonrası büyüme stratejilerini geliştirme ve pazarlama faaliyetlerini optimize etme. Ürün-pazar uyumunu derinleştirmek ve sürdürülebilir büyüme sağlamak hedeflenir.",
+            icon: "📈",
+            items: [
+                { 
+                    title: "Ürün-Pazar Uyumu (PMF) Doğrulama", 
+                    term: "PMF", 
+                    termDesc: "Product-Market Fit - Ürünün yeterince büyük pazarda yeterli müşteri ihtiyacını karşılaması", 
+                    why: "ölçeklenmeden önce ürününüzün pazar tarafından gerçekten benimsendiğini doğrular" 
+                },
+                { 
+                    title: "Müşteri Yaşam Boyu Değeri (LTV) Hesaplama", 
+                    term: "LTV", 
+                    termDesc: "Lifetime Value - Bir müşterinin ürünü kullandığı süre boyunca kazandıracağı toplam gelir", 
+                    why: "uzun vadeli kârlılık potansiyelinizi gösterir, müşteri edinme bütçenizi belirlemenize yardımcı olur" 
+                },
+                { 
+                    title: "Elde Tutma ve Kayıp Oranları Analizi", 
+                    term: "Retention/Churn", 
+                    termDesc: "Müşterilerin ürünü kullanmaya devam etme (retention) ve bırakma (churn) oranları", 
+                    why: "müşteri memnuniyetini ve ürünün uzun vadeli değerini gösterir, iyileştirme alanlarını belirler" 
+                },
+                { 
+                    title: "Pazarlama Otomasyonu Kurulumu", 
+                    term: "Marketing Automation", 
+                    termDesc: "Tekrarlayan pazarlama görevlerini otomatikleştiren teknoloji ve süreçler", 
+                    why: "pazarlama süreçlerini daha verimli hale getirir, kişiselleştirilmiş iletişim kurmanızı sağlar" 
+                },
+                { 
+                    title: "Referans ve Ağızdan Ağıza Pazarlama Stratejileri", 
+                    term: "WOM", 
+                    termDesc: "Word of Mouth - Müşterilerin ürünü başkalarına tavsiye etmesini teşvik eden stratejiler", 
+                    why: "düşük maliyetli ve yüksek güvenilirlikli müşteri edinimi sağlar, viral büyümeyi destekler" 
+                },
+                { 
+                    title: "İçerik Pazarlaması Stratejisi", 
+                    term: "Content Marketing", 
+                    termDesc: "Hedef kitlenin ilgisini çekecek ve değer katacak içerikler üretme stratejisi", 
+                    why: "organik trafik çeker, marka otoritesini artırır, potansiyel müşterileri huni boyunca ilerletir" 
+                },
+                { 
+                    title: "Sosyal Medya Pazarlaması Optimizasyonu", 
+                    term: "Social Media Marketing", 
+                    termDesc: "Sosyal medya platformlarında stratejik varlık oluşturma ve optimizasyon", 
+                    why: "marka bilinirliğini artırır, müşteri etkileşimini sağlar, doğrudan geri bildirim almanızı kolaylaştırır" 
+                },
+                { 
+                    title: "A/B Testleri ve Sürekli Optimizasyon", 
+                    term: "A/B Testing", 
+                    termDesc: "Pazarlama materyallerinin farklı versiyonlarını test ederek en iyisini belirleme", 
+                    why: "pazarlama harcamalarınızın geri dönüşünü maksimize eder, dönüşüm oranlarını artırır" 
+                }
+            ]
+        },
+        {
+            title: "Marka ve İletişim",
+            description: "MVP'nin ötesine geçerek güçlü bir marka kimliği oluşturma ve tutarlı bir iletişim stratejisi geliştirme. Uzun vadeli başarı ve pazar liderliği için marka algısı kritik öneme sahiptir.",
+            icon: "🎨",
+            items: [
+                { 
+                    title: "Marka Kimliği ve Hikayesi Oluşturma", 
+                    term: "Brand Identity", 
+                    termDesc: "Markanın değerlerini, kişiliğini ve müşteri deneyimini yansıtan görsel ve duygusal kimlik", 
+                    why: "markanızın akılda kalıcılığını artırır, rakiplerden farklılaşmanızı sağlar, müşteri sadakatini pekiştirir" 
+                },
+                { 
+                    title: "Halkla İlişkiler (PR) ve Medya İlişkileri", 
+                    term: "PR", 
+                    termDesc: "Public Relations - Medya ve kamuoyu ile olumlu ilişkiler kurma stratejisi", 
+                    why: "güvenilirlik ve itibar oluşturur, geniş kitlelere ulaşmanızı sağlar, organik bilinirliği artırır" 
+                },
+                { 
+                    title: "Kriz İletişim Planı", 
+                    term: "Crisis Communication", 
+                    termDesc: "Olumsuz durumlar için önceden hazırlanmış iletişim stratejisi ve protokolleri", 
+                    why: "kriz anlarında hızlı ve kontrollü tepki vermenizi sağlar, marka itibarının zarar görmesini minimize eder" 
+                },
+                { 
+                    title: "Müşteri Geri Bildirim Mekanizmaları", 
+                    term: "Feedback Loop", 
+                    termDesc: "Müşterilerden düzenli geri bildirim almak için kurulan sistemler ve süreçler", 
+                    why: "müşteri memnuniyetini artırır, ürün ve pazarlama stratejilerinizi müşteri ihtiyaçlarına göre şekillendirir" 
+                },
+                { 
+                    title: "Topluluk Oluşturma ve Yönetimi", 
+                    term: "Community Building", 
+                    termDesc: "Ürün etrafında aktif bir kullanıcı topluluğu oluşturma ve yönetme", 
+                    why: "müşteri sadakatini artırır, ağızdan ağıza pazarlamayı teşvik eder, değerli geri bildirim kaynağı sağlar" 
+                },
+                { 
+                    title: "Etkinlik Pazarlaması ve Sponsorluklar", 
+                    term: "Event Marketing", 
+                    termDesc: "Sektör etkinliklerine katılım ve sponsorluk yoluyla marka bilinirliği artırma", 
+                    why: "doğrudan müşteri etkileşimi sağlar, sektördeki konumunuzu güçlendirir, yeni fırsatlar yaratır" 
+                },
+                { 
+                    title: "Influencer Pazarlaması", 
+                    term: "Influencer Marketing", 
+                    termDesc: "Hedef kitle üzerinde etkisi olan kişilerle işbirliği yaparak ürün tanıtımı", 
+                    why: "güvenilir kaynaktan tanıtım sağlar, geniş kitlelere hızlıca ulaşmanızı sağlar, marka bilinirliğini artırır" 
+                },
+                { 
+                    title: "E-posta Pazarlaması Optimizasyonu", 
+                    term: "Email Marketing", 
+                    termDesc: "Segmentasyona dayalı, kişiselleştirilmiş e-posta kampanyaları", 
+                    why: "müşterilerle doğrudan ve kişiselleştirilmiş iletişim kurmanızı sağlar, elde tutma oranlarını artırır" 
+                },
+                { 
+                    title: "Web Sitesi ve Blog Optimizasyonu", 
+                    term: "SEO/UX", 
+                    termDesc: "Web sitesi kullanıcı deneyimi ve arama motoru optimizasyonu", 
+                    why: "organik trafik çeker, marka otoritesini artırır, müşterilerin bilgi edinmesini kolaylaştırır" 
+                }
+            ]
+        }
+    ];
+
+    const container = document.getElementById('marketing-checklist-container');
+    let totalItems = 0;
+    let completedItems = 0;
+
+    // Calculate total items
+    marketingClusters.forEach(cluster => {
+        totalItems += cluster.items.length;
+    });
+
+    function updateProgress() {
+        const progressBar = document.getElementById('progress-bar');
+        const progressText = document.getElementById('progress-text');
+        const percentage = totalItems > 0 ? (completedItems / totalItems) * 100 : 0;
+        
+        progressBar.style.width = percentage + '%';
+        progressText.textContent = `${completedItems} / ${totalItems} tamamlandı`;
+    }
+
+    marketingClusters.forEach((cluster, clusterIndex) => {
+        const clusterDiv = document.createElement('div');
+        clusterDiv.className = 'border border-gray-700 rounded-lg bg-gray-800 shadow-md';
+
+        const header = document.createElement('div');
+        header.className = 'p-4 cursor-pointer flex justify-between items-center hover:bg-gray-750 transition-colors';
+        header.innerHTML = `
+            <div class="flex items-center">
+                <span class="text-2xl mr-3">${cluster.icon}</span>
+                <div>
+                    <h2 class="text-xl font-semibold text-blue-400 mb-1">${cluster.title}</h2>
+                    <p class="text-sm text-gray-400">${cluster.description}</p>
+                </div>
+            </div>
+            <svg class="w-6 h-6 text-gray-400 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+            </svg>
+        `;
+
+        const content = document.createElement('div');
+        content.className = 'accordion-content px-4';
+        
+        const list = document.createElement('ul');
+        list.className = 'space-y-4';
+
+        cluster.items.forEach((item, itemIndex) => {
+            const listItem = document.createElement('li');
+            listItem.className = 'checkbox-item flex items-start transition-opacity duration-300 p-3 rounded-lg bg-gray-750 hover:bg-gray-700';
+            
+            const label = document.createElement('label');
+            label.className = 'flex items-start cursor-pointer w-full';
+            
+            const checkbox = document.createElement('input');
+            checkbox.type = 'checkbox';
+            checkbox.className = 'mt-1 h-5 w-5 rounded border-gray-600 bg-gray-700 text-blue-500 focus:ring-blue-600 focus:ring-2';
+            checkbox.id = `marketing-item-${clusterIndex}-${itemIndex}`;
+            
+            const textDiv = document.createElement('div');
+            textDiv.className = 'ml-3 flex-1';
+            
+            const titleSpan = document.createElement('span');
+            titleSpan.className = 'text-base text-gray-200 font-medium block mb-1';
+            titleSpan.textContent = item.title;
+
+            if (item.term) {
+                const infoIcon = document.createElement('span');
+                infoIcon.className = 'info-icon';
+                infoIcon.textContent = '(?)';
+                infoIcon.dataset.tippyContent = `<div class="text-left"><strong>${item.term}</strong><br/><em>${item.termDesc}</em><br/><br/><strong>Neden Önemli?</strong><br/>${item.why}</div>`;
+                titleSpan.appendChild(infoIcon);
+            }
+
+            const whySpan = document.createElement('p');
+            whySpan.className = 'text-sm text-gray-500 mt-1';
+            whySpan.textContent = `→ ${item.why}`;
+
+            textDiv.appendChild(titleSpan);
+            textDiv.appendChild(whySpan);
+            
+            label.appendChild(checkbox);
+            label.appendChild(textDiv);
+            listItem.appendChild(label);
+            list.appendChild(listItem);
+
+            checkbox.addEventListener('change', () => {
+                if (checkbox.checked) {
+                    listItem.classList.add('completed');
+                    completedItems++;
+                } else {
+                    listItem.classList.remove('completed');
+                    completedItems--;
+                }
+                updateProgress();
+                
+                // Save to localStorage
+                const savedState = JSON.parse(localStorage.getItem('marketingProgress') || '{}');
+                savedState[checkbox.id] = checkbox.checked;
+                localStorage.setItem('marketingProgress', JSON.stringify(savedState));
+            });
+
+            // Load from localStorage
+            const savedState = JSON.parse(localStorage.getItem('marketingProgress') || '{}');
+            if (savedState[checkbox.id]) {
+                checkbox.checked = true;
+                listItem.classList.add('completed');
+                completedItems++;
+            }
+        });
+
+        content.appendChild(list);
+        clusterDiv.appendChild(header);
+        clusterDiv.appendChild(content);
+        container.appendChild(clusterDiv);
+
+        header.addEventListener('click', () => {
+            const isOpen = content.classList.contains('open');
+            
+            // Close all other accordions
+            document.querySelectorAll('.accordion-content.open').forEach(openContent => {
+                if (openContent !== content) {
+                    openContent.classList.remove('open');
+                    openContent.previousElementSibling.querySelector('svg').classList.remove('rotate-180');
+                }
+            });
+            
+            if (!isOpen) {
+                content.classList.add('open');
+                header.querySelector('svg').classList.add('rotate-180');
+            } else {
+                content.classList.remove('open');
+                header.querySelector('svg').classList.remove('rotate-180');
+            }
+        });
+        
+        // Open first accordion by default
+        if (clusterIndex === 0) {
+            header.click();
+        }
+    });
+
+    // Initialize progress
+    updateProgress();
+
+    // Initialize tooltips
+    tippy('.info-icon', {
+        allowHTML: true,
+        theme: 'custom',
+        animation: 'shift-away',
+        interactive: true,
+        placement: 'top-start',
+        maxWidth: 350,
+        delay: [200, 100]
+    });
+
+    // Add reset functionality
+    const resetButton = document.createElement('button');
+    resetButton.className = 'fixed bottom-6 right-6 bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg shadow-lg transition-colors text-sm';
+    resetButton.textContent = 'İlerlemeyi Sıfırla';
+    resetButton.addEventListener('click', () => {
+        if (confirm('Tüm pazarlama ilerleme sıfırlanacak. Emin misiniz?')) {
+            localStorage.removeItem('marketingProgress');
+            location.reload();
+        }
+    });
+    document.body.appendChild(resetButton);
+    </script>
+
+</body>
+</html>
