@@ -1,0 +1,1514 @@
+{
+  "categories": [
+    {
+      "name": "Stratejik Temel ve Doğrulama",
+      "description": "Şirketin vizyonu, pazar konumu, hedef kitlesi ve rekabet avantajı gibi temel stratejik unsurlarının tanımlandığı ve doğrulandığı bölüm.",
+      "tasks": [
+        {
+          "title": "Vizyon, Misyon ve Değerlerin Tanımlanması",
+          "description": "Şirketin vizyonu 'Türkiye'nin Alibaba'sı' olarak tanımlanmıştır. Bu vizyonu desteklemek için Simon Sinek'in Golden Circle modeli ile 'Neden' (Türkiye'nin jeopolitik avantajı) vurgulanacak ve Jim Collins'in Çekirdek İdeoloji çerçevesiyle 'Müşteri başarı odaklılık' gibi değerler somutlaştırılacaktır. Stratejinin temelini, Michael Porter'ın 'Strateji, vazgeçtiklerinizle tanımlanır' ilkesi oluşturacaktır.",
+          "purpose": "Şirketin varoluş amacını, kültürel temelini ve pazardaki farklılaşma noktalarını netleştirmek.",
+          "current_status": "incomplete",
+          "clarity_score": 80,
+          "clarity_justification": "Vizyon net, ancak değerlerin somutlaştırılması detaylandırılabilir.",
+          "uncertainty_questions": [
+            {
+              "question": "Değerlerin somutlaştırılması için hangi spesifik örnekler kullanılacak?",
+              "input_type": "text",
+              "placeholder": "Örnekler"
+            },
+            {
+              "question": "Golden Circle modelinin uygulanmasında karşılaşılabilecek zorluklar nelerdir?",
+              "input_type": "textarea",
+              "placeholder": "Zorluklar"
+            }
+          ],
+          "priority_score": 5,
+          "deadline": "2026-07-18",
+          "progress": 0,
+          "risk_analysis": [],
+          "stakeholder_mapping": [
+            {
+              "stakeholder": "Kurucular",
+              "interest": "Yüksek",
+              "influence": "Yüksek"
+            },
+            {
+              "stakeholder": "Yatırımcılar",
+              "interest": "Yüksek",
+              "influence": "Yüksek"
+            }
+          ],
+          "dependencies": [],
+          "forensic_analysis": {
+            "failure_reasons": [
+              "Yetersiz pazar araştırması ve yanlış hedef kitle belirleme",
+              "Teknolojik altyapı yetersizliği veya yanlış seçimler",
+              "Yetersiz finansman veya nakit akışı yönetimi"
+            ],
+            "objecting_stakeholder": "Genellikle mevcut iş yapış şekillerine alışmış, değişime dirençli geleneksel toptancılar veya riskten kaçınan yatırımcılar.",
+            "missed_in_6_months": "Pazar dinamiklerindeki ani değişimler (yeni bir rakibin girişi, regülasyon değişikliği) veya müşteri ihtiyaçlarının yanlış anlaşılması.",
+            "competitor_counter_strategy": "Rakip, benzer bir platformu daha hızlı ve daha düşük maliyetle piyasaya sürebilir, mevcut müşteri tabanını kullanarak pazar payını hızla artırabilir veya fiyat rekabetine gidebilir."
+          }
+        },
+        {
+          "title": "Pazar ve Foresight Analizi",
+          "description": "PESTEL Matrisi kullanılarak dijital altyapı yatırımları gibi 'Teknolojik Fırsatlar' sınıflandırılacak. Gartner Hype Cycle ile teknolojik trendlerin olgunluğu değerlendirilecek ve 3-5 yıllık bir perspektifte enflasyon ve regülasyonlar gibi makro riskler ve fırsatlar haritalanacaktır.",
+          "purpose": "Makroekonomik, sosyal ve teknolojik trendleri analiz ederek stratejik fırsatları ve tehditleri belirlemek.",
+          "current_status": "incomplete",
+          "clarity_score": 75,
+          "clarity_justification": "Analiz yöntemleri belirtilmiş, ancak spesifik veri kaynakları ve analiz derinliği belirsiz.",
+          "uncertainty_questions": [
+            {
+              "question": "Hangi spesifik veri kaynakları kullanılacak?",
+              "input_type": "text",
+              "placeholder": "Veri kaynakları"
+            },
+            {
+              "question": "3-5 yıllık perspektifteki makro riskler ve fırsatlar nasıl önceliklendirilecek?",
+              "input_type": "textarea",
+              "placeholder": "Önceliklendirme kriterleri"
+            }
+          ],
+          "priority_score": 5,
+          "deadline": "2026-07-18",
+          "progress": 0,
+          "risk_analysis": [],
+          "stakeholder_mapping": [],
+          "dependencies": [],
+          "forensic_analysis": {
+            "failure_reasons": [
+              "Yetersiz pazar araştırması ve yanlış hedef kitle belirleme",
+              "Teknolojik altyapı yetersizliği veya yanlış seçimler",
+              "Yetersiz finansman veya nakit akışı yönetimi"
+            ],
+            "objecting_stakeholder": "Genellikle mevcut iş yapış şekillerine alışmış, değişime dirençli geleneksel toptancılar veya riskten kaçınan yatırımcılar.",
+            "missed_in_6_months": "Pazar dinamiklerindeki ani değişimler (yeni bir rakibin girişi, regülasyon değişikliği) veya müşteri ihtiyaçlarının yanlış anlaşılması.",
+            "competitor_counter_strategy": "Rakip, benzer bir platformu daha hızlı ve daha düşük maliyetle piyasaya sürebilir, mevcut müşteri tabanını kullanarak pazar payını hızla artırabilir veya fiyat rekabetine gidebilir."
+          }
+        },
+        {
+          "title": "Rakip Konumlandırma ve Analizi",
+          "description": "Blue Ocean Stratejisi kullanılarak komisyon oranları gibi alanlarda rekabetin minimize edilmesi hedeflenmektedir. Porter'ın 5 Kuvveti modeli ile tedarikçi ve alıcıların pazarlık gücü analiz edilecektir. Benchmark olarak Alibaba'nın %2-5 aralığındaki komisyon oranları ve 'Trade Assurance' programı incelenecektir. Rakiplerin web sitesi değişiklikleri Visualping ile izlenecektir.",
+          "purpose": "Rekabet avantajı sağlamak amacıyla rakiplerin stratejilerini anlamak ve pazarda benzersiz bir konum elde etmek.",
+          "current_status": "incomplete",
+          "clarity_score": 85,
+          "clarity_justification": "Stratejiler ve araçlar net, ancak rekabetin minimize edilmesi hedefleri daha nicel olabilir.",
+          "uncertainty_questions": [
+            {
+              "question": "Komisyon oranları dışındaki rekabet avantajları neler olacak?",
+              "input_type": "text",
+              "placeholder": "Avantajlar"
+            },
+            {
+              "question": "Visualping ile izlenecek rakiplerin listesi nedir?",
+              "input_type": "text",
+              "placeholder": "Rakip listesi"
+            }
+          ],
+          "priority_score": 5,
+          "deadline": "2026-07-18",
+          "progress": 0,
+          "risk_analysis": [],
+          "stakeholder_mapping": [],
+          "dependencies": [],
+          "forensic_analysis": {
+            "failure_reasons": [
+              "Yetersiz pazar araştırması ve yanlış hedef kitle belirleme",
+              "Teknolojik altyapı yetersizliği veya yanlış seçimler",
+              "Yetersiz finansman veya nakit akışı yönetimi"
+            ],
+            "objecting_stakeholder": "Genellikle mevcut iş yapış şekillerine alışmış, değişime dirençli geleneksel toptancılar veya riskten kaçınan yatırımcılar.",
+            "missed_in_6_months": "Pazar dinamiklerindeki ani değişimler (yeni bir rakibin girişi, regülasyon değişikliği) veya müşteri ihtiyaçlarının yanlış anlaşılması.",
+            "competitor_counter_strategy": "Rakip, benzer bir platformu daha hızlı ve daha düşük maliyetle piyasaya sürebilir, mevcut müşteri tabanını kullanarak pazar payını hızla artırabilir veya fiyat rekabetine gidebilir."
+          }
+        },
+        {
+          "title": "Müşteri Profili ve İhtiyaç Analizi (JTBD)",
+          "description": "Hedef müşteri, '45 yaşında, geleneksel yöntemlerle çalışan ve teknolojiye karşı korkuları olan toptancı' olarak bir persona ile somutlaştırılmıştır. İstoç'taki kırtasiye tedarikçileri gibi spesifik gruplar için geodemografik haritalama yapılacak ve Clayton Christensen'in 'Jobs-to-be-Done' (JTBD) teorisi ile müşterinin 'dijital dönüşüm korkusunu yenme' gibi temel ihtiyaçları analiz edilecektir.",
+          "purpose": "Hedef kitleyi derinlemesine anlamak ve ürünü gerçek kullanıcı ihtiyaçlarına göre şekillendirmek.",
+          "current_status": "incomplete",
+          "clarity_score": 90,
+          "clarity_justification": "Hedef kitle ve analiz yöntemi çok net tanımlanmış.",
+          "uncertainty_questions": [
+            {
+              "question": "Geodemografik haritalama için hangi araçlar kullanılacak?",
+              "input_type": "text",
+              "placeholder": "Araçlar"
+            },
+            {
+              "question": "Müşterinin dijital dönüşüm korkusunu yenme sürecinde hangi spesifik adımlar atılacak?",
+              "input_type": "textarea",
+              "placeholder": "Adımlar"
+            }
+          ],
+          "priority_score": 5,
+          "deadline": "2026-07-18",
+          "progress": 0,
+          "risk_analysis": [],
+          "stakeholder_mapping": [],
+          "dependencies": [],
+          "forensic_analysis": {
+            "failure_reasons": [
+              "Yetersiz pazar araştırması ve yanlış hedef kitle belirleme",
+              "Teknolojik altyapı yetersizliği veya yanlış seçimler",
+              "Yetersiz finansman veya nakit akışı yönetimi"
+            ],
+            "objecting_stakeholder": "Genellikle mevcut iş yapış şekillerine alışmış, değişime dirençli geleneksel toptancılar veya riskten kaçınan yatırımcılar.",
+            "missed_in_6_months": "Pazar dinamiklerindeki ani değişimler (yeni bir rakibin girişi, regülasyon değişikliği) veya müşteri ihtiyaçlarının yanlış anlaşılması.",
+            "competitor_counter_strategy": "Rakip, benzer bir platformu daha hızlı ve daha düşük maliyetle piyasaya sürebilir, mevcut müşteri tabanını kullanarak pazar payını hızla artırabilir veya fiyat rekabetine gidebilir."
+          }
+        },
+        {
+          "title": "Pazar Büyüklüğü Analizi (TAM/SAM/SOM)",
+          "description": "Türkiye toptan pazarı için Toplam Adreslenebilir Pazar (TAM) 20 Milyon Dolar olarak belirlenmiştir. Bu temel üzerinden, şirketin ulaşabileceği Servis Edilebilir Adreslenebilir Pazar (SAM) ve gerçekçi olarak ele geçirebileceği Pazar Payı (SOM) analizleri yapılacaktır.",
+          "purpose": "Pazarın finansal potansiyelini ölçmek ve gerçekçi büyüme hedefleri belirlemek.",
+          "current_status": "incomplete",
+          "clarity_score": 80,
+          "clarity_justification": "Pazar büyüklüğü belirtilmiş, ancak analiz yöntemlerinin detayları eksik.",
+          "uncertainty_questions": [
+            {
+              "question": "TAM, SAM, SOM analizleri için hangi metodolojiler kullanılacak?",
+              "input_type": "text",
+              "placeholder": "Metodolojiler"
+            },
+            {
+              "question": "Analiz için hangi veri kaynaklarına güvenilecek?",
+              "input_type": "text",
+              "placeholder": "Veri kaynakları"
+            }
+          ],
+          "priority_score": 5,
+          "deadline": "2026-07-18",
+          "progress": 0,
+          "risk_analysis": [],
+          "stakeholder_mapping": [],
+          "dependencies": [],
+          "forensic_analysis": {
+            "failure_reasons": [
+              "Yetersiz pazar araştırması ve yanlış hedef kitle belirleme",
+              "Teknolojik altyapı yetersizliği veya yanlış seçimler",
+              "Yetersiz finansman veya nakit akışı yönetimi"
+            ],
+            "objecting_stakeholder": "Genellikle mevcut iş yapış şekillerine alışmış, değişime dirençli geleneksel toptancılar veya riskten kaçınan yatırımcılar.",
+            "missed_in_6_months": "Pazar dinamiklerindeki ani değişimler (yeni bir rakibin girişi, regülasyon değişikliği) veya müşteri ihtiyaçlarının yanlış anlaşılması.",
+            "competitor_counter_strategy": "Rakip, benzer bir platformu daha hızlı ve daha düşük maliyetle piyasaya sürebilir, mevcut müşteri tabanını kullanarak pazar payını hızla artırabilir veya fiyat rekabetine gidebilir."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Ürün Geliştirme ve MVP",
+      "description": "Minimum Uygulanabilir Ürün'ün (MVP) kapsamını, teknolojik altyapısını, test süreçlerini ve temel ürün felsefesini içeren görevler.",
+      "tasks": [
+        {
+          "title": "MVP Kapsamının Belirlenmesi ve Önceliklendirme",
+          "description": "MoSCoW metodu kullanılarak özellikler önceliklendirilecektir. Örneğin, 'Excel'den ürün import etme' bir 'Must-have' (Olmazsa olmaz), 'Yapay zeka tabanlı ürün önerisi' ise bir 'Could-have' (Olabilir) olarak sınıflandırılmıştır. Ayrıca Kano Modeli ile özelliklerin müşteri memnuniyetine etkisi analiz edilecektir.",
+          "purpose": "Kaynakları en verimli şekilde kullanarak pazara hızlıca çıkacak ve en temel kullanıcı ihtiyacını karşılayacak MVP'nin özellik setini belirlemek.",
+          "current_status": "incomplete",
+          "clarity_score": 85,
+          "clarity_justification": "Önceliklendirme yöntemleri net, ancak MVP kapsamı daha detaylı tanımlanabilir.",
+          "uncertainty_questions": [
+            {
+              "question": "MVP'ye dahil edilecek 'Must-have' özelliklerin tam listesi nedir?",
+              "input_type": "textarea",
+              "placeholder": "Özellik listesi"
+            },
+            {
+              "question": "Kano Modeli analizi nasıl yapılacak ve sonuçları nasıl kullanılacak?",
+              "input_type": "textarea",
+              "placeholder": "Analiz detayları"
+            }
+          ],
+          "priority_score": 5,
+          "deadline": "2026-07-18",
+          "progress": 0,
+          "risk_analysis": [],
+          "stakeholder_mapping": [
+            {
+              "stakeholder": "Ürün Ekibi",
+              "interest": "Yüksek",
+              "influence": "Yüksek"
+            },
+            {
+              "stakeholder": "Müşteriler",
+              "interest": "Yüksek",
+              "influence": "Orta"
+            }
+          ],
+          "dependencies": [],
+          "forensic_analysis": {
+            "failure_reasons": [
+              "Yetersiz pazar araştırması ve yanlış hedef kitle belirleme",
+              "Teknolojik altyapı yetersizliği veya yanlış seçimler",
+              "Yetersiz finansman veya nakit akışı yönetimi"
+            ],
+            "objecting_stakeholder": "Genellikle mevcut iş yapış şekillerine alışmış, değişime dirençli geleneksel toptancılar veya riskten kaçınan yatırımcılar.",
+            "missed_in_6_months": "Pazar dinamiklerindeki ani değişimler (yeni bir rakibin girişi, regülasyon değişikliği) veya müşteri ihtiyaçlarının yanlış anlaşılması.",
+            "competitor_counter_strategy": "Rakip, benzer bir platformu daha hızlı ve daha düşük maliyetle piyasaya sürebilir, mevcut müşteri tabanını kullanarak pazar payını hızla artırabilir veya fiyat rekabetine gidebilir."
+          }
+        },
+        {
+          "title": "Teknoloji Altyapısının Seçimi ve Değerlendirilmesi",
+          "description": "Mimari, ATAM (Architecture Tradeoff Analysis Method) kullanılarak performans, güvenlik ve esneklik gibi kritik nitelikler açısından değerlendirilecektir. Altyapının MACH (Microservices, API-first, Cloud-native, Headless) prensiplerine uygunluğu test edilecektir. Mevcut CS-Cart altyapısının ölçeklenebilirlik sınırları bir 'teknoloji borcu' riski olarak kabul edilmiştir.",
+          "purpose": "Gelecekteki büyümeyi destekleyecek, ölçeklenebilir, güvenli ve esnek bir teknolojik temel oluşturmak.",
+          "current_status": "incomplete",
+          "clarity_score": 70,
+          "clarity_justification": "Mimari prensipleri belirtilmiş, ancak spesifik teknoloji seçimleri ve CS-Cart riskinin yönetimi belirsiz.",
+          "uncertainty_questions": [
+            {
+              "question": "Hangi spesifik teknolojiler (veritabanı, framework vb.) değerlendiriliyor?",
+              "input_type": "text",
+              "placeholder": "Teknoloji listesi"
+            },
+            {
+              "question": "CS-Cart altyapısının teknoloji borcu riski nasıl azaltılacak?",
+              "input_type": "textarea",
+              "placeholder": "Risk azaltma stratejileri"
+            },
+            {
+              "question": "ATAM değerlendirmesi ne zaman ve kimler tarafından yapılacak?",
+              "input_type": "text",
+              "placeholder": "Değerlendirme zamanı ve ekibi"
+            }
+          ],
+          "priority_score": 5,
+          "deadline": "2026-07-18",
+          "progress": 0,
+          "risk_analysis": [
+            {
+              "risk": "Yanlış teknoloji seçimi",
+              "impact": "Yüksek",
+              "probability": "Orta"
+            },
+            {
+              "risk": "Ölçeklenebilirlik sorunları",
+              "impact": "Yüksek",
+              "probability": "Orta"
+            }
+          ],
+          "stakeholder_mapping": [],
+          "dependencies": [
+            "MVP Kapsamının Belirlenmesi ve Önceliklendirme"
+          ],
+          "forensic_analysis": {
+            "failure_reasons": [
+              "Yetersiz pazar araştırması ve yanlış hedef kitle belirleme",
+              "Teknolojik altyapı yetersizliği veya yanlış seçimler",
+              "Yetersiz finansman veya nakit akışı yönetimi"
+            ],
+            "objecting_stakeholder": "Genellikle mevcut iş yapış şekillerine alışmış, değişime dirençli geleneksel toptancılar veya riskten kaçınan yatırımcılar.",
+            "missed_in_6_months": "Pazar dinamiklerindeki ani değişimler (yeni bir rakibin girişi, regülasyon değişikliği) veya müşteri ihtiyaçlarının yanlış anlaşılması.",
+            "competitor_counter_strategy": "Rakip, benzer bir platformu daha hızlı ve daha düşük maliyetle piyasaya sürebilir, mevcut müşteri tabanını kullanarak pazar payını hızla artırabilir veya fiyat rekabetine gidebilir."
+          }
+        },
+        {
+          "title": "Ödeme Altyapısı ve Temel Entegrasyonlar",
+          "description": "Güvenli ödeme altyapısı için PCI DSS Uyumluluk Matrisi taranacak ve bir 'Escrow' (Emanet Hesap) ödeme sistemi entegre edilecektir. Ayrıca alıcı ile tedarikçiyi buluşturan bir 'RFQ' (Request for Quotation - Teklif Talebi) modülü de geliştirilecektir.",
+          "purpose": "Platform üzerinde güvenli ve sorunsuz bir ticaret akışı sağlamak ve temel işlevselliği kazandırmak.",
+          "current_status": "incomplete",
+          "clarity_score": 80,
+          "clarity_justification": "Ödeme altyapısı ve entegrasyonlar net, ancak RFQ modülünün detayları eksik.",
+          "uncertainty_questions": [
+            {
+              "question": "Hangi ödeme sağlayıcıları ile entegrasyon yapılacak?",
+              "input_type": "text",
+              "placeholder": "Ödeme sağlayıcıları"
+            },
+            {
+              "question": "RFQ modülünün temel işlevleri neler olacak?",
+              "input_type": "textarea",
+              "placeholder": "RFQ işlevleri"
+            }
+          ],
+          "priority_score": 5,
+          "deadline": "2026-07-18",
+          "progress": 0,
+          "risk_analysis": [],
+          "stakeholder_mapping": [],
+          "dependencies": [
+            "Teknoloji Altyapısının Seçimi ve Değerlendirilmesi"
+          ],
+          "forensic_analysis": {
+            "failure_reasons": [
+              "Yetersiz pazar araştırması ve yanlış hedef kitle belirleme",
+              "Teknolojik altyapı yetersizliği veya yanlış seçimler",
+              "Yetersiz finansman veya nakit akışı yönetimi"
+            ],
+            "objecting_stakeholder": "Genellikle mevcut iş yapış şekillerine alışmış, değişime dirençli geleneksel toptancılar veya riskten kaçınan yatırımcılar.",
+            "missed_in_6_months": "Pazar dinamiklerindeki ani değişimler (yeni bir rakibin girişi, regülasyon değişikliği) veya müşteri ihtiyaçlarının yanlış anlaşılması.",
+            "competitor_counter_strategy": "Rakip, benzer bir platformu daha hızlı ve daha düşük maliyetle piyasaya sürebilir, mevcut müşteri tabanını kullanarak pazar payını hızla artırabilir veya fiyat rekabetine gidebilir."
+          }
+        },
+        {
+          "title": "MVP Test Protokolü ve Ürün-Pazar Uyumu Ölçümü",
+          "description": "Yapılacak geliştirmeler RICE (Reach, Impact, Confidence, Effort) modeliyle önceliklendirilecektir. Kullanıcıların platformdan ayrılma (churn) davranışları Cohort Analizi ile incelenecektir. Ürün-Pazar uyumunun en önemli göstergelerinden biri olarak Sean Ellis Testi uygulanacak ve 'Bu ürün olmasaydı çok üzülürdüm' diyenlerin oranının %40'ı geçmesi hedeflenecektir.",
+          "purpose": "MVP'nin pazardaki performansını objektif verilerle ölçmek, kullanıcı geri bildirimlerini analiz etmek ve ürün-pazar uyumunu doğrulamak.",
+          "current_status": "incomplete",
+          "clarity_score": 85,
+          "clarity_justification": "Test yöntemleri ve hedefler net, ancak test senaryoları ve veri toplama detayları eksik.",
+          "uncertainty_questions": [
+            {
+              "question": "RICE modeli için hangi metrikler kullanılacak?",
+              "input_type": "text",
+              "placeholder": "RICE metrikleri"
+            },
+            {
+              "question": "Sean Ellis Testi nasıl uygulanacak ve sonuçları nasıl değerlendirilecek?",
+              "input_type": "textarea",
+              "placeholder": "Test uygulama detayları"
+            }
+          ],
+          "priority_score": 5,
+          "deadline": "2026-07-18",
+          "progress": 0,
+          "risk_analysis": [
+            {
+              "risk": "Ürün-pazar uyumsuzluğu",
+              "impact": "Çok Yüksek",
+              "probability": "Orta"
+            }
+          ],
+          "stakeholder_mapping": [],
+          "dependencies": [],
+          "forensic_analysis": {
+            "failure_reasons": [
+              "Yetersiz pazar araştırması ve yanlış hedef kitle belirleme",
+              "Teknolojik altyapı yetersizliği veya yanlış seçimler",
+              "Yetersiz finansman veya nakit akışı yönetimi"
+            ],
+            "objecting_stakeholder": "Genellikle mevcut iş yapış şekillerine alışmış, değişime dirençli geleneksel toptancılar veya riskten kaçınan yatırımcılar.",
+            "missed_in_6_months": "Pazar dinamiklerindeki ani değişimler (yeni bir rakibin girişi, regülasyon değişikliği) veya müşteri ihtiyaçlarının yanlış anlaşılması.",
+            "competitor_counter_strategy": "Rakip, benzer bir platformu daha hızlı ve daha düşük maliyetle piyasaya sürebilir, mevcut müşteri tabanını kullanarak pazar payını hızla artırabilir veya fiyat rekabetine gidebilir."
+          }
+        },
+        {
+          "title": "Ürün Geliştirme Felsefesi",
+          "description": "Clayton Christensen'in 'Müşterinizin iş yapma şeklini anlamadan teknoloji yatırımı, çözüm arayan problem yaratır' uyarısı, ürün geliştirme süreçlerinde temel bir ilke olarak benimsenecektir. Bu, teknoloji odaklı değil, problem odaklı bir yaklaşımı zorunlu kılar.",
+          "purpose": "Müşterinin gerçek problemlerini çözmeye odaklı, israftan kaçınan bir ürün geliştirme kültürü oluşturmak.",
+          "current_status": "completed",
+          "clarity_score": 95,
+          "clarity_justification": "Felsefe çok net ve prensipleri açıkça belirtilmiş.",
+          "uncertainty_questions": [],
+          "priority_score": 5,
+          "deadline": "2026-07-18",
+          "progress": 0,
+          "risk_analysis": [],
+          "stakeholder_mapping": [],
+          "dependencies": [],
+          "forensic_analysis": {
+            "failure_reasons": [
+              "Yetersiz pazar araştırması ve yanlış hedef kitle belirleme",
+              "Teknolojik altyapı yetersizliği veya yanlış seçimler",
+              "Yetersiz finansman veya nakit akışı yönetimi"
+            ],
+            "objecting_stakeholder": "Genellikle mevcut iş yapış şekillerine alışmış, değişime dirençli geleneksel toptancılar veya riskten kaçınan yatırımcılar.",
+            "missed_in_6_months": "Pazar dinamiklerindeki ani değişimler (yeni bir rakibin girişi, regülasyon değişikliği) veya müşteri ihtiyaçlarının yanlış anlaşılması.",
+            "competitor_counter_strategy": "Rakip, benzer bir platformu daha hızlı ve daha düşük maliyetle piyasaya sürebilir, mevcut müşteri tabanını kullanarak pazar payını hızla artırabilir veya fiyat rekabetine gidebilir."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Operasyonel Olgunluk",
+      "description": "Şirketin yasal uyumluluk, müşteri hizmetleri kalitesi ve satıcı yönetimi gibi operasyonel süreçlerini standardize ve optimize etme görevleri.",
+      "tasks": [
+        {
+          "title": "Yasal Altyapı ve Kurumsal Yönetim",
+          "description": "İç kontrol süreçleri COSO Framework'ü baz alınarak tasarlanacak ve veri koruma için GDPR'ın 30. Maddesine uyum matrisi hazırlanacaktır. Ayrıca olası siber saldırılara karşı bir siber güvenlik sigorta poliçesi yaptırılacaktır.",
+          "purpose": "Şirketi yasal risklere karşı korumak ve şeffaf bir kurumsal yönetim yapısı oluşturmak.",
+          "current_status": "incomplete",
+          "clarity_score": 70,
+          "clarity_justification": "Çerçeveler belirtilmiş, ancak spesifik yasal uyum adımları ve sigorta detayları eksik.",
+          "uncertainty_questions": [
+            {
+              "question": "GDPR uyum matrisi hangi detayları içerecek?",
+              "input_type": "textarea",
+              "placeholder": "Matris detayları"
+            },
+            {
+              "question": "Siber güvenlik sigortası için hangi sağlayıcılar değerlendirilecek?",
+              "input_type": "text",
+              "placeholder": "Sigorta sağlayıcıları"
+            }
+          ],
+          "priority_score": 5,
+          "deadline": "2026-07-18",
+          "progress": 0,
+          "risk_analysis": [
+            {
+              "risk": "Yasal uyumsuzluk",
+              "impact": "Çok Yüksek",
+              "probability": "Düşük"
+            }
+          ],
+          "stakeholder_mapping": [
+            {
+              "stakeholder": "Hukuk Danışmanları",
+              "interest": "Yüksek",
+              "influence": "Yüksek"
+            },
+            {
+              "stakeholder": "Yönetim Kurulu",
+              "interest": "Yüksek",
+              "influence": "Yüksek"
+            }
+          ],
+          "dependencies": [],
+          "forensic_analysis": {
+            "failure_reasons": [
+              "Yetersiz pazar araştırması ve yanlış hedef kitle belirleme",
+              "Teknolojik altyapı yetersizliği veya yanlış seçimler",
+              "Yetersiz finansman veya nakit akışı yönetimi"
+            ],
+            "objecting_stakeholder": "Genellikle mevcut iş yapış şekillerine alışmış, değişime dirençli geleneksel toptancılar veya riskten kaçınan yatırımcılar.",
+            "missed_in_6_months": "Pazar dinamiklerindeki ani değişimler (yeni bir rakibin girişi, regülasyon değişikliği) veya müşteri ihtiyaçlarının yanlış anlaşılması.",
+            "competitor_counter_strategy": "Rakip, benzer bir platformu daha hızlı ve daha düşük maliyetle piyasaya sürebilir, mevcut müşteri tabanını kullanarak pazar payını hızla artırabilir veya fiyat rekabetine gidebilir."
+          }
+        },
+        {
+          "title": "Müşteri Operasyonları ve Hizmet Kalitesi",
+          "description": "Servqual Modeli kullanılarak müşterinin beklediği hizmet kalitesi ile aldığı hizmet arasındaki boşluklar analiz edilecektir. Müşteri geri bildirimlerinin sürekli olarak operasyonel süreçlere dahil edilmesi için Kaizen (sürekli iyileştirme) döngüsü uygulanacaktır.",
+          "purpose": "Müşteri memnuniyetini en üst düzeye çıkarmak için operasyonel mükemmelliği sağlamak ve hizmet kalitesini sürekli artırmak.",
+          "current_status": "incomplete",
+          "clarity_score": 80,
+          "clarity_justification": "Modeller net, ancak Kaizen döngüsünün operasyonel entegrasyonu detaylandırılabilir.",
+          "uncertainty_questions": [
+            {
+              "question": "Servqual Modeli analizi nasıl ve ne sıklıkla yapılacak?",
+              "input_type": "text",
+              "placeholder": "Analiz sıklığı"
+            },
+            {
+              "question": "Kaizen döngüsü için hangi spesifik iyileştirme alanları hedeflenecek?",
+              "input_type": "textarea",
+              "placeholder": "İyileştirme alanları"
+            }
+          ],
+          "priority_score": 5,
+          "deadline": "2026-07-18",
+          "progress": 0,
+          "risk_analysis": [],
+          "stakeholder_mapping": [],
+          "dependencies": [],
+          "forensic_analysis": {
+            "failure_reasons": [
+              "Yetersiz pazar araştırması ve yanlış hedef kitle belirleme",
+              "Teknolojik altyapı yetersizliği veya yanlış seçimler",
+              "Yetersiz finansman veya nakit akışı yönetimi"
+            ],
+            "objecting_stakeholder": "Genellikle mevcut iş yapış şekillerine alışmış, değişime dirençli geleneksel toptancılar veya riskten kaçınan yatırımcılar.",
+            "missed_in_6_months": "Pazar dinamiklerindeki ani değişimler (yeni bir rakibin girişi, regülasyon değişikliği) veya müşteri ihtiyaçlarının yanlış anlaşılması.",
+            "competitor_counter_strategy": "Rakip, benzer bir platformu daha hızlı ve daha düşük maliyetle piyasaya sürebilir, mevcut müşteri tabanını kullanarak pazar payını hızla artırabilir veya fiyat rekabetine gidebilir."
+          }
+        },
+        {
+          "title": "Satıcı Yönetimi ve Sorumluluk Matrisi",
+          "description": "Satıcıların platformdan ayrılma (churn) riski, Cox Regresyon Modeli ile proaktif olarak tahmin edilecektir. Projelerdeki görev dağılımını netleştirmek için RACI Matrisi kullanılacaktır (Örnek: Media_11 entegrasyonu). Satıcıların aktifliğini sağlamak adına 'aylık katalog güncelleme oranının %80'in üzerinde olması' gibi bir operasyonel metrik belirlenmiştir.",
+          "purpose": "Satıcı ilişkilerini veriye dayalı yönetmek, olası riskleri önceden görmek ve operasyonel verimliliği artırmak.",
+          "current_status": "incomplete",
+          "clarity_score": 85,
+          "clarity_justification": "Analiz yöntemleri ve metrikler net, ancak RACI matrisinin kapsamı ve uygulama detayları eksik.",
+          "uncertainty_questions": [
+            {
+              "question": "Cox Regresyon Modeli için hangi veri setleri kullanılacak?",
+              "input_type": "text",
+              "placeholder": "Veri setleri"
+            },
+            {
+              "question": "RACI Matrisi hangi projeler için uygulanacak ve nasıl güncellenecek?",
+              "input_type": "textarea",
+              "placeholder": "RACI uygulama detayları"
+            }
+          ],
+          "priority_score": 5,
+          "deadline": "2026-07-18",
+          "progress": 0,
+          "risk_analysis": [],
+          "stakeholder_mapping": [],
+          "dependencies": [],
+          "forensic_analysis": {
+            "failure_reasons": [
+              "Yetersiz pazar araştırması ve yanlış hedef kitle belirleme",
+              "Teknolojik altyapı yetersizliği veya yanlış seçimler",
+              "Yetersiz finansman veya nakit akışı yönetimi"
+            ],
+            "objecting_stakeholder": "Genellikle mevcut iş yapış şekillerine alışmış, değişime dirençli geleneksel toptancılar veya riskten kaçınan yatırımcılar.",
+            "missed_in_6_months": "Pazar dinamiklerindeki ani değişimler (yeni bir rakibin girişi, regülasyon değişikliği) veya müşteri ihtiyaçlarının yanlış anlaşılması.",
+            "competitor_counter_strategy": "Rakip, benzer bir platformu daha hızlı ve daha düşük maliyetle piyasaya sürebilir, mevcut müşteri tabanını kullanarak pazar payını hızla artırabilir veya fiyat rekabetine gidebilir."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Büyüme ve Pazarlama",
+      "description": "Kullanıcı kazanımı, viral döngüler, gelir modeli ve fiyatlandırma stratejilerini kapsayan görevler.",
+      "tasks": [
+        {
+          "title": "Kullanıcı Kazanım Kanallarının Optimizasyonu",
+          "description": "En verimli kullanıcı kazanım kanalını bulmak için Bullseye Framework kullanılacak ve saha ekibinin Müşteri Edinme Maliyeti (CAC) ile SEO'nun CAC'si karşılaştırılacaktır. Pazarlama hunisinin her aşamasındaki (Acquisition, Activation, Retention, Referral, Revenue) verimlilik AARRR metrikleri ile optimize edilecektir.",
+          "purpose": "Pazarlama bütçesini en yüksek geri dönüşü sağlayacak kanallara yönlendirmek ve kullanıcı kazanım sürecini veriye dayalı olarak iyileştirmek.",
+          "current_status": "incomplete",
+          "clarity_score": 75,
+          "clarity_justification": "Çerçeveler belirtilmiş, ancak spesifik kanal seçimleri ve AARRR metriklerinin detayları eksik.",
+          "uncertainty_questions": [
+            {
+              "question": "Bullseye Framework ile hangi kanallar önceliklendirilecek?",
+              "input_type": "text",
+              "placeholder": "Öncelikli kanallar"
+            },
+            {
+              "question": "AARRR metrikleri için hangi KPI'lar belirlenecek?",
+              "input_type": "textarea",
+              "placeholder": "KPI'lar"
+            }
+          ],
+          "priority_score": 5,
+          "deadline": "2026-07-18",
+          "progress": 0,
+          "risk_analysis": [],
+          "stakeholder_mapping": [],
+          "dependencies": [],
+          "forensic_analysis": {
+            "failure_reasons": [
+              "Yetersiz pazar araştırması ve yanlış hedef kitle belirleme",
+              "Teknolojik altyapı yetersizliği veya yanlış seçimler",
+              "Yetersiz finansman veya nakit akışı yönetimi"
+            ],
+            "objecting_stakeholder": "Genellikle mevcut iş yapış şekillerine alışmış, değişime dirençli geleneksel toptancılar veya riskten kaçınan yatırımcılar.",
+            "missed_in_6_months": "Pazar dinamiklerindeki ani değişimler (yeni bir rakibin girişi, regülasyon değişikliği) veya müşteri ihtiyaçlarının yanlış anlaşılması.",
+            "competitor_counter_strategy": "Rakip, benzer bir platformu daha hızlı ve daha düşük maliyetle piyasaya sürebilir, mevcut müşteri tabanını kullanarak pazar payını hızla artırabilir veya fiyat rekabetine gidebilir."
+          }
+        },
+        {
+          "title": "Büyüme Döngüleri ve Ağ Etkisinin Modellenmesi",
+          "description": "Kullanıcıların birbirini davet etmesiyle oluşacak 'Virality Loop' (Paylaşım → Dönüşüm → Tekrar paylaşım) modellenecektir. Platformun değeri, Reed Yasası'na göre kullanıcı sayısının karesiyle (n²) orantılı olarak artacağı varsayımıyla hesaplanacaktır. Organik büyüme hedefi olarak, yeni gelen kullanıcıların %30'unun referans yoluyla gelmesi hedeflenmektedir.",
+          "purpose": "Sürdürülebilir ve ölçeklenebilir bir büyüme motoru oluşturmak için organik ve viral mekanizmaları tasarlamak.",
+          "current_status": "incomplete",
+          "clarity_score": 80,
+          "clarity_justification": "Modeller net, ancak viral döngünün somut adımları ve Reed Yasası'nın uygulanması detaylandırılabilir.",
+          "uncertainty_questions": [
+            {
+              "question": "Virality Loop'un tasarımında hangi teşvikler kullanılacak?",
+              "input_type": "text",
+              "placeholder": "Teşvikler"
+            },
+            {
+              "question": "Organik büyüme hedefi için hangi pazarlama aktiviteleri yapılacak?",
+              "input_type": "textarea",
+              "placeholder": "Pazarlama aktiviteleri"
+            }
+          ],
+          "priority_score": 5,
+          "deadline": "2026-07-18",
+          "progress": 0,
+          "risk_analysis": [],
+          "stakeholder_mapping": [],
+          "dependencies": [],
+          "forensic_analysis": {
+            "failure_reasons": [
+              "Yetersiz pazar araştırması ve yanlış hedef kitle belirleme",
+              "Teknolojik altyapı yetersizliği veya yanlış seçimler",
+              "Yetersiz finansman veya nakit akışı yönetimi"
+            ],
+            "objecting_stakeholder": "Genellikle mevcut iş yapış şekillerine alışmış, değişime dirençli geleneksel toptancılar veya riskten kaçınan yatırımcılar.",
+            "missed_in_6_months": "Pazar dinamiklerindeki ani değişimler (yeni bir rakibin girişi, regülasyon değişikliği) veya müşteri ihtiyaçlarının yanlış anlaşılması.",
+            "competitor_counter_strategy": "Rakip, benzer bir platformu daha hızlı ve daha düşük maliyetle piyasaya sürebilir, mevcut müşteri tabanını kullanarak pazar payını hızla artırabilir veya fiyat rekabetine gidebilir."
+          }
+        },
+        {
+          "title": "Gelir Modeli ve Fiyatlandırma Stratejisi",
+          "description": "Optimum fiyat seviyesini belirlemek için Van Westendorp Fiyat Duyarlılık Testi uygulanacaktır. McKinsey'nin Monetizasyon Piramidi modeliyle (temel, premium, reklam gibi) katmanlı bir gelir yapısı oluşturulacaktır. İlk abonelik modeli fiyatları Temel paket için ₺200/ay ve Premium paket için ₺500/ay olarak belirlenmiştir.",
+          "purpose": "Müşteri segmentlerinin ödeme istekliliğine uygun, karlı ve sürdürülelebilir bir para kazanma modeli oluşturmak.",
+          "current_status": "incomplete",
+          "clarity_score": 90,
+          "clarity_justification": "Modeller ve fiyatlar net, ancak Van Westendorp testinin uygulama detayları eksik.",
+          "uncertainty_questions": [
+            {
+              "question": "Van Westendorp Fiyat Duyarlılık Testi nasıl uygulanacak?",
+              "input_type": "text",
+              "placeholder": "Test uygulama detayları"
+            },
+            {
+              "question": "McKinsey'nin Monetizasyon Piramidi için hangi ürün/hizmetler hangi katmana yerleştirilecek?",
+              "input_type": "textarea",
+              "placeholder": "Ürün/Hizmet yerleşimi"
+            }
+          ],
+          "priority_score": 5,
+          "deadline": "2026-07-18",
+          "progress": 0,
+          "risk_analysis": [],
+          "stakeholder_mapping": [],
+          "dependencies": [],
+          "forensic_analysis": {
+            "failure_reasons": [
+              "Yetersiz pazar araştırması ve yanlış hedef kitle belirleme",
+              "Teknolojik altyapı yetersizliği veya yanlış seçimler",
+              "Yetersiz finansman veya nakit akışı yönetimi"
+            ],
+            "objecting_stakeholder": "Genellikle mevcut iş yapış şekillerine alışmış, değişime dirençli geleneksel toptancılar veya riskten kaçınan yatırımcılar.",
+            "missed_in_6_months": "Pazar dinamiklerindeki ani değişimler (yeni bir rakibin girişi, regülasyon değişikliği) veya müşteri ihtiyaçlarının yanlış anlaşılması.",
+            "competitor_counter_strategy": "Rakip, benzer bir platformu daha hızlı ve daha düşük maliyetle piyasaya sürebilir, mevcut müşteri tabanını kullanarak pazar payını hızla artırabilir veya fiyat rekabetine gidebilir."
+          }
+        },
+        {
+          "title": "İçerik Pazarlama Planı",
+          "description": "Marka bilinirliğini ve organik trafiği artırmak amacıyla haftalık olarak 3 blog yazısı, 2 video ve 1 podcast üretimi hedeflenmektedir.",
+          "purpose": "Hedef kitleye değerli içerikler sunarak marka otoritesi oluşturmak, potansiyel müşterileri eğitmek ve organik kanallardan trafik çekmek.",
+          "current_status": "incomplete",
+          "clarity_score": 85,
+          "clarity_justification": "Hedefler net, ancak içerik türleri ve dağıtım kanalları detaylandırılabilir.",
+          "uncertainty_questions": [
+            {
+              "question": "Haftalık içerik üretimi için hangi konular hedeflenecek?",
+              "input_type": "text",
+              "placeholder": "Konu başlıkları"
+            },
+            {
+              "question": "İçerik dağıtım kanalları neler olacak (sosyal medya, e-posta vb.)?",
+              "input_type": "textarea",
+              "placeholder": "Dağıtım kanalları"
+            }
+          ],
+          "priority_score": 5,
+          "deadline": "2026-07-18",
+          "progress": 0,
+          "risk_analysis": [],
+          "stakeholder_mapping": [],
+          "dependencies": [],
+          "forensic_analysis": {
+            "failure_reasons": [
+              "Yetersiz pazar araştırması ve yanlış hedef kitle belirleme",
+              "Teknolojik altyapı yetersizliği veya yanlış seçimler",
+              "Yetersiz finansman veya nakit akışı yönetimi"
+            ],
+            "objecting_stakeholder": "Genellikle mevcut iş yapış şekillerine alışmış, değişime dirençli geleneksel toptancılar veya riskten kaçınan yatırımcılar.",
+            "missed_in_6_months": "Pazar dinamiklerindeki ani değişimler (yeni bir rakibin girişi, regülasyon değişikliği) veya müşteri ihtiyaçlarının yanlış anlaşılması.",
+            "competitor_counter_strategy": "Rakip, benzer bir platformu daha hızlı ve daha düşük maliyetle piyasaya sürebilir, mevcut müşteri tabanını kullanarak pazar payını hızla artırabilir veya fiyat rekabetine gidebilir."
+          }
+        },
+        {
+          "title": "Kârlı Büyüme Kuralı (CAC/LTV)",
+          "description": "Büyümenin sürdürülebilirliğini sağlamak için Clayton Christensen'in 'Büyüme, doğru müşteriyi kârlı şekilde kazanmakla ölçülür' ilkesi ve bir müşteriyi kazanma maliyetinin (CAC), o müşterinin yaşam boyu değerinin (LTV) üçte birini geçmemesi (CAC/LTV ≤ 0.3) kuralı benimsenmiştir.",
+          "purpose": "Sadece büyümeye değil, kârlı ve finansal olarak sağlıklı bir şekilde büyümeye odaklanmayı sağlamak.",
+          "current_status": "completed",
+          "clarity_score": 95,
+          "clarity_justification": "Kural ve prensip çok net tanımlanmış.",
+          "uncertainty_questions": [],
+          "priority_score": 5,
+          "deadline": "2026-07-18",
+          "progress": 0,
+          "risk_analysis": [],
+          "stakeholder_mapping": [],
+          "dependencies": [],
+          "forensic_analysis": {
+            "failure_reasons": [
+              "Yetersiz pazar araştırması ve yanlış hedef kitle belirleme",
+              "Teknolojik altyapı yetersizliği veya yanlış seçimler",
+              "Yetersiz finansman veya nakit akışı yönetimi"
+            ],
+            "objecting_stakeholder": "Genellikle mevcut iş yapış şekillerine alışmış, değişime dirençli geleneksel toptancılar veya riskten kaçınan yatırımcılar.",
+            "missed_in_6_months": "Pazar dinamiklerindeki ani değişimler (yeni bir rakibin girişi, regülasyon değişikliği) veya müşteri ihtiyaçlarının yanlış anlaşılması.",
+            "competitor_counter_strategy": "Rakip, benzer bir platformu daha hızlı ve daha düşük maliyetle piyasaya sürebilir, mevcut müşteri tabanını kullanarak pazar payını hızla artırabilir veya fiyat rekabetine gidebilir."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Ölçeklendirme ve Uluslararasılaşma",
+      "description": "Şirketin teknik, operasyonel ve organizasyonel olarak büyümesini ve yeni coğrafi pazarlara açılmasını yöneten görevler.",
+      "tasks": [
+        {
+          "title": "Teknik ve Organizasyonel Ölçeklenebilirlik",
+          "description": "Teknik mimarinin organizasyon yapısıyla uyumlu olmasını sağlamak için Conway Yasası dikkate alınacaktır. Bulut altyapısının verimliliği ve maliyeti için AWS Well-Architected Framework ile optimizasyon yapılacaktır.",
+          "purpose": "İş hacmi arttıkça performans düşüşü yaşamayacak, büyümeyi sorunsuz destekleyecek bir teknik ve organizasyonel altyapı sağlamak.",
+          "current_status": "incomplete",
+          "clarity_score": 70,
+          "clarity_justification": "Çerçeveler belirtilmiş, ancak spesifik mimari kararlar ve AWS optimizasyon detayları eksik.",
+          "uncertainty_questions": [
+            {
+              "question": "Conway Yasası'na uyum için organizasyon yapısında hangi değişiklikler yapılacak?",
+              "input_type": "textarea",
+              "placeholder": "Organizasyonel değişiklikler"
+            },
+            {
+              "question": "AWS Well-Architected Framework ile hangi alanlarda optimizasyon yapılacak?",
+              "input_type": "text",
+              "placeholder": "Optimizasyon alanları"
+            }
+          ],
+          "priority_score": 5,
+          "deadline": "2026-07-18",
+          "progress": 0,
+          "risk_analysis": [],
+          "stakeholder_mapping": [],
+          "dependencies": [],
+          "forensic_analysis": {
+            "failure_reasons": [
+              "Yetersiz pazar araştırması ve yanlış hedef kitle belirleme",
+              "Teknolojik altyapı yetersizliği veya yanlış seçimler",
+              "Yetersiz finansman veya nakit akışı yönetimi"
+            ],
+            "objecting_stakeholder": "Genellikle mevcut iş yapış şekillerine alışmış, değişime dirençli geleneksel toptancılar veya riskten kaçınan yatırımcılar.",
+            "missed_in_6_months": "Pazar dinamiklerindeki ani değişimler (yeni bir rakibin girişi, regülasyon değişikliği) veya müşteri ihtiyaçlarının yanlış anlaşılması.",
+            "competitor_counter_strategy": "Rakip, benzer bir platformu daha hızlı ve daha düşük maliyetle piyasaya sürebilir, mevcut müşteri tabanını kullanarak pazar payını hızla artırabilir veya fiyat rekabetine gidebilir."
+          }
+        },
+        {
+          "title": "Coğrafi Genişleme ve Lokalizasyon Stratejisi",
+          "description": "Pilot pazar olarak belirlenen MENA (Cezayir, Tunus, Fas) bölgesine açılırken, Hofstede'nin Kültürel Boyutlar teorisi kullanılarak platform yerelleştirilecektir. Pankaj Ghemawat’ın AAA (Adaptasyon, Toparlanma, Arbitraj) Framework'ü ile pazara giriş stratejisi belirlenecektir. Yerel dağıtım ortaklıklarının stratejik değeri VRIO analizi ile ölçülecektir.",
+          "purpose": "Yeni pazarlara başarılı bir şekilde girmek için kültürel, operasyonel ve stratejik uyum sağlamak.",
+          "current_status": "incomplete",
+          "clarity_score": 75,
+          "clarity_justification": "Pazar ve çerçeveler belirtilmiş, ancak lokalizasyon detayları ve ortaklık seçim kriterleri eksik.",
+          "uncertainty_questions": [
+            {
+              "question": "MENA bölgesindeki lokalizasyon için hangi kültürel faktörler önceliklendirilecek?",
+              "input_type": "text",
+              "placeholder": "Kültürel faktörler"
+            },
+            {
+              "question": "Yerel dağıtım ortaklıkları için VRIO analizi nasıl uygulanacak?",
+              "input_type": "textarea",
+              "placeholder": "VRIO uygulama detayları"
+            }
+          ],
+          "priority_score": 5,
+          "deadline": "2026-07-18",
+          "progress": 0,
+          "risk_analysis": [],
+          "stakeholder_mapping": [],
+          "dependencies": [],
+          "forensic_analysis": {
+            "failure_reasons": [
+              "Yetersiz pazar araştırması ve yanlış hedef kitle belirleme",
+              "Teknolojik altyapı yetersizliği veya yanlış seçimler",
+              "Yetersiz finansman veya nakit akışı yönetimi"
+            ],
+            "objecting_stakeholder": "Genellikle mevcut iş yapış şekillerine alışmış, değişime dirençli geleneksel toptancılar veya riskten kaçınan yatırımcılar.",
+            "missed_in_6_months": "Pazar dinamiklerindeki ani değişimler (yeni bir rakibin girişi, regülasyon değişikliği) veya müşteri ihtiyaçlarının yanlış anlaşılması.",
+            "competitor_counter_strategy": "Rakip, benzer bir platformu daha hızlı ve daha düşük maliyetle piyasaya sürebilir, mevcut müşteri tabanını kullanarak pazar payını hızla artırabilir veya fiyat rekabetine gidebilir."
+          }
+        },
+        {
+          "title": "Uluslararası Organizasyon Yapısının Tasarımı",
+          "description": "Şirket büyüdükçe merkezi kararlar ile yerel inisiyatifler arasındaki denge, Bartlett & Ghoshal Modeli kullanılarak kurulacaktır. Şirket içi problem çözme ve öneri süreçleri PSP (Problem → Solution → Proposal) modeli ile standardize edilecektir.",
+          "purpose": "Farklı coğrafyalarda faaliyet gösterecek organizasyonun etkinliğini ve çevikliğini koruyacak bir yapı tasarlamak.",
+          "current_status": "incomplete",
+          "clarity_score": 80,
+          "clarity_justification": "Model belirtilmiş, ancak organizasyon yapısının detayları ve PSP modelinin uygulanması eksik.",
+          "uncertainty_questions": [
+            {
+              "question": "Bartlett & Ghoshal Modeli'ne göre hangi organizasyonel yapı benimsenecek (örn: küresel, çok uluslu)?",
+              "input_type": "text",
+              "placeholder": "Organizasyonel yapı"
+            },
+            {
+              "question": "PSP modeli şirket içi problem çözme süreçlerine nasıl entegre edilecek?",
+              "input_type": "textarea",
+              "placeholder": "Entegrasyon detayları"
+            }
+          ],
+          "priority_score": 5,
+          "deadline": "2026-07-18",
+          "progress": 0,
+          "risk_analysis": [],
+          "stakeholder_mapping": [],
+          "dependencies": [],
+          "forensic_analysis": {
+            "failure_reasons": [
+              "Yetersiz pazar araştırması ve yanlış hedef kitle belirleme",
+              "Teknolojik altyapı yetersizliği veya yanlış seçimler",
+              "Yetersiz finansman veya nakit akışı yönetimi"
+            ],
+            "objecting_stakeholder": "Genellikle mevcut iş yapış şekillerine alışmış, değişime dirençli geleneksel toptancılar veya riskten kaçınan yatırımcılar.",
+            "missed_in_6_months": "Pazar dinamiklerindeki ani değişimler (yeni bir rakibin girişi, regülasyon değişikliği) veya müşteri ihtiyaçlarının yanlış anlaşılması.",
+            "competitor_counter_strategy": "Rakip, benzer bir platformu daha hızlı ve daha düşük maliyetle piyasaya sürebilir, mevcut müşteri tabanını kullanarak pazar payını hızla artırabilir veya fiyat rekabetine gidebilir."
+          }
+        },
+        {
+          "title": "Halka Arz (IPO) Kriteri",
+          "description": "Uluslararasılaşma ve büyük ölçekli büyümenin bir sonraki adımı olan halka arz (IPO) için finansal bir hedef belirlenmiştir: Yıllık Tekrarlanan Gelir'in (ARR) 50 Milyon Dolara ulaşması.",
+          "purpose": "Şirketin gelecekteki büyük bir finansal hedefi (IPO) için net ve ölçülebilir bir kilometre taşı belirlemek.",
+          "current_status": "completed",
+          "clarity_score": 95,
+          "clarity_justification": "Hedef çok net ve ölçülebilir.",
+          "uncertainty_questions": [],
+          "priority_score": 5,
+          "deadline": "2026-07-18",
+          "progress": 0,
+          "risk_analysis": [],
+          "stakeholder_mapping": [],
+          "dependencies": [],
+          "forensic_analysis": {
+            "failure_reasons": [
+              "Yetersiz pazar araştırması ve yanlış hedef kitle belirleme",
+              "Teknolojik altyapı yetersizliği veya yanlış seçimler",
+              "Yetersiz finansman veya nakit akışı yönetimi"
+            ],
+            "objecting_stakeholder": "Genellikle mevcut iş yapış şekillerine alışmış, değişime dirençli geleneksel toptancılar veya riskten kaçınan yatırımcılar.",
+            "missed_in_6_months": "Pazar dinamiklerindeki ani değişimler (yeni bir rakibin girişi, regülasyon değişikliği) veya müşteri ihtiyaçlarının yanlış anlaşılması.",
+            "competitor_counter_strategy": "Rakip, benzer bir platformu daha hızlı ve daha düşük maliyetle piyasaya sürebilir, mevcut müşteri tabanını kullanarak pazar payını hızla artırabilir veya fiyat rekabetine gidebilir."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Performans İzleme",
+      "description": "İşletmenin sağlığını, stratejik hedeflere ilerleyişini ve operasyonel verimliliğini ölçmek için kullanılacak metrikleri ve yöntemleri tanımlar.",
+      "tasks": [
+        {
+          "title": "Temel ve Eylem Odaklı Metriklerin Tanımlanması",
+          "description": "Vanity (gösteriş) metrikleri yerine, Eric Ries'in önerdiği eylem odaklı metrikler (örneğin, satıcı başına düşen aylık gelir artışı) tanımlanacaktır. Stratejik metrikler (pazar payı) ve taktik metrikler (churn oranı) ayrı ayrı izlenecektir. Peter Drucker'ın 'Ölçemediğinizi yönetemezsiniz' ilkesi benimsenecektir.",
+          "purpose": "İşletmenin performansını doğru ve eyleme geçirilebilir verilerle ölçmek ve yönetmek.",
+          "current_status": "incomplete",
+          "clarity_score": 70,
+          "clarity_justification": "Genel olarak iyi tanımlanmış, ancak daha fazla detay eklenebilir.",
+          "uncertainty_questions": [
+            {
+              "question": "Bu görevin tamamlanması için hangi spesifik adımlar atılacak?",
+              "input_type": "textarea",
+              "placeholder": "Adımlar"
+            },
+            {
+              "question": "Bu görevin başarı kriterleri nelerdir?",
+              "input_type": "text",
+              "placeholder": "Başarı kriterleri"
+            }
+          ],
+          "priority_score": 5,
+          "deadline": "2026-07-18",
+          "progress": 0,
+          "risk_analysis": [],
+          "stakeholder_mapping": [],
+          "dependencies": [],
+          "forensic_analysis": {
+            "failure_reasons": [
+              "Yetersiz pazar araştırması ve yanlış hedef kitle belirleme",
+              "Teknolojik altyapı yetersizliği veya yanlış seçimler",
+              "Yetersiz finansman veya nakit akışı yönetimi"
+            ],
+            "objecting_stakeholder": "Genellikle mevcut iş yapış şekillerine alışmış, değişime dirençli geleneksel toptancılar veya riskten kaçınan yatırımcılar.",
+            "missed_in_6_months": "Pazar dinamiklerindeki ani değişimler (yeni bir rakibin girişi, regülasyon değişikliği) veya müşteri ihtiyaçlarının yanlış anlaşılması.",
+            "competitor_counter_strategy": "Rakip, benzer bir platformu daha hızlı ve daha düşük maliyetle piyasaya sürebilir, mevcut müşteri tabanını kullanarak pazar payını hızla artırabilir veya fiyat rekabetine gidebilir."
+          }
+        },
+        {
+          "title": "Operasyonel KPI'ların ve Korelasyonların Analizi",
+          "description": "Hizmet Seviyesi Anlaşmalarındaki (SLA) anormallikler İstatistiksel Proses Kontrolü (SPC) ile tespit edilecektir. Ürün güncellemeleri ile satış artışı gibi değişkenler arasındaki ilişkiyi anlamak için Regresyon Analizi kullanılacaktır.",
+          "purpose": "Operasyonel verimliliği sürekli takip etmek ve farklı iş aktivitelerinin sonuçlara olan etkisini istatistiksel olarak kanıtlamak.",
+          "current_status": "incomplete",
+          "clarity_score": 70,
+          "clarity_justification": "Genel olarak iyi tanımlanmış, ancak daha fazla detay eklenebilir.",
+          "uncertainty_questions": [
+            {
+              "question": "Bu görevin tamamlanması için hangi spesifik adımlar atılacak?",
+              "input_type": "textarea",
+              "placeholder": "Adımlar"
+            },
+            {
+              "question": "Bu görevin başarı kriterleri nelerdir?",
+              "input_type": "text",
+              "placeholder": "Başarı kriterleri"
+            }
+          ],
+          "priority_score": 5,
+          "deadline": "2026-07-18",
+          "progress": 0,
+          "risk_analysis": [],
+          "stakeholder_mapping": [],
+          "dependencies": [],
+          "forensic_analysis": {
+            "failure_reasons": [
+              "Yetersiz pazar araştırması ve yanlış hedef kitle belirleme",
+              "Teknolojik altyapı yetersizliği veya yanlış seçimler",
+              "Yetersiz finansman veya nakit akışı yönetimi"
+            ],
+            "objecting_stakeholder": "Genellikle mevcut iş yapış şekillerine alışmış, değişime dirençli geleneksel toptancılar veya riskten kaçınan yatırımcılar.",
+            "missed_in_6_months": "Pazar dinamiklerindeki ani değişimler (yeni bir rakibin girişi, regülasyon değişikliği) veya müşteri ihtiyaçlarının yanlış anlaşılması.",
+            "competitor_counter_strategy": "Rakip, benzer bir platformu daha hızlı ve daha düşük maliyetle piyasaya sürebilir, mevcut müşteri tabanını kullanarak pazar payını hızla artırabilir veya fiyat rekabetine gidebilir."
+          }
+        },
+        {
+          "title": "Strateji Güncelleme Döngüsü ve Öncü Göstergeler",
+          "description": "Stratejinin sürekli iyileştirilmesi için PDCA (Planla-Uygula-Kontrol Et-Önlem Al) döngüsü uygulanacaktır. Gelecekteki sonuçları tahmin etmek için öncü göstergeler kullanılacaktır (örneğin, Net Tavsiye Skoru'ndaki (NPS) düşüşün gelecekteki churn oranını artıracağını öngörmek).",
+          "purpose": "Değişen pazar koşullarına ve iç verilere dayanarak stratejiyi dinamik olarak adapte etmek ve proaktif kararlar almak.",
+          "current_status": "incomplete",
+          "clarity_score": 70,
+          "clarity_justification": "Genel olarak iyi tanımlanmış, ancak daha fazla detay eklenebilir.",
+          "uncertainty_questions": [
+            {
+              "question": "Bu görevin tamamlanması için hangi spesifik adımlar atılacak?",
+              "input_type": "textarea",
+              "placeholder": "Adımlar"
+            },
+            {
+              "question": "Bu görevin başarı kriterleri nelerdir?",
+              "input_type": "text",
+              "placeholder": "Başarı kriterleri"
+            }
+          ],
+          "priority_score": 5,
+          "deadline": "2026-07-18",
+          "progress": 0,
+          "risk_analysis": [],
+          "stakeholder_mapping": [],
+          "dependencies": [],
+          "forensic_analysis": {
+            "failure_reasons": [
+              "Yetersiz pazar araştırması ve yanlış hedef kitle belirleme",
+              "Teknolojik altyapı yetersizliği veya yanlış seçimler",
+              "Yetersiz finansman veya nakit akışı yönetimi"
+            ],
+            "objecting_stakeholder": "Genellikle mevcut iş yapış şekillerine alışmış, değişime dirençli geleneksel toptancılar veya riskten kaçınan yatırımcılar.",
+            "missed_in_6_months": "Pazar dinamiklerindeki ani değişimler (yeni bir rakibin girişi, regülasyon değişikliği) veya müşteri ihtiyaçlarının yanlış anlaşılması.",
+            "competitor_counter_strategy": "Rakip, benzer bir platformu daha hızlı ve daha düşük maliyetle piyasaya sürebilir, mevcut müşteri tabanını kullanarak pazar payını hızla artırabilir veya fiyat rekabetine gidebilir."
+          }
+        },
+        {
+          "title": "Müşteri Yaşam Boyu Değeri (LTV) ve Churn Analizi",
+          "description": "LTV, Gupta & Lehmann Modeli (`LTV = Müşteri Başına Aylık Kazanç × Brüt Marj × (1 / Churn Oranı)`) ile hesaplanacaktır. Müşteri kaybının temel nedenlerini bulmak için Kök Neden Analizi (satıcı çıkış anketleri ve veri madenciliği) uygulanacaktır.",
+          "purpose": "Müşteri karlılığını ve sadakatini artırmak için LTV'yi maksimize edecek ve churn'ü minimize edecek stratejiler geliştirmek.",
+          "current_status": "incomplete",
+          "clarity_score": 70,
+          "clarity_justification": "Genel olarak iyi tanımlanmış, ancak daha fazla detay eklenebilir.",
+          "uncertainty_questions": [
+            {
+              "question": "Bu görevin tamamlanması için hangi spesifik adımlar atılacak?",
+              "input_type": "textarea",
+              "placeholder": "Adımlar"
+            },
+            {
+              "question": "Bu görevin başarı kriterleri nelerdir?",
+              "input_type": "text",
+              "placeholder": "Başarı kriterleri"
+            }
+          ],
+          "priority_score": 5,
+          "deadline": "2026-07-18",
+          "progress": 0,
+          "risk_analysis": [],
+          "stakeholder_mapping": [],
+          "dependencies": [],
+          "forensic_analysis": {
+            "failure_reasons": [
+              "Yetersiz pazar araştırması ve yanlış hedef kitle belirleme",
+              "Teknolojik altyapı yetersizliği veya yanlış seçimler",
+              "Yetersiz finansman veya nakit akışı yönetimi"
+            ],
+            "objecting_stakeholder": "Genellikle mevcut iş yapış şekillerine alışmış, değişime dirençli geleneksel toptancılar veya riskten kaçınan yatırımcılar.",
+            "missed_in_6_months": "Pazar dinamiklerindeki ani değişimler (yeni bir rakibin girişi, regülasyon değişikliği) veya müşteri ihtiyaçlarının yanlış anlaşılması.",
+            "competitor_counter_strategy": "Rakip, benzer bir platformu daha hızlı ve daha düşük maliyetle piyasaya sürebilir, mevcut müşteri tabanını kullanarak pazar payını hızla artırabilir veya fiyat rekabetine gidebilir."
+          }
+        },
+        {
+          "title": "Pivot Karar Tetikleyicileri",
+          "description": "Stratejinin başarısız olduğunu kabul edip yön değiştirmeyi (pivot) gerektirecek objektif kriterler belirlenecektir. Örnek: '3 ay üst üste aylık aktif satıcı büyümesinin %5'in altında kalması' durumu, MVP'nin başarısızlığına işaret eden ve pivot gerektiren bir tetikleyici olarak tanımlanmıştır.",
+          "purpose": "Duygusal kararlar yerine, veriye dayalı ve önceden belirlenmiş kurallarla stratejik yön değişikliği kararları almayı sağlamak.",
+          "current_status": "incomplete",
+          "clarity_score": 70,
+          "clarity_justification": "Genel olarak iyi tanımlanmış, ancak daha fazla detay eklenebilir.",
+          "uncertainty_questions": [
+            {
+              "question": "Bu görevin tamamlanması için hangi spesifik adımlar atılacak?",
+              "input_type": "textarea",
+              "placeholder": "Adımlar"
+            },
+            {
+              "question": "Bu görevin başarı kriterleri nelerdir?",
+              "input_type": "text",
+              "placeholder": "Başarı kriterleri"
+            }
+          ],
+          "priority_score": 5,
+          "deadline": "2026-07-18",
+          "progress": 0,
+          "risk_analysis": [],
+          "stakeholder_mapping": [],
+          "dependencies": [],
+          "forensic_analysis": {
+            "failure_reasons": [
+              "Yetersiz pazar araştırması ve yanlış hedef kitle belirleme",
+              "Teknolojik altyapı yetersizliği veya yanlış seçimler",
+              "Yetersiz finansman veya nakit akışı yönetimi"
+            ],
+            "objecting_stakeholder": "Genellikle mevcut iş yapış şekillerine alışmış, değişime dirençli geleneksel toptancılar veya riskten kaçınan yatırımcılar.",
+            "missed_in_6_months": "Pazar dinamiklerindeki ani değişimler (yeni bir rakibin girişi, regülasyon değişikliği) veya müşteri ihtiyaçlarının yanlış anlaşılması.",
+            "competitor_counter_strategy": "Rakip, benzer bir platformu daha hızlı ve daha düşük maliyetle piyasaya sürebilir, mevcut müşteri tabanını kullanarak pazar payını hızla artırabilir veya fiyat rekabetine gidebilir."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Çıkış Stratejisi",
+      "description": "Şirketin kurucuları ve yatırımcıları için değer realizasyonunu sağlayacak potansiyel çıkış senaryolarının planlanması ve yönetilmesi.",
+      "tasks": [
+        {
+          "title": "Şirket Değerlemesi",
+          "description": "Şirketin finansal değerlemesi, Aswath Damodaran'ın modellemeleri temel alınarak (WACC, Türkiye risk primi gibi değişkenlerle) yapılacaktır. Ayrıca, Alibaba gibi halka açık benzer şirketlerin EV/EBITDA çarpanları kullanılarak Karşılaştırmalı Şirket Analizi (Comparable Company Analysis) yapılacaktır.",
+          "purpose": "Potansiyel bir satış (M&A) veya yatırım turu için şirketin objektif ve savunulabilir bir finansal değerini belirlemek.",
+          "current_status": "incomplete",
+          "clarity_score": 70,
+          "clarity_justification": "Genel olarak iyi tanımlanmış, ancak daha fazla detay eklenebilir.",
+          "uncertainty_questions": [
+            {
+              "question": "Bu görevin tamamlanması için hangi spesifik adımlar atılacak?",
+              "input_type": "textarea",
+              "placeholder": "Adımlar"
+            },
+            {
+              "question": "Bu görevin başarı kriterleri nelerdir?",
+              "input_type": "text",
+              "placeholder": "Başarı kriterleri"
+            }
+          ],
+          "priority_score": 5,
+          "deadline": "2026-07-18",
+          "progress": 0,
+          "risk_analysis": [],
+          "stakeholder_mapping": [],
+          "dependencies": [],
+          "forensic_analysis": {
+            "failure_reasons": [
+              "Yetersiz pazar araştırması ve yanlış hedef kitle belirleme",
+              "Teknolojik altyapı yetersizliği veya yanlış seçimler",
+              "Yetersiz finansman veya nakit akışı yönetimi"
+            ],
+            "objecting_stakeholder": "Genellikle mevcut iş yapış şekillerine alışmış, değişime dirençli geleneksel toptancılar veya riskten kaçınan yatırımcılar.",
+            "missed_in_6_months": "Pazar dinamiklerindeki ani değişimler (yeni bir rakibin girişi, regülasyon değişikliği) veya müşteri ihtiyaçlarının yanlış anlaşılması.",
+            "competitor_counter_strategy": "Rakip, benzer bir platformu daha hızlı ve daha düşük maliyetle piyasaya sürebilir, mevcut müşteri tabanını kullanarak pazar payını hızla artırabilir veya fiyat rekabetine gidebilir."
+          }
+        },
+        {
+          "title": "Yatırımcı İlişkileri ve Anlaşma Simülasyonu",
+          "description": "Potansiyel yatırımcılarla yapılacak anlaşmalar için Term Sheet'lerde yer alan 'kontrol hakları' ve 'likidite önceliği' (liquidation preference) gibi kritik maddeler üzerinde simülasyonlar yapılacaktır. Potansiyel stratejik alıcılar (büyük şirketler), Porter’ın Alıcı Gücü Modeli ile analiz edilecektir.",
+          "purpose": "Yatırım ve M&A süreçlerine hazırlıklı olmak ve müzakerelerde şirket kurucularının çıkarlarını en üst düzeyde korumak.",
+          "current_status": "incomplete",
+          "clarity_score": 70,
+          "clarity_justification": "Genel olarak iyi tanımlanmış, ancak daha fazla detay eklenebilir.",
+          "uncertainty_questions": [
+            {
+              "question": "Bu görevin tamamlanması için hangi spesifik adımlar atılacak?",
+              "input_type": "textarea",
+              "placeholder": "Adımlar"
+            },
+            {
+              "question": "Bu görevin başarı kriterleri nelerdir?",
+              "input_type": "text",
+              "placeholder": "Başarı kriterleri"
+            }
+          ],
+          "priority_score": 5,
+          "deadline": "2026-07-18",
+          "progress": 0,
+          "risk_analysis": [],
+          "stakeholder_mapping": [],
+          "dependencies": [],
+          "forensic_analysis": {
+            "failure_reasons": [
+              "Yetersiz pazar araştırması ve yanlış hedef kitle belirleme",
+              "Teknolojik altyapı yetersizliği veya yanlış seçimler",
+              "Yetersiz finansman veya nakit akışı yönetimi"
+            ],
+            "objecting_stakeholder": "Genellikle mevcut iş yapış şekillerine alışmış, değişime dirençli geleneksel toptancılar veya riskten kaçınan yatırımcılar.",
+            "missed_in_6_months": "Pazar dinamiklerindeki ani değişimler (yeni bir rakibin girişi, regülasyon değişikliği) veya müşteri ihtiyaçlarının yanlış anlaşılması.",
+            "competitor_counter_strategy": "Rakip, benzer bir platformu daha hızlı ve daha düşük maliyetle piyasaya sürebilir, mevcut müşteri tabanını kullanarak pazar payını hızla artırabilir veya fiyat rekabetine gidebilir."
+          }
+        },
+        {
+          "title": "Uzun Vadeli Çıkış Senaryolarının Değerlendirilmesi",
+          "description": "Gelecekteki farklı stratejik yollar, Real Options Analysis (Reel Opsiyon Analizi) ile değerlendirilecektir. Bu analiz, halka arza gitme (IPO), başka bir şirkete satılma (M&A) veya özel kalıp büyümeye devam etme (tutma) seçeneklerinin esnekliğini ve potansiyel değerini ölçecektir. PwC'nin IPO Hazırlık Testi ile Borsa İstanbul (BIST) koşullarına uygunluk denetlenecektir.",
+          "purpose": "Geleceğe yönelik en değerli ve stratejik olarak en mantıklı çıkış yolunu belirlemek için farklı senaryoları analiz etmek.",
+          "current_status": "incomplete",
+          "clarity_score": 70,
+          "clarity_justification": "Genel olarak iyi tanımlanmış, ancak daha fazla detay eklenebilir.",
+          "uncertainty_questions": [
+            {
+              "question": "Bu görevin tamamlanması için hangi spesifik adımlar atılacak?",
+              "input_type": "textarea",
+              "placeholder": "Adımlar"
+            },
+            {
+              "question": "Bu görevin başarı kriterleri nelerdir?",
+              "input_type": "text",
+              "placeholder": "Başarı kriterleri"
+            }
+          ],
+          "priority_score": 5,
+          "deadline": "2026-07-18",
+          "progress": 0,
+          "risk_analysis": [],
+          "stakeholder_mapping": [],
+          "dependencies": [],
+          "forensic_analysis": {
+            "failure_reasons": [
+              "Yetersiz pazar araştırması ve yanlış hedef kitle belirleme",
+              "Teknolojik altyapı yetersizliği veya yanlış seçimler",
+              "Yetersiz finansman veya nakit akışı yönetimi"
+            ],
+            "objecting_stakeholder": "Genellikle mevcut iş yapış şekillerine alışmış, değişime dirençli geleneksel toptancılar veya riskten kaçınan yatırımcılar.",
+            "missed_in_6_months": "Pazar dinamiklerindeki ani değişimler (yeni bir rakibin girişi, regülasyon değişikliği) veya müşteri ihtiyaçlarının yanlış anlaşılması.",
+            "competitor_counter_strategy": "Rakip, benzer bir platformu daha hızlı ve daha düşük maliyetle piyasaya sürebilir, mevcut müşteri tabanını kullanarak pazar payını hızla artırabilir veya fiyat rekabetine gidebilir."
+          }
+        },
+        {
+          "title": "Çıkış Odaklı Değer Yaratma",
+          "description": "William Sahlman'ın 'Çıkış stratejisi, girişim kurulurken tasarlanmalıdır' ilkesi benimsenmiştir. Bu doğrultuda, şirketin değerini artıracak adımlar (örneğin, teknoloji için IP patentleri almak, toplanan veriyi bir varlık haline getirmek) bugünden planlanmalı ve uygulanmalıdır.",
+          "purpose": "Girişimin başlangıcından itibaren, gelecekteki potansiyel bir çıkışta şirket değerini maksimize edecek stratejik adımlar atmak.",
+          "current_status": "incomplete",
+          "clarity_score": 70,
+          "clarity_justification": "Genel olarak iyi tanımlanmış, ancak daha fazla detay eklenebilir.",
+          "uncertainty_questions": [
+            {
+              "question": "Bu görevin tamamlanması için hangi spesifik adımlar atılacak?",
+              "input_type": "textarea",
+              "placeholder": "Adımlar"
+            },
+            {
+              "question": "Bu görevin başarı kriterleri nelerdir?",
+              "input_type": "text",
+              "placeholder": "Başarı kriterleri"
+            }
+          ],
+          "priority_score": 5,
+          "deadline": "2026-07-18",
+          "progress": 0,
+          "risk_analysis": [],
+          "stakeholder_mapping": [],
+          "dependencies": [],
+          "forensic_analysis": {
+            "failure_reasons": [
+              "Yetersiz pazar araştırması ve yanlış hedef kitle belirleme",
+              "Teknolojik altyapı yetersizliği veya yanlış seçimler",
+              "Yetersiz finansman veya nakit akışı yönetimi"
+            ],
+            "objecting_stakeholder": "Genellikle mevcut iş yapış şekillerine alışmış, değişime dirençli geleneksel toptancılar veya riskten kaçınan yatırımcılar.",
+            "missed_in_6_months": "Pazar dinamiklerindeki ani değişimler (yeni bir rakibin girişi, regülasyon değişikliği) veya müşteri ihtiyaçlarının yanlış anlaşılması.",
+            "competitor_counter_strategy": "Rakip, benzer bir platformu daha hızlı ve daha düşük maliyetle piyasaya sürebilir, mevcut müşteri tabanını kullanarak pazar payını hızla artırabilir veya fiyat rekabetine gidebilir."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Kritik Riskler ve Varsayımlar",
+      "description": "İş modelinin temelini oluşturan varsayımların ve başarıyı tehdit edebilecek en önemli risklerin tanımlandığı ve yönetildiği bölüm.",
+      "tasks": [
+        {
+          "title": "Risklerin Sınıflandırılması ve Modellenmesi",
+          "description": "Tüm potansiyel riskler, COSO ERM çerçevesi kullanılarak bir 'Olasılık/Etki Matrisi' üzerinde sınıflandırılacaktır. Finansal risklerin potansiyel etkilerini ölçmek için Monte Carlo Simülasyonu ile farklı nakit akışı senaryoları modellenecektir.",
+          "purpose": "Riskleri sistematik bir şekilde tanımlamak, önceliklendirmek ve finansal etkilerini öngörerek proaktif önlemler almak.",
+          "current_status": "incomplete",
+          "clarity_score": 80,
+          "clarity_justification": "Çerçeveler belirtilmiş, ancak Monte Carlo simülasyonunun detayları ve risklerin nicel analizi eksik.",
+          "uncertainty_questions": [
+            {
+              "question": "Monte Carlo Simülasyonu için hangi parametreler kullanılacak?",
+              "input_type": "text",
+              "placeholder": "Simülasyon parametreleri"
+            },
+            {
+              "question": "Risklerin etki ve olasılık skorları nasıl belirlenecek?",
+              "input_type": "textarea",
+              "placeholder": "Skorlama kriterleri"
+            }
+          ],
+          "priority_score": 5,
+          "deadline": "2026-07-18",
+          "progress": 0,
+          "risk_analysis": [],
+          "stakeholder_mapping": [],
+          "dependencies": [],
+          "forensic_analysis": {
+            "failure_reasons": [
+              "Yetersiz pazar araştırması ve yanlış hedef kitle belirleme",
+              "Teknolojik altyapı yetersizliği veya yanlış seçimler",
+              "Yetersiz finansman veya nakit akışı yönetimi"
+            ],
+            "objecting_stakeholder": "Genellikle mevcut iş yapış şekillerine alışmış, değişime dirençli geleneksel toptancılar veya riskten kaçınan yatırımcılar.",
+            "missed_in_6_months": "Pazar dinamiklerindeki ani değişimler (yeni bir rakibin girişi, regülasyon değişikliği) veya müşteri ihtiyaçlarının yanlış anlaşılması.",
+            "competitor_counter_strategy": "Rakip, benzer bir platformu daha hızlı ve daha düşük maliyetle piyasaya sürebilir, mevcut müşteri tabanını kullanarak pazar payını hızla artırabilir veya fiyat rekabetine gidebilir."
+          }
+        },
+        {
+          "title": "Tanımlanmış Kritik Riskler",
+          "description": "En önemli tehditler şimdiden tanımlanmıştır: 1) Rakip Tehdidi: Alibaba veya N11Pro gibi büyük oyuncuların 6 ay içinde benzer bir hamle yapması. 2) Nakit Akışı Riski: Mevcut gidişatla nakit rezervlerinin 18 ay içinde kritik seviyeye ulaşma olasılığı. 3) Teknoloji Borcu: Kullanılan CS-Cart altyapısının gelecekteki ölçeklenme ihtiyaçlarını karşılayamaması.",
+          "purpose": "En acil ve en büyük etkiye sahip tehditleri belirleyerek risk yönetimi çabalarını bu alanlara odaklamak.",
+          "current_status": "completed",
+          "clarity_score": 95,
+          "clarity_justification": "Kritik riskler çok net ve spesifik olarak tanımlanmış.",
+          "uncertainty_questions": [],
+          "priority_score": 5,
+          "deadline": "2026-07-18",
+          "progress": 0,
+          "risk_analysis": [
+            {
+              "risk": "Rakip tehdidi",
+              "impact": "Yüksek",
+              "probability": "Orta"
+            },
+            {
+              "risk": "Nakit akışı riski",
+              "impact": "Yüksek",
+              "probability": "Orta"
+            },
+            {
+              "risk": "Teknoloji borcu",
+              "impact": "Orta",
+              "probability": "Yüksek"
+            }
+          ],
+          "stakeholder_mapping": [],
+          "dependencies": [],
+          "forensic_analysis": {
+            "failure_reasons": [
+              "Yetersiz pazar araştırması ve yanlış hedef kitle belirleme",
+              "Teknolojik altyapı yetersizliği veya yanlış seçimler",
+              "Yetersiz finansman veya nakit akışı yönetimi"
+            ],
+            "objecting_stakeholder": "Genellikle mevcut iş yapış şekillerine alışmış, değişime dirençli geleneksel toptancılar veya riskten kaçınan yatırımcılar.",
+            "missed_in_6_months": "Pazar dinamiklerindeki ani değişimler (yeni bir rakibin girişi, regülasyon değişikliği) veya müşteri ihtiyaçlarının yanlış anlaşılması.",
+            "competitor_counter_strategy": "Rakip, benzer bir platformu daha hızlı ve daha düşük maliyetle piyasaya sürebilir, mevcut müşteri tabanını kullanarak pazar payını hızla artırabilir veya fiyat rekabetine gidebilir."
+          }
+        },
+        {
+          "title": "Temel Varsayımların Test Edilmesi",
+          "description": "İş modelinin dayandığı temel varsayımlar test edilecektir. Örneğin, 'platforma katılan her bir müşterinin, en az iki yeni müşteriyi referans olarak getireceği' varsayımı bir hipotez olarak belirlenmiş ve test edilmesi gerekmektedir. Ayrıca, şirketin maksimum risk toleransı '10 Milyon TL kayıp' olarak tanımlanmıştır.",
+          "purpose": "İş modelinin ne kadar sağlam temellere dayandığını anlamak ve yanlış varsayımları erken bir aşamada tespit ederek stratejiyi revize etmek.",
+          "current_status": "incomplete",
+          "clarity_score": 75,
+          "clarity_justification": "Varsayım test etme prensibi net, ancak test metodolojileri ve sonuçların nasıl kullanılacağı eksik.",
+          "uncertainty_questions": [
+            {
+              "question": "Varsayımları test etmek için hangi deneyler veya araştırmalar yapılacak?",
+              "input_type": "text",
+              "placeholder": "Test metodolojileri"
+            },
+            {
+              "question": "Test sonuçları stratejiyi nasıl etkileyecek?",
+              "input_type": "textarea",
+              "placeholder": "Strateji etkisi"
+            }
+          ],
+          "priority_score": 5,
+          "deadline": "2026-07-18",
+          "progress": 0,
+          "risk_analysis": [],
+          "stakeholder_mapping": [],
+          "dependencies": [],
+          "forensic_analysis": {
+            "failure_reasons": [
+              "Yetersiz pazar araştırması ve yanlış hedef kitle belirleme",
+              "Teknolojik altyapı yetersizliği veya yanlış seçimler",
+              "Yetersiz finansman veya nakit akışı yönetimi"
+            ],
+            "objecting_stakeholder": "Genellikle mevcut iş yapış şekillerine alışmış, değişime dirençli geleneksel toptancılar veya riskten kaçınan yatırımcılar.",
+            "missed_in_6_months": "Pazar dinamiklerindeki ani değişimler (yeni bir rakibin girişi, regülasyon değişikliği) veya müşteri ihtiyaçlarının yanlış anlaşılması.",
+            "competitor_counter_strategy": "Rakip, benzer bir platformu daha hızlı ve daha düşük maliyetle piyasaya sürebilir, mevcut müşteri tabanını kullanarak pazar payını hızla artırabilir veya fiyat rekabetine gidebilir."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Bilinmeyenler (Unknown-Unknowns)",
+      "description": "Mevcut aksiyon planında bahsedilmeyen ancak bir girişimin başarısı için kritik öneme sahip olan, ele alınması gereken eksik alanlar.",
+      "tasks": [
+        {
+          "title": "Ekip Yapısı ve İnsan Kaynakları Planlaması",
+          "description": "Kilit rollerin (CTO, CMO, COO vb.) detaylı görev tanımları, bu rollere yapılacak işe alım süreçleri, ücretlendirme politikaları ve çalışanlara sunulacak hisse opsiyonu (ESOP) planı gibi konular metinde yer almamaktadır.",
+          "purpose": "Girişimin hedeflerine ulaşması için gerekli yetenekleri şirkete katmak, motive etmek ve elde tutmak.",
+          "current_status": "unknown",
+          "clarity_score": 60,
+          "clarity_justification": "Bu alan tamamen eksik ve detaylandırılması gerekiyor.",
+          "uncertainty_questions": [
+            {
+              "question": "Hangi kilit roller öncelikli olarak doldurulacak?",
+              "input_type": "text",
+              "placeholder": "Kilit roller"
+            },
+            {
+              "question": "İşe alım süreçleri nasıl tasarlanacak?",
+              "input_type": "textarea",
+              "placeholder": "İşe alım süreçleri"
+            },
+            {
+              "question": "Çalışanlara hisse opsiyonu (ESOP) planı nasıl oluşturulacak?",
+              "input_type": "textarea",
+              "placeholder": "ESOP planı"
+            }
+          ],
+          "priority_score": 5,
+          "deadline": "2026-07-18",
+          "progress": 0,
+          "risk_analysis": [],
+          "stakeholder_mapping": [],
+          "dependencies": [],
+          "forensic_analysis": {
+            "failure_reasons": [
+              "Yetersiz pazar araştırması ve yanlış hedef kitle belirleme",
+              "Teknolojik altyapı yetersizliği veya yanlış seçimler",
+              "Yetersiz finansman veya nakit akışı yönetimi"
+            ],
+            "objecting_stakeholder": "Genellikle mevcut iş yapış şekillerine alışmış, değişime dirençli geleneksel toptancılar veya riskten kaçınan yatırımcılar.",
+            "missed_in_6_months": "Pazar dinamiklerindeki ani değişimler (yeni bir rakibin girişi, regülasyon değişikliği) veya müşteri ihtiyaçlarının yanlış anlaşılması.",
+            "competitor_counter_strategy": "Rakip, benzer bir platformu daha hızlı ve daha düşük maliyetle piyasaya sürebilir, mevcut müşteri tabanını kullanarak pazar payını hızla artırabilir veya fiyat rekabetine gidebilir."
+          }
+        },
+        {
+          "title": "Şirketin Hukuki Yapısı ve Ortaklık Anlaşmaları",
+          "description": "Şirketin yasal türünün (A.Ş., Ltd. Şti.) ne olacağı, kuruluş süreçleri ve daha da önemlisi, kurucular arasındaki hak, sorumluluk, hisse oranları ve karar alma mekanizmalarını düzenleyen bir Ortaklar Sözleşmesi (Shareholders' Agreement) hazırlanmamıştır.",
+          "purpose": "Şirketin yasal temelini sağlam bir şekilde oluşturmak ve kurucular arasında gelecekte yaşanabilecek anlaşmazlıkları en baştan önlemek.",
+          "current_status": "unknown",
+          "clarity_score": 60,
+          "clarity_justification": "Bu alan tamamen eksik ve detaylandırılması gerekiyor.",
+          "uncertainty_questions": [
+            {
+              "question": "Şirketin yasal türü ne olacak (A.Ş., Ltd. Şti.)?",
+              "input_type": "text",
+              "placeholder": "Yasal tür"
+            },
+            {
+              "question": "Kurucular arası Ortaklar Sözleşmesi hangi temel maddeleri içerecek?",
+              "input_type": "textarea",
+              "placeholder": "Sözleşme maddeleri"
+            }
+          ],
+          "priority_score": 5,
+          "deadline": "2026-07-18",
+          "progress": 0,
+          "risk_analysis": [],
+          "stakeholder_mapping": [],
+          "dependencies": [],
+          "forensic_analysis": {
+            "failure_reasons": [
+              "Yetersiz pazar araştırması ve yanlış hedef kitle belirleme",
+              "Teknolojik altyapı yetersizliği veya yanlış seçimler",
+              "Yetersiz finansman veya nakit akışı yönetimi"
+            ],
+            "objecting_stakeholder": "Genellikle mevcut iş yapış şekillerine alışmış, değişime dirençli geleneksel toptancılar veya riskten kaçınan yatırımcılar.",
+            "missed_in_6_months": "Pazar dinamiklerindeki ani değişimler (yeni bir rakibin girişi, regülasyon değişikliği) veya müşteri ihtiyaçlarının yanlış anlaşılması.",
+            "competitor_counter_strategy": "Rakip, benzer bir platformu daha hızlı ve daha düşük maliyetle piyasaya sürebilir, mevcut müşteri tabanını kullanarak pazar payını hızla artırabilir veya fiyat rekabetine gidebilir."
+          }
+        },
+        {
+          "title": "Detaylı Finansal Planlama ve Bütçe",
+          "description": "Nakit akışı senaryolarından bahsedilmiş ancak detaylı bir gelir-gider tablosu, başa baş noktası analizi, pazarlama ve teknoloji gibi departmanlara ayrılmış spesifik bütçeler ve yatırım ihtiyaçlarını gösteren detaylı bir finansal model eksiktir.",
+          "purpose": "Şirketin finansal sağlığını yönetmek, harcamaları kontrol altında tutmak, yatırım ihtiyacını netleştirmek ve kaynakları verimli bir şekilde dağıtmak.",
+          "current_status": "unknown",
+          "clarity_score": 60,
+          "clarity_justification": "Bu alan tamamen eksik ve detaylandırılması gerekiyor.",
+          "uncertainty_questions": [
+            {
+              "question": "Detaylı gelir-gider tablosu ne zaman hazırlanacak?",
+              "input_type": "text",
+              "placeholder": "Hazırlık zamanı"
+            },
+            {
+              "question": "Departman bazında bütçeler nasıl belirlenecek?",
+              "input_type": "textarea",
+              "placeholder": "Bütçe belirleme"
+            },
+            {
+              "question": "Yatırım ihtiyaçları için hangi finansal modeller kullanılacak?",
+              "input_type": "text",
+              "placeholder": "Finansal modeller"
+            }
+          ],
+          "priority_score": 5,
+          "deadline": "2026-07-18",
+          "progress": 0,
+          "risk_analysis": [],
+          "stakeholder_mapping": [],
+          "dependencies": [],
+          "forensic_analysis": {
+            "failure_reasons": [
+              "Yetersiz pazar araştırması ve yanlış hedef kitle belirleme",
+              "Teknolojik altyapı yetersizliği veya yanlış seçimler",
+              "Yetersiz finansman veya nakit akışı yönetimi"
+            ],
+            "objecting_stakeholder": "Genellikle mevcut iş yapış şekillerine alışmış, değişime dirençli geleneksel toptancılar veya riskten kaçınan yatırımcılar.",
+            "missed_in_6_months": "Pazar dinamiklerindeki ani değişimler (yeni bir rakibin girişi, regülasyon değişikliği) veya müşteri ihtiyaçlarının yanlış anlaşılması.",
+            "competitor_counter_strategy": "Rakip, benzer bir platformu daha hızlı ve daha düşük maliyetle piyasaya sürebilir, mevcut müşteri tabanını kullanarak pazar payını hızla artırabilir veya fiyat rekabetine gidebilir."
+          }
+        },
+        {
+          "title": "Veri Gizliliği Politikası ve Kullanıcı Sözleşmeleri",
+          "description": "GDPR uyumundan bahsedilmiş fakat platforma özel olarak hazırlanması gereken 'Kullanıcı Sözleşmesi', 'Gizlilik Politikası', 'Çerez Politikası' ve satıcılarla yapılacak 'Ticari İş Birliği Sözleşmesi' gibi yasal metinlerin oluşturulması bir görev olarak tanımlanmamıştır.",
+          "purpose": "Kullanıcıların ve şirketin yasal haklarını korumak, veri güvenliğini sağlamak ve yasal yükümlülükleri eksiksiz yerine getirmek.",
+          "current_status": "unknown",
+          "clarity_score": 60,
+          "clarity_justification": "Bu alan tamamen eksik ve detaylandırılması gerekiyor.",
+          "uncertainty_questions": [
+            {
+              "question": "Hangi yasal metinler öncelikli olarak hazırlanacak?",
+              "input_type": "text",
+              "placeholder": "Yasal metinler"
+            },
+            {
+              "question": "Bu metinlerin hazırlanmasında hangi hukuk danışmanlarından destek alınacak?",
+              "input_type": "text",
+              "placeholder": "Hukuk danışmanları"
+            }
+          ],
+          "priority_score": 5,
+          "deadline": "2026-07-18",
+          "progress": 0,
+          "risk_analysis": [],
+          "stakeholder_mapping": [],
+          "dependencies": [],
+          "forensic_analysis": {
+            "failure_reasons": [
+              "Yetersiz pazar araştırması ve yanlış hedef kitle belirleme",
+              "Teknolojik altyapı yetersizliği veya yanlış seçimler",
+              "Yetersiz finansman veya nakit akışı yönetimi"
+            ],
+            "objecting_stakeholder": "Genellikle mevcut iş yapış şekillerine alışmış, değişime dirençli geleneksel toptancılar veya riskten kaçınan yatırımcılar.",
+            "missed_in_6_months": "Pazar dinamiklerindeki ani değişimler (yeni bir rakibin girişi, regülasyon değişikliği) veya müşteri ihtiyaçlarının yanlış anlaşılması.",
+            "competitor_counter_strategy": "Rakip, benzer bir platformu daha hızlı ve daha düşük maliyetle piyasaya sürebilir, mevcut müşteri tabanını kullanarak pazar payını hızla artırabilir veya fiyat rekabetine gidebilir."
+          }
+        },
+        {
+          "title": "Müşteri Destek Altyapısı ve Teknolojileri",
+          "description": "Müşteri operasyonları için modeller belirtilmiş fakat hangi destek kanallarının (telefon, e-posta, canlı sohbet) kullanılacağı, hangi CRM veya destek yazılımının (örn: Zendesk, Intercom) seçileceği ve destek ekibinin nasıl yapılandırılacağı gibi operasyonel detaylar planda yer almamaktadır.",
+          "purpose": "Müşteri sorunlarına hızlı ve etkili çözümler sunarak kullanıcı memnuniyetini ve sadakatini artıracak bir destek operasyonu kurmak.",
+          "current_status": "unknown",
+          "clarity_score": 60,
+          "clarity_justification": "Bu alan tamamen eksik ve detaylandırılması gerekiyor.",
+          "uncertainty_questions": [
+            {
+              "question": "Hangi müşteri destek kanalları (telefon, e-posta, canlı sohbet) kullanılacak?",
+              "input_type": "text",
+              "placeholder": "Destek kanalları"
+            },
+            {
+              "question": "Hangi CRM veya destek yazılımı seçilecek?",
+              "input_type": "text",
+              "placeholder": "CRM/Destek yazılımı"
+            },
+            {
+              "question": "Destek ekibi nasıl yapılandırılacak ve eğitilecek?",
+              "input_type": "textarea",
+              "placeholder": "Ekip yapılandırması"
+            }
+          ],
+          "priority_score": 5,
+          "deadline": "2026-07-18",
+          "progress": 0,
+          "risk_analysis": [],
+          "stakeholder_mapping": [],
+          "dependencies": [],
+          "forensic_analysis": {
+            "failure_reasons": [
+              "Yetersiz pazar araştırması ve yanlış hedef kitle belirleme",
+              "Teknolojik altyapı yetersizliği veya yanlış seçimler",
+              "Yetersiz finansman veya nakit akışı yönetimi"
+            ],
+            "objecting_stakeholder": "Genellikle mevcut iş yapış şekillerine alışmış, değişime dirençli geleneksel toptancılar veya riskten kaçınan yatırımcılar.",
+            "missed_in_6_months": "Pazar dinamiklerindeki ani değişimler (yeni bir rakibin girişi, regülasyon değişikliği) veya müşteri ihtiyaçlarının yanlış anlaşılması.",
+            "competitor_counter_strategy": "Rakip, benzer bir platformu daha hızlı ve daha düşük maliyetle piyasaya sürebilir, mevcut müşteri tabanını kullanarak pazar payını hızla artırabilir veya fiyat rekabetine gidebilir."
+          }
+        }
+      ]
+    }
+  ]
+}

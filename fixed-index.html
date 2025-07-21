@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="tr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>B2B Platform Task Timeline Generator - Fixed</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/flowbite@2.5.1/dist/flowbite.min.js"></script>
+    <link href="https://unpkg.com/flowbite@2.5.1/dist/flowbite.min.css" rel="stylesheet" />
+    
+    <!-- Error Management System -->
+    <script src="config.js"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'pastel-blue': '#E6F3FF',
+                        'pastel-green': '#E8F5E8',
+                        'pastel-yellow': '#FFF9E6',
+                        'pastel-pink': '#FFE6F0',
+                        'pastel-purple': '#F0E6FF',
+                        'pastel-orange': '#FFE6D9',
+                        'soft-blue': '#B3D9FF',
+                        'soft-green': '#B3E6B3',
+                        'soft-yellow': '#FFE6B3',
+                        'soft-pink': '#FFB3D9',
+                        'soft-purple': '#D9B3FF',
+                        'soft-orange': '#FFD9B3'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        .progress-bar {
+            transition: width 0.5s ease;
+        }
+        .risk-low { background-color: #E8F5E8; color: #2D5A2D; }
+        .risk-medium { background-color: #FFF9E6; color: #8B6914; }
+        .risk-high { background-color: #FFE6D9; color: #B91C1C; }
+        .risk-critical { background-color: #FFE6F0; color: #BE185D; }
+        .clarity-excellent { background-color: #E8F5E8; }
+        .clarity-good { background-color: #FFF9E6; }
+        .clarity-poor { background-color: #FFE6D9; }
+        .timeline-item {
+            position: relative;
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 15px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, #667eea, #764ba2);
+        }
+        .timeline-item:last-child::before {
+            display: none;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Error Toggle Button -->
+    <div class="fixed top-4 left-4 z-50">
+        <button onclick="toggleErrorDisplay()" class="bg-red-500 text-white px-3 py-1 rounded text-sm hover:bg-red-600">
+            Toggle Errors
+        </button>
+        <button onclick="clearAllErrors()" class="bg-gray-500 text-white px-3 py-1 rounded text-sm hover:bg-gray-600 ml-2">
+            Clear Errors
+        </button>
+    </div>
+
+    <!-- Header -->
+    <header class="gradient-bg text-white py-8">
+        <div class="container mx-auto px-4 text-center">
+            <h1 class="text-4xl font-bold mb-2">B2B Platform Task Timeline Generator</h1>
+            <p class="text-xl opacity-90">Comprehensive Task Management & Risk Analysis Dashboard - Fixed Version</p>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md sticky top-0 z-40">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-center space-x-1 py-4">
+                <button onclick="showTab('dashboard')" id="tab-dashboard" class="px-6 py-2 rounded-lg font-medium transition-colors bg-blue-100 text-blue-700">
+                    📊 Dashboard
+                </button>
+                <button onclick="showTab('timeline')" id="tab-timeline" class="px-6 py-2 rounded-lg font-medium transition-colors text-gray-600 hover:bg-gray-100">
+                    📅 Timeline
+                </button>
+                <button onclick="showTab('tasks')" id="tab-tasks" class="px-6 py-2 rounded-lg font-medium transition-colors text-gray-600 hover:bg-gray-100">
+                    📋 Tasks
+                </button>
+                <button onclick="showTab('risk-heatmap')" id="tab-risk-heatmap" class="px-6 py-2 rounded-lg font-medium transition-colors text-gray-600 hover:bg-gray-100">
+                    🔥 Risk Heatmap
+                </button>
+                <button onclick="showTab('progress')" id="tab-progress" class="px-6 py-2 rounded-lg font-medium transition-colors text-gray-600 hover:bg-gray-100">
+                    📈 Progress
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8">
+        <!-- Dashboard Tab -->
+        <div id="dashboard-tab" class="tab-content">
+            <!-- Status Cards -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+                <div class="bg-white rounded-xl shadow-lg p-6 card-hover">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-gray-600 text-sm">Total Tasks</p>
+                            <p class="text-3xl font-bold text-gray-800" id="total-tasks">0</p>
+                        </div>
+                        <div class="bg-blue-100 p-3 rounded-full">
+                            <svg class="w-6 h-6 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-lg p-6 card-hover">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-gray-600 text-sm">Completed</p>
+                            <p class="text-3xl font-bold text-green-600" id="completed-tasks">0</p>
+                        </div>
+                        <div class="bg-green-100 p-3 rounded-full">
+                            <svg class="w-6 h-6 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-lg p-6 card-hover">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-gray-600 text-sm">High Risk</p>
+                            <p class="text-3xl font-bold text-red-600" id="high-risk-tasks">0</p>
+                        </div>
+                        <div class="bg-red-100 p-3 rounded-full">
+                            <svg class="w-6 h-6 text-red-600" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd"></path>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-lg p-6 card-hover">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-gray-600 text-sm">Avg Clarity</p>
+                            <p class="text-3xl font-bold text-purple-600" id="avg-clarity">0%</p>
+                        </div>
+                        <div class="bg-purple-100 p-3 rounded-full">
+                            <svg class="w-6 h-6 text-purple-600" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Error Status -->
+            <div class="bg-white rounded-xl shadow-lg p-6 mb-8">
+                <h3 class="text-xl font-bold text-gray-800 mb-4">System Status</h3>
+                <div id="system-status" class="space-y-2">
+                    <div class="flex items-center justify-between p-3 bg-green-50 rounded-lg">
+                        <span class="text-green-800">Error Management System</span>
+                        <span class="px-2 py-1 bg-green-200 text-green-800 rounded text-sm">Active</span>
+                    </div>
+                    <div class="flex items-center justify-between p-3 bg-blue-50 rounded-lg">
+                        <span class="text-blue-800">Data Loading</span>
+                        <span id="data-status" class="px-2 py-1 bg-yellow-200 text-yellow-800 rounded text-sm">Loading...</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Actions -->
+            <div class="bg-white rounded-xl shadow-lg p-6">
+                <h3 class="text-xl font-bold text-gray-800 mb-4">Quick Actions</h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <button onclick="exportData()" class="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-6 py-3 rounded-lg font-medium hover:from-blue-600 hover:to-purple-700 transition-all">
+                        📤 Export Data
+                    </button>
+                    <button onclick="importData()" class="bg-gradient-to-r from-green-500 to-teal-600 text-white px-6 py-3 rounded-lg font-medium hover:from-green-600 hover:to-teal-700 transition-all">
+                        📥 Import Data
+                    </button>
+                    <button onclick="generateReport()" class="bg-gradient-to-r from-orange-500 to-red-600 text-white px-6 py-3 rounded-lg font-medium hover:from-orange-600 hover:to-red-700 transition-all">
+                        📊 Generate Report
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Other tabs would go here -->
+        <div id="timeline-tab" class="tab-content hidden">
+            <div class="bg-white rounded-xl shadow-lg p-6">
+                <h3 class="text-xl font-bold text-gray-800 mb-4">Project Timeline</h3>
+                <p class="text-gray-600">Timeline view will be implemented here.</p>
+            </div>
+        </div>
+
+        <div id="tasks-tab" class="tab-content hidden">
+            <div class="bg-white rounded-xl shadow-lg p-6">
+                <h3 class="text-xl font-bold text-gray-800 mb-4">Task Management</h3>
+                <p class="text-gray-600">Task management interface will be implemented here.</p>
+            </div>
+        </div>
+
+        <div id="risk-heatmap-tab" class="tab-content hidden">
+            <div class="bg-white rounded-xl shadow-lg p-6">
+                <h3 class="text-xl font-bold text-gray-800 mb-4">Risk Heatmap</h3>
+                <p class="text-gray-600">Risk analysis heatmap will be implemented here.</p>
+            </div>
+        </div>
+
+        <div id="progress-tab" class="tab-content hidden">
+            <div class="bg-white rounded-xl shadow-lg p-6">
+                <h3 class="text-xl font-bold text-gray-800 mb-4">Progress Tracking</h3>
+                <p class="text-gray-600">Progress tracking interface will be implemented here.</p>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Global variables
+        let actionPlan = null;
+        let currentTab = 'dashboard';
+
+        // Initialize application
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Application initializing...');
+            initializeApp();
+        });
+
+        async function initializeApp() {
+            try {
+                // Update system status
+                updateSystemStatus('data-status', 'Loading...', 'yellow');
+                
+                // Try to load action plan
+                await loadActionPlan();
+                
+                // Initialize dashboard
+                renderDashboard();
+                
+                // Update system status
+                updateSystemStatus('data-status', 'Loaded', 'green');
+                
+                console.log('Application initialized successfully');
+            } catch (error) {
+                console.error('Failed to initialize application:', error);
+                updateSystemStatus('data-status', 'Error', 'red');
+                
+                // Use mock data as fallback
+                loadMockData();
+            }
+        }
+
+        async function loadActionPlan() {
+            try {
+                // Try to load from local file first
+                const response = await fetch('./aksiyon.json');
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+                }
+                actionPlan = await response.json();
+                console.log('Action plan loaded successfully');
+            } catch (error) {
+                console.warn('Failed to load action plan from file:', error.message);
+                
+                // Try to load from localStorage
+                const savedData = localStorage.getItem('actionPlan');
+                if (savedData) {
+                    actionPlan = JSON.parse(savedData);
+                    console.log('Action plan loaded from localStorage');
+                } else {
+                    throw new Error('No action plan data available');
+                }
+            }
+        }
+
+        function loadMockData() {
+            console.log('Loading mock data...');
+            actionPlan = {
+                categories: [
+                    {
+                        name: "Test Category",
+                        description: "This is a test category with mock data",
+                        tasks: [
+                            {
+                                title: "Test Task 1",
+                                description: "This is a test task",
+                                current_status: "incomplete",
+                                priority_score: 5,
+                                clarity_score: 80,
+                                progress: 25
+                            },
+                            {
+                                title: "Test Task 2", 
+                                description: "This is another test task",
+                                current_status: "completed",
+                                priority_score: 8,
+                                clarity_score: 90,
+                                progress: 100
+                            }
+                        ]
+                    }
+                ]
+            };
+            renderDashboard();
+            updateSystemStatus('data-status', 'Mock Data', 'blue');
+        }
+
+        function renderDashboard() {
+            if (!actionPlan) return;
+
+            let totalTasks = 0;
+            let completedTasks = 0;
+            let highRiskTasks = 0;
+            let totalClarity = 0;
+
+            actionPlan.categories.forEach(category => {
+                category.tasks.forEach(task => {
+                    totalTasks++;
+                    if (task.current_status === 'completed') completedTasks++;
+                    if (task.priority_score >= 8) highRiskTasks++;
+                    totalClarity += task.clarity_score || 0;
+                });
+            });
+
+            const avgClarity = totalTasks > 0 ? Math.round(totalClarity / totalTasks) : 0;
+
+            // Update dashboard cards
+            document.getElementById('total-tasks').textContent = totalTasks;
+            document.getElementById('completed-tasks').textContent = completedTasks;
+            document.getElementById('high-risk-tasks').textContent = highRiskTasks;
+            document.getElementById('avg-clarity').textContent = avgClarity + '%';
+        }
+
+        function showTab(tabName) {
+            // Hide all tabs
+            document.querySelectorAll('.tab-content').forEach(tab => {
+                tab.classList.add('hidden');
+            });
+
+            // Remove active class from all buttons
+            document.querySelectorAll('[id^="tab-"]').forEach(btn => {
+                btn.classList.remove('bg-blue-100', 'text-blue-700');
+                btn.classList.add('text-gray-600', 'hover:bg-gray-100');
+            });
+
+            // Show selected tab
+            document.getElementById(tabName + '-tab').classList.remove('hidden');
+            
+            // Add active class to selected button
+            const activeBtn = document.getElementById('tab-' + tabName);
+            activeBtn.classList.add('bg-blue-100', 'text-blue-700');
+            activeBtn.classList.remove('text-gray-600', 'hover:bg-gray-100');
+
+            currentTab = tabName;
+        }
+
+        function updateSystemStatus(elementId, status, color) {
+            const element = document.getElementById(elementId);
+            if (element) {
+                element.textContent = status;
+                element.className = `px-2 py-1 rounded text-sm bg-${color}-200 text-${color}-800`;
+            }
+        }
+
+        // Error management functions
+        function toggleErrorDisplay() {
+            if (window.errorManager) {
+                window.errorManager.toggleErrorDisplay();
+            }
+        }
+
+        function clearAllErrors() {
+            if (window.errorManager) {
+                window.errorManager.clearErrors();
+            }
+        }
+
+        // Data management functions
+        function exportData() {
+            try {
+                const dataToExport = {
+                    actionPlan: actionPlan,
+                    timestamp: new Date().toISOString(),
+                    version: '1.0'
+                };
+
+                const dataStr = JSON.stringify(dataToExport, null, 2);
+                const dataBlob = new Blob([dataStr], {type: 'application/json'});
+
+                const link = document.createElement('a');
+                link.href = URL.createObjectURL(dataBlob);
+                link.download = 'b2b-platform-data-fixed.json';
+                link.click();
+
+                console.log('Data exported successfully');
+            } catch (error) {
+                console.error('Export failed:', error);
+            }
+        }
+
+        function importData() {
+            const input = document.createElement('input');
+            input.type = 'file';
+            input.accept = '.json';
+            input.onchange = function(event) {
+                const file = event.target.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        try {
+                            const importedData = JSON.parse(e.target.result);
+                            if (importedData.actionPlan) {
+                                actionPlan = importedData.actionPlan;
+                                localStorage.setItem('actionPlan', JSON.stringify(actionPlan));
+                                renderDashboard();
+                                console.log('Data imported successfully');
+                                alert('Data imported successfully!');
+                            }
+                        } catch (error) {
+                            console.error('Import failed:', error);
+                            alert('Error importing data: ' + error.message);
+                        }
+                    };
+                    reader.readAsText(file);
+                }
+            };
+            input.click();
+        }
+
+        function generateReport() {
+            try {
+                if (!actionPlan) {
+                    throw new Error('No data available for report generation');
+                }
+
+                let report = `# B2B Platform Report - Fixed Version\n\n`;
+                report += `Generated on: ${new Date().toLocaleDateString('tr-TR')}\n\n`;
+
+                // Add summary
+                let totalTasks = 0;
+                let completedTasks = 0;
+                actionPlan.categories.forEach(category => {
+                    totalTasks += category.tasks.length;
+                    completedTasks += category.tasks.filter(task => task.current_status === 'completed').length;
+                });
+
+                report += `## Summary\n`;
+                report += `- Total Tasks: ${totalTasks}\n`;
+                report += `- Completed Tasks: ${completedTasks}\n`;
+                report += `- Completion Rate: ${Math.round((completedTasks / totalTasks) * 100)}%\n\n`;
+
+                // Add categories
+                actionPlan.categories.forEach(category => {
+                    report += `## ${category.name}\n\n`;
+                    report += `${category.description}\n\n`;
+                    
+                    category.tasks.forEach(task => {
+                        report += `### ${task.title}\n`;
+                        report += `- Status: ${task.current_status}\n`;
+                        report += `- Priority: ${task.priority_score}/10\n`;
+                        report += `- Clarity: ${task.clarity_score}%\n`;
+                        report += `- Progress: ${task.progress}%\n\n`;
+                    });
+                });
+
+                const reportBlob = new Blob([report], {type: 'text/markdown'});
+                const link = document.createElement('a');
+                link.href = URL.createObjectURL(reportBlob);
+                link.download = 'b2b-platform-report-fixed.md';
+                link.click();
+
+                console.log('Report generated successfully');
+            } catch (error) {
+                console.error('Report generation failed:', error);
+            }
+        }
+    </script>
+</body>
+</html>
+
