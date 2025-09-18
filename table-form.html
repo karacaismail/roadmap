@@ -1,0 +1,1336 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HR Dashboard - Kayıt Listesi</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.0/flowbite.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.0/flowbite.min.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .status-badge {
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            text-transform: uppercase;
+        }
+        .status-ise-alindi { background: #dcfce7; color: #166534; }
+        .status-reddedildi { background: #fecaca; color: #991b1b; }
+        .status-mulakat { background: #fef3c7; color: #92400e; }
+        .status-beklemede { background: #e0e7ff; color: #3730a3; }
+
+        /* Mobile-first accordion styles */
+        .accordion-row {
+            border: 1px solid #e5e7eb;
+            border-radius: 0.5rem;
+            margin-bottom: 0.5rem;
+            background: white;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .accordion-row:hover {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            transform: translateY(-1px);
+        }
+
+        .accordion-header {
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            border-top: 1px solid #e5e7eb;
+        }
+
+        .accordion-content.expanded {
+            max-height: 1000px;
+        }
+
+        .accordion-details {
+            padding: 1rem;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 0.75rem;
+        }
+
+        .detail-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #f3f4f6;
+        }
+
+        .detail-item:last-child {
+            border-bottom: none;
+        }
+
+        .detail-label {
+            font-weight: 500;
+            color: #374151;
+            font-size: 0.875rem;
+        }
+
+        .detail-value {
+            color: #111827;
+            font-size: 0.875rem;
+            text-align: right;
+        }
+
+        .chevron-icon {
+            transition: transform 0.3s ease;
+        }
+
+        .chevron-icon.rotated {
+            transform: rotate(180deg);
+        }
+
+        /* Desktop table styles */
+        .desktop-table {
+            display: none;
+        }
+
+        .table-hover-row:hover {
+            background-color: #f8fafc !important;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            transition: all 0.2s ease;
+        }
+
+        /* Responsive breakpoints */
+        @media (min-width: 1024px) {
+            .desktop-table {
+                display: block;
+            }
+            .mobile-accordion {
+                display: none;
+            }
+        }
+
+        .search-wrapper {
+            position: relative;
+        }
+        .search-icon {
+            position: absolute;
+            left: 0.75rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #6b7280;
+        }
+        .search-input {
+            padding-left: 2.5rem;
+        }
+
+        .filter-chip {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.375rem 0.75rem;
+            margin: 0.125rem;
+            background: #f9fafb;
+            border: 1px solid #e5e7eb;
+            border-radius: 1rem;
+            font-size: 0.875rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            color: #374151;
+        }
+        .filter-chip:hover { background: #f3f4f6; border-color: #d1d5db; }
+        .filter-chip.active { background: #111827; color: white; border-color: #111827; }
+
+        .modal-backdrop {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+        }
+
+        .modal {
+            background: white;
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            max-width: 90vw;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .editable-field {
+            border: 1px solid transparent;
+            padding: 0.375rem;
+            border-radius: 0.25rem;
+            transition: all 0.2s;
+            position: relative;
+        }
+
+        .editable-field:hover {
+            border-color: #e5e7eb;
+            background: #f9fafb;
+        }
+
+        .editable-field.editing {
+            border-color: #3b82f6;
+            background: white;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+
+        .edit-button {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: #111827;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 0.375rem;
+            font-size: 0.875rem;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .edit-button:hover {
+            background: #374151;
+        }
+
+        .edit-button.editing {
+            background: #059669;
+        }
+
+        .edit-button.editing:hover {
+            background: #047857;
+        }
+
+        .bulk-actions {
+            background: #111827;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            margin-bottom: 1rem;
+            display: none;
+        }
+
+        .bulk-actions.show {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .save-indicator {
+            position: fixed;
+            top: 1rem;
+            right: 1rem;
+            background: #059669;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 0.375rem;
+            font-size: 0.875rem;
+            opacity: 0;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+            z-index: 1001;
+        }
+
+        .save-indicator.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Mobile optimizations */
+        @media (max-width: 640px) {
+            .container {
+                padding: 0.75rem;
+            }
+
+            .modal {
+                margin: 0.5rem;
+                max-width: calc(100vw - 1rem);
+                max-height: calc(100vh - 1rem);
+                padding: 1rem;
+            }
+
+            .accordion-header {
+                padding: 0.75rem;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.5rem;
+            }
+
+            .accordion-header .flex {
+                width: 100%;
+                justify-content: space-between;
+            }
+
+            .accordion-details {
+                padding: 0.75rem;
+                gap: 0.5rem;
+            }
+
+            .detail-item {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.25rem;
+                padding: 0.375rem 0;
+            }
+
+            .detail-value {
+                text-align: left;
+                font-weight: 500;
+            }
+
+            .flex.space-x-2 {
+                flex-direction: column;
+                space-x: 0;
+                gap: 0.5rem;
+            }
+
+            .flex.space-x-2 button {
+                width: 100%;
+            }
+
+            h1 {
+                font-size: 1.5rem;
+            }
+
+            .grid.grid-cols-1.md\\:grid-cols-2.lg\\:grid-cols-4 {
+                grid-template-columns: 1fr;
+                gap: 0.75rem;
+            }
+
+            .search-wrapper.md\\:col-span-2.lg\\:col-span-1 {
+                grid-column: span 1;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0.5rem;
+            }
+
+            .accordion-row {
+                margin-bottom: 0.375rem;
+            }
+
+            .accordion-header {
+                padding: 0.5rem;
+            }
+
+            .accordion-details {
+                padding: 0.5rem;
+            }
+
+            .filter-chip {
+                font-size: 0.75rem;
+                padding: 0.25rem 0.5rem;
+            }
+
+            .status-badge {
+                font-size: 0.625rem;
+                padding: 0.125rem 0.5rem;
+            }
+        }
+
+        /* Touch optimizations */
+        @media (hover: none) and (pointer: coarse) {
+            .accordion-row:hover {
+                transform: none;
+                box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            }
+
+            .filter-chip:hover {
+                background: #f9fafb;
+                border-color: #e5e7eb;
+            }
+
+            .filter-chip.active:hover {
+                background: #111827;
+                border-color: #111827;
+            }
+
+            button:hover {
+                transform: none;
+            }
+
+            .editable-field:hover {
+                border-color: transparent;
+                background: transparent;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Save Indicator -->
+    <div id="saveIndicator" class="save-indicator">
+        <svg class="w-4 h-4 inline mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+        </svg>
+        Kaydedildi
+    </div>
+
+    <!-- Delete Confirmation Modal -->
+    <div id="deleteModal" class="modal-backdrop hidden">
+        <div class="modal max-w-md">
+            <h3 class="text-lg font-semibold text-gray-900 mb-4">Kaydı Sil</h3>
+            <p class="text-gray-600 mb-6">Bu kaydı silmek istediğinizden emin misiniz? Bu işlem geri alınamaz.</p>
+            <div class="flex justify-end space-x-3">
+                <button onclick="closeDeleteModal()" class="px-4 py-2 text-gray-700 bg-gray-100 hover:bg-gray-200 rounded-lg">İptal</button>
+                <button onclick="confirmDelete()" class="px-4 py-2 bg-red-600 hover:bg-red-700 text-white rounded-lg">Sil</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Details Modal -->
+    <div id="detailsModal" class="modal-backdrop hidden">
+        <div class="modal max-w-4xl">
+            <div class="flex justify-between items-center mb-6 relative">
+                <h3 class="text-lg font-semibold text-gray-900">Aday Detayları</h3>
+                <div class="flex items-center space-x-2">
+                    <button id="editToggleBtn" onclick="toggleEditMode()" class="edit-button">
+                        <svg class="w-4 h-4 inline mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
+                        </svg>
+                        <span id="editBtnText">Düzenle</span>
+                    </button>
+                    <button onclick="closeDetailsModal()" class="text-gray-500 hover:text-gray-700">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            <div id="detailsContent" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Details will be populated here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Create/Edit Modal -->
+    <div id="createModal" class="modal-backdrop hidden">
+        <div class="modal max-w-4xl">
+            <div class="flex justify-between items-center mb-6">
+                <h3 class="text-lg font-semibold text-gray-900" id="createModalTitle">Yeni Kayıt</h3>
+                <button onclick="closeCreateModal()" class="text-gray-500 hover:text-gray-700">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+            </div>
+            <form id="createForm" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Form fields will be populated here -->
+            </form>
+            <div class="flex justify-end space-x-3 mt-6 pt-6 border-t">
+                <button type="button" onclick="closeCreateModal()" class="px-4 py-2 text-gray-700 bg-gray-100 hover:bg-gray-200 rounded-lg">İptal</button>
+                <button type="button" onclick="saveRecord()" class="px-4 py-2 bg-gray-900 hover:bg-gray-800 text-white rounded-lg" id="saveButton">Kaydet</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="container mx-auto p-4 lg:p-6">
+        <!-- Header -->
+        <div class="mb-6">
+            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-4 space-y-2 sm:space-y-0">
+                <h1 class="text-2xl font-bold text-gray-900">Kayıt Listesi</h1>
+                <div class="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-2 w-full sm:w-auto">
+                    <button onclick="openCreateModal()" class="bg-gray-900 hover:bg-gray-800 text-white px-4 py-2 rounded-lg flex items-center justify-center">
+                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
+                        </svg>
+                        Yeni Kayıt
+                    </button>
+                    <button class="bg-white hover:bg-gray-50 text-gray-700 border border-gray-300 px-4 py-2 rounded-lg flex items-center justify-center">
+                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                        </svg>
+                        Excel İndir
+                    </button>
+                </div>
+            </div>
+
+            <!-- Bulk Actions -->
+            <div id="bulkActions" class="bulk-actions">
+                <div class="flex items-center">
+                    <span id="selectedCount">0</span> kayıt seçildi
+                </div>
+                <div class="flex space-x-2">
+                    <button onclick="bulkEdit()" class="px-3 py-1.5 bg-gray-700 hover:bg-gray-600 text-white text-sm rounded">
+                        <svg class="w-4 h-4 inline mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
+                        </svg>
+                        Düzenle
+                    </button>
+                    <button onclick="bulkDelete()" class="px-3 py-1.5 bg-red-600 hover:bg-red-700 text-white text-sm rounded">
+                        <svg class="w-4 h-4 inline mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
+                        </svg>
+                        Sil
+                    </button>
+                    <button onclick="bulkReport()" class="px-3 py-1.5 bg-blue-600 hover:bg-blue-700 text-white text-sm rounded">
+                        <svg class="w-4 h-4 inline mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a4 4 0 01-4-4V5a4 4 0 014-4h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a4 4 0 01-4 4z"></path>
+                        </svg>
+                        Rapor
+                    </button>
+                </div>
+            </div>
+
+            <!-- Filters & Search -->
+            <div class="bg-white p-4 rounded-lg shadow-sm border">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-4">
+                    <div class="search-wrapper md:col-span-2 lg:col-span-1">
+                        <svg class="search-icon w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                        </svg>
+                        <input type="text" id="searchInput" placeholder="Ad, email veya telefon ara..."
+                               class="search-input w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-500 focus:border-transparent">
+                    </div>
+                    <select id="departmentFilter" class="border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-gray-500">
+                        <option value="">Tüm Departmanlar</option>
+                        <option value="Finance">Finance</option>
+                        <option value="Marketing">Marketing</option>
+                        <option value="HR">HR</option>
+                        <option value="IT">IT</option>
+                        <option value="Sales">Sales</option>
+                        <option value="Operations">Operations</option>
+                        <option value="Engineering">Engineering</option>
+                        <option value="Legal">Legal</option>
+                        <option value="Customer Service">Customer Service</option>
+                    </select>
+                    <select id="levelFilter" class="border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-gray-500">
+                        <option value="">Tüm Pozisyonlar</option>
+                        <option value="Lead">Lead</option>
+                        <option value="Senior">Senior</option>
+                        <option value="Junior">Junior</option>
+                        <option value="Manager">Manager</option>
+                        <option value="Director">Director</option>
+                    </select>
+                    <select id="cityFilter" class="border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-gray-500">
+                        <option value="">Tüm Şehirler</option>
+                        <option value="İstanbul">İstanbul</option>
+                        <option value="Ankara">Ankara</option>
+                        <option value="İzmir">İzmir</option>
+                        <option value="Antalya">Antalya</option>
+                        <option value="Bursa">Bursa</option>
+                    </select>
+                </div>
+
+                <!-- Status Filter Chips -->
+                <div class="flex flex-wrap items-center">
+                    <span class="text-sm text-gray-600 mr-3 py-2">Durum:</span>
+                    <div class="filter-chip active" data-status="all">Tümü</div>
+                    <div class="filter-chip" data-status="ise-alindi">İşe Alındı</div>
+                    <div class="filter-chip" data-status="mulakat">Mülakat</div>
+                    <div class="filter-chip" data-status="beklemede">Beklemede</div>
+                    <div class="filter-chip" data-status="reddedildi">Reddedildi</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Accordion View -->
+        <div id="mobileAccordion" class="mobile-accordion lg:hidden">
+            <!-- Accordion items will be populated here -->
+        </div>
+
+        <!-- Desktop Table View -->
+        <div class="desktop-table bg-white rounded-lg shadow-sm border overflow-hidden">
+            <div class="overflow-x-auto">
+                <table class="w-full">
+                    <thead class="bg-gray-50">
+                        <tr>
+                            <th class="px-4 py-3 text-left">
+                                <input type="checkbox" id="selectAll" class="rounded border-gray-300" onchange="toggleSelectAll()">
+                            </th>
+                            <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider cursor-pointer hover:text-gray-700">
+                                Ad Soyad
+                            </th>
+                            <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                Email
+                            </th>
+                            <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                Telefon
+                            </th>
+                            <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                Pozisyon
+                            </th>
+                            <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                Departman
+                            </th>
+                            <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                Durum
+                            </th>
+                            <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                İşlemler
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody id="tableBody">
+                        <!-- Table rows will be populated here -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Sample data
+        const data = [
+            {
+                name: "Ahmet Yılmaz",
+                email: "ahmet.yilmaz@example.com",
+                phone: "0532 123 45 67",
+                id: "CAND-2025-0001",
+                position: "Software Engineer",
+                department: "Engineering",
+                level: "Senior",
+                city: "İstanbul",
+                salary: "25.000 ₺",
+                experience: "5 yıl",
+                education: "Bilgisayar Mühendisliği",
+                applicationDate: "15.01.2025",
+                lastUpdate: "18.01.2025",
+                status: "mulakat",
+                age: "28",
+                skills: "JavaScript, React, Node.js"
+            },
+            {
+                name: "Fatma Demir",
+                email: "fatma.demir@example.com",
+                phone: "0543 234 56 78",
+                id: "CAND-2025-0002",
+                position: "Marketing Manager",
+                department: "Marketing",
+                level: "Manager",
+                city: "Ankara",
+                salary: "30.000 ₺",
+                experience: "8 yıl",
+                education: "İşletme",
+                applicationDate: "12.01.2025",
+                lastUpdate: "17.01.2025",
+                status: "ise-alindi",
+                age: "32",
+                skills: "Digital Marketing, Analytics"
+            },
+            {
+                name: "Mehmet Kaya",
+                email: "mehmet.kaya@example.com",
+                phone: "0554 345 67 89",
+                id: "CAND-2025-0003",
+                position: "HR Specialist",
+                department: "HR",
+                level: "Junior",
+                city: "İzmir",
+                salary: "18.000 ₺",
+                experience: "2 yıl",
+                education: "Psikoloji",
+                applicationDate: "10.01.2025",
+                lastUpdate: "16.01.2025",
+                status: "beklemede",
+                age: "25",
+                skills: "Recruitment, Employee Relations"
+            },
+            {
+                name: "Ayşe Özkan",
+                email: "ayse.ozkan@example.com",
+                phone: "0565 456 78 90",
+                id: "CAND-2025-0004",
+                position: "Financial Analyst",
+                department: "Finance",
+                level: "Senior",
+                city: "Bursa",
+                salary: "22.000 ₺",
+                experience: "6 yıl",
+                education: "İktisat",
+                applicationDate: "08.01.2025",
+                lastUpdate: "15.01.2025",
+                status: "reddedildi",
+                age: "29",
+                skills: "Financial Modeling, Excel"
+            },
+            {
+                name: "Can Arslan",
+                email: "can.arslan@example.com",
+                phone: "0576 567 89 01",
+                id: "CAND-2025-0005",
+                position: "Sales Representative",
+                department: "Sales",
+                level: "Junior",
+                city: "Antalya",
+                salary: "16.000 ₺",
+                experience: "1 yıl",
+                education: "İşletme",
+                applicationDate: "05.01.2025",
+                lastUpdate: "14.01.2025",
+                status: "mulakat",
+                age: "23",
+                skills: "Customer Relations, CRM"
+            }
+        ];
+
+        let selectedRows = new Set();
+        let currentEditingRow = null;
+        let isEditMode = false;
+        let saveTimeout = null;
+        let filteredData = [...data];
+
+        function getStatusClass(status) {
+            return `status-badge status-${status}`;
+        }
+
+        function getStatusText(status) {
+            const statusMap = {
+                'ise-alindi': 'İŞE ALINDI',
+                'reddedildi': 'REDDEDİLDİ',
+                'mulakat': 'MÜLAKAT',
+                'beklemede': 'BEKLEMEDE'
+            };
+            return statusMap[status] || status.toUpperCase();
+        }
+
+        function renderMobileAccordion(dataToRender = filteredData) {
+            const container = document.getElementById('mobileAccordion');
+            container.innerHTML = '';
+
+            dataToRender.forEach((row, index) => {
+                const accordionItem = document.createElement('div');
+                accordionItem.className = 'accordion-row';
+                accordionItem.dataset.id = row.id;
+
+                accordionItem.innerHTML = `
+                    <div class="accordion-header" onclick="toggleAccordion('${row.id}')">
+                        <div class="flex items-center space-x-3">
+                            <input type="checkbox" class="row-checkbox rounded border-gray-300" value="${row.id}"
+                                   onchange="toggleRowSelection('${row.id}')" onclick="event.stopPropagation()">
+                            <div>
+                                <div class="font-semibold text-gray-900">${row.name}</div>
+                                <div class="text-sm text-gray-500">${row.position}</div>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <span class="${getStatusClass(row.status)}">${getStatusText(row.status)}</span>
+                            <svg class="chevron-icon w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="accordion-content" id="content-${row.id}">
+                        <div class="accordion-details">
+                            <div class="detail-item">
+                                <span class="detail-label">Email</span>
+                                <span class="detail-value">${row.email}</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Telefon</span>
+                                <span class="detail-value">${row.phone}</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Aday ID</span>
+                                <span class="detail-value">${row.id}</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Departman</span>
+                                <span class="detail-value">${row.department}</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Seviye</span>
+                                <span class="detail-value">${row.level}</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Şehir</span>
+                                <span class="detail-value">${row.city}</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Maaş</span>
+                                <span class="detail-value">${row.salary}</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Deneyim</span>
+                                <span class="detail-value">${row.experience}</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Eğitim</span>
+                                <span class="detail-value">${row.education}</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Yaş</span>
+                                <span class="detail-value">${row.age}</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Yetenekler</span>
+                                <span class="detail-value">${row.skills}</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Başvuru Tarihi</span>
+                                <span class="detail-value">${row.applicationDate}</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Son Güncelleme</span>
+                                <span class="detail-value">${row.lastUpdate}</span>
+                            </div>
+                            <div class="flex space-x-2 mt-4 pt-4 border-t border-gray-200">
+                                <button onclick="showDetails('${row.id}')" class="flex-1 bg-gray-900 hover:bg-gray-800 text-white px-3 py-2 rounded text-sm">
+                                    Detaylar
+                                </button>
+                                <button onclick="editRecord('${row.id}')" class="flex-1 bg-blue-600 hover:bg-blue-700 text-white px-3 py-2 rounded text-sm">
+                                    Düzenle
+                                </button>
+                                <button onclick="deleteRecord('${row.id}')" class="flex-1 bg-red-600 hover:bg-red-700 text-white px-3 py-2 rounded text-sm">
+                                    Sil
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                container.appendChild(accordionItem);
+            });
+        }
+
+        function renderDesktopTable(dataToRender = filteredData) {
+            const tbody = document.getElementById('tableBody');
+            tbody.innerHTML = '';
+
+            dataToRender.forEach((row, index) => {
+                const tr = document.createElement('tr');
+                tr.className = `table-hover-row ${index % 2 === 0 ? 'bg-white' : 'bg-gray-50'}`;
+                tr.dataset.id = row.id;
+
+                tr.innerHTML = `
+                    <td class="px-4 py-3">
+                        <input type="checkbox" class="row-checkbox rounded border-gray-300" value="${row.id}" onchange="toggleRowSelection('${row.id}')">
+                    </td>
+                    <td class="px-4 py-3 font-medium text-gray-900">${row.name}</td>
+                    <td class="px-4 py-3 text-gray-600">${row.email}</td>
+                    <td class="px-4 py-3 text-gray-600">${row.phone}</td>
+                    <td class="px-4 py-3 text-gray-600">${row.position}</td>
+                    <td class="px-4 py-3 text-gray-600">${row.department}</td>
+                    <td class="px-4 py-3">
+                        <span class="${getStatusClass(row.status)}">${getStatusText(row.status)}</span>
+                    </td>
+                    <td class="px-4 py-3">
+                        <div class="flex space-x-2">
+                            <button onclick="showDetails('${row.id}')" class="text-gray-600 hover:text-gray-900">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
+                                </svg>
+                            </button>
+                            <button onclick="editRecord('${row.id}')" class="text-blue-600 hover:text-blue-900">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
+                                </svg>
+                            </button>
+                            <button onclick="deleteRecord('${row.id}')" class="text-red-600 hover:text-red-900">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
+                                </svg>
+                            </button>
+                        </div>
+                    </td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+
+        function toggleAccordion(id) {
+            const content = document.getElementById(`content-${id}`);
+            const chevron = content.parentElement.querySelector('.chevron-icon');
+
+            if (content.classList.contains('expanded')) {
+                content.classList.remove('expanded');
+                chevron.classList.remove('rotated');
+            } else {
+                // Close all other accordions
+                document.querySelectorAll('.accordion-content.expanded').forEach(item => {
+                    item.classList.remove('expanded');
+                });
+                document.querySelectorAll('.chevron-icon.rotated').forEach(icon => {
+                    icon.classList.remove('rotated');
+                });
+
+                // Open this accordion
+                content.classList.add('expanded');
+                chevron.classList.add('rotated');
+            }
+        }
+
+        function toggleRowSelection(id) {
+            if (selectedRows.has(id)) {
+                selectedRows.delete(id);
+            } else {
+                selectedRows.add(id);
+            }
+            updateBulkActions();
+        }
+
+        function toggleSelectAll() {
+            const selectAll = document.getElementById('selectAll');
+            const checkboxes = document.querySelectorAll('.row-checkbox');
+
+            if (selectAll.checked) {
+                filteredData.forEach(row => selectedRows.add(row.id));
+                checkboxes.forEach(cb => cb.checked = true);
+            } else {
+                selectedRows.clear();
+                checkboxes.forEach(cb => cb.checked = false);
+            }
+            updateBulkActions();
+        }
+
+        function updateBulkActions() {
+            const bulkActions = document.getElementById('bulkActions');
+            const selectedCount = document.getElementById('selectedCount');
+
+            selectedCount.textContent = selectedRows.size;
+
+            if (selectedRows.size > 0) {
+                bulkActions.classList.add('show');
+            } else {
+                bulkActions.classList.remove('show');
+            }
+        }
+
+        function showDetails(id) {
+            const record = data.find(r => r.id === id);
+            if (!record) return;
+
+            const modal = document.getElementById('detailsModal');
+            const content = document.getElementById('detailsContent');
+
+            content.innerHTML = `
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Ad Soyad</label>
+                    <div class="editable-field" data-field="name">${record.name}</div>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                    <div class="editable-field" data-field="email">${record.email}</div>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Telefon</label>
+                    <div class="editable-field" data-field="phone">${record.phone}</div>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Pozisyon</label>
+                    <div class="editable-field" data-field="position">${record.position}</div>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Departman</label>
+                    <div class="editable-field" data-field="department">${record.department}</div>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Seviye</label>
+                    <div class="editable-field" data-field="level">${record.level}</div>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Şehir</label>
+                    <div class="editable-field" data-field="city">${record.city}</div>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Maaş</label>
+                    <div class="editable-field" data-field="salary">${record.salary}</div>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Deneyim</label>
+                    <div class="editable-field" data-field="experience">${record.experience}</div>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Eğitim</label>
+                    <div class="editable-field" data-field="education">${record.education}</div>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Yaş</label>
+                    <div class="editable-field" data-field="age">${record.age}</div>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Yetenekler</label>
+                    <div class="editable-field" data-field="skills">${record.skills}</div>
+                </div>
+            `;
+
+            currentEditingRow = record;
+            isEditMode = false;
+            updateEditButton();
+            modal.classList.remove('hidden');
+        }
+
+        function toggleEditMode() {
+            isEditMode = !isEditMode;
+            updateEditButton();
+
+            const editableFields = document.querySelectorAll('.editable-field');
+            editableFields.forEach(field => {
+                if (isEditMode) {
+                    field.style.cursor = 'pointer';
+                    field.addEventListener('click', makeFieldEditable);
+                } else {
+                    field.style.cursor = 'default';
+                    field.removeEventListener('click', makeFieldEditable);
+                    if (field.classList.contains('editing')) {
+                        const input = field.querySelector('input');
+                        if (input) {
+                            saveFieldEdit(input);
+                        }
+                    }
+                }
+            });
+        }
+
+        function updateEditButton() {
+            const editBtn = document.getElementById('editToggleBtn');
+            const editBtnText = document.getElementById('editBtnText');
+
+            if (isEditMode) {
+                editBtn.classList.add('editing');
+                editBtnText.textContent = 'Kaydet';
+            } else {
+                editBtn.classList.remove('editing');
+                editBtnText.textContent = 'Düzenle';
+            }
+        }
+
+        function makeFieldEditable(event) {
+            if (!isEditMode) return;
+
+            const field = event.target;
+            if (field.classList.contains('editing')) return;
+
+            const currentValue = field.textContent;
+            field.classList.add('editing');
+            field.innerHTML = `<input type="text" value="${currentValue}" class="w-full border-0 outline-none bg-transparent" onblur="saveFieldEdit(this)" onkeypress="handleFieldKeyPress(event, this)">`;
+            field.querySelector('input').focus();
+        }
+
+        function saveFieldEdit(input) {
+            const field = input.parentElement;
+            const newValue = input.value;
+            field.textContent = newValue;
+            field.classList.remove('editing');
+
+            // Update the record
+            if (currentEditingRow) {
+                const fieldName = field.dataset.field;
+                const oldValue = currentEditingRow[fieldName];
+                currentEditingRow[fieldName] = newValue;
+
+                // Show save indicator and auto-save with 2 second delay
+                if (oldValue !== newValue) {
+                    scheduleAutoSave();
+                }
+            }
+        }
+
+        function handleFieldKeyPress(event, input) {
+            if (event.key === 'Enter') {
+                input.blur();
+            }
+        }
+
+        function scheduleAutoSave() {
+            // Clear existing timeout
+            if (saveTimeout) {
+                clearTimeout(saveTimeout);
+            }
+
+            // Schedule new save
+            saveTimeout = setTimeout(() => {
+                autoSave();
+            }, 2000);
+        }
+
+        function autoSave() {
+            // Update the record in data array
+            const index = data.findIndex(r => r.id === currentEditingRow.id);
+            if (index !== -1) {
+                data[index] = { ...currentEditingRow };
+                renderMobileAccordion();
+                renderDesktopTable();
+                showSaveIndicator();
+            }
+        }
+
+        function showSaveIndicator() {
+            const indicator = document.getElementById('saveIndicator');
+            indicator.classList.add('show');
+
+            setTimeout(() => {
+                indicator.classList.remove('show');
+            }, 2000);
+        }
+
+        function editRecord(id) {
+            const record = data.find(r => r.id === id);
+            if (!record) return;
+
+            currentEditingRow = { ...record };
+            document.getElementById('createModalTitle').textContent = 'Kayıt Düzenle';
+            document.getElementById('saveButton').textContent = 'Güncelle';
+
+            populateForm(record);
+            document.getElementById('createModal').classList.remove('hidden');
+        }
+
+        function deleteRecord(id) {
+            currentEditingRow = { id };
+            document.getElementById('deleteModal').classList.remove('hidden');
+        }
+
+        function confirmDelete() {
+            const index = data.findIndex(r => r.id === currentEditingRow.id);
+            if (index !== -1) {
+                data.splice(index, 1);
+                applyFilters();
+                renderMobileAccordion();
+                renderDesktopTable();
+            }
+            closeDeleteModal();
+        }
+
+        function closeDetailsModal() {
+            document.getElementById('detailsModal').classList.add('hidden');
+            currentEditingRow = null;
+            isEditMode = false;
+        }
+
+        function closeDeleteModal() {
+            document.getElementById('deleteModal').classList.add('hidden');
+            currentEditingRow = null;
+        }
+
+        function openCreateModal() {
+            currentEditingRow = null;
+            document.getElementById('createModalTitle').textContent = 'Yeni Kayıt';
+            document.getElementById('saveButton').textContent = 'Kaydet';
+            populateForm();
+            document.getElementById('createModal').classList.remove('hidden');
+        }
+
+        function closeCreateModal() {
+            document.getElementById('createModal').classList.add('hidden');
+            currentEditingRow = null;
+        }
+
+        function populateForm(record = null) {
+            const form = document.getElementById('createForm');
+            form.innerHTML = `
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Ad Soyad</label>
+                    <input type="text" id="name" value="${record ? record.name : ''}" class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-gray-500">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                    <input type="email" id="email" value="${record ? record.email : ''}" class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-gray-500">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Telefon</label>
+                    <input type="tel" id="phone" value="${record ? record.phone : ''}" class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-gray-500">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Pozisyon</label>
+                    <input type="text" id="position" value="${record ? record.position : ''}" class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-gray-500">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Departman</label>
+                    <select id="department" class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-gray-500">
+                        <option value="Engineering" ${record && record.department === 'Engineering' ? 'selected' : ''}>Engineering</option>
+                        <option value="Marketing" ${record && record.department === 'Marketing' ? 'selected' : ''}>Marketing</option>
+                        <option value="HR" ${record && record.department === 'HR' ? 'selected' : ''}>HR</option>
+                        <option value="Finance" ${record && record.department === 'Finance' ? 'selected' : ''}>Finance</option>
+                        <option value="Sales" ${record && record.department === 'Sales' ? 'selected' : ''}>Sales</option>
+                        <option value="Operations" ${record && record.department === 'Operations' ? 'selected' : ''}>Operations</option>
+                        <option value="IT" ${record && record.department === 'IT' ? 'selected' : ''}>IT</option>
+                        <option value="Legal" ${record && record.department === 'Legal' ? 'selected' : ''}>Legal</option>
+                        <option value="Customer Service" ${record && record.department === 'Customer Service' ? 'selected' : ''}>Customer Service</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Seviye</label>
+                    <select id="level" class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-gray-500">
+                        <option value="Junior" ${record && record.level === 'Junior' ? 'selected' : ''}>Junior</option>
+                        <option value="Senior" ${record && record.level === 'Senior' ? 'selected' : ''}>Senior</option>
+                        <option value="Lead" ${record && record.level === 'Lead' ? 'selected' : ''}>Lead</option>
+                        <option value="Manager" ${record && record.level === 'Manager' ? 'selected' : ''}>Manager</option>
+                        <option value="Director" ${record && record.level === 'Director' ? 'selected' : ''}>Director</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Şehir</label>
+                    <select id="city" class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-gray-500">
+                        <option value="İstanbul" ${record && record.city === 'İstanbul' ? 'selected' : ''}>İstanbul</option>
+                        <option value="Ankara" ${record && record.city === 'Ankara' ? 'selected' : ''}>Ankara</option>
+                        <option value="İzmir" ${record && record.city === 'İzmir' ? 'selected' : ''}>İzmir</option>
+                        <option value="Bursa" ${record && record.city === 'Bursa' ? 'selected' : ''}>Bursa</option>
+                        <option value="Antalya" ${record && record.city === 'Antalya' ? 'selected' : ''}>Antalya</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Maaş</label>
+                    <input type="text" id="salary" value="${record ? record.salary : ''}" class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-gray-500">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Deneyim</label>
+                    <input type="text" id="experience" value="${record ? record.experience : ''}" class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-gray-500">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Eğitim</label>
+                    <input type="text" id="education" value="${record ? record.education : ''}" class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-gray-500">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Yaş</label>
+                    <input type="number" id="age" value="${record ? record.age : ''}" class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-gray-500">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Yetenekler</label>
+                    <input type="text" id="skills" value="${record ? record.skills : ''}" class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-gray-500">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Durum</label>
+                    <select id="status" class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-gray-500">
+                        <option value="beklemede" ${record && record.status === 'beklemede' ? 'selected' : ''}>Beklemede</option>
+                        <option value="mulakat" ${record && record.status === 'mulakat' ? 'selected' : ''}>Mülakat</option>
+                        <option value="ise-alindi" ${record && record.status === 'ise-alindi' ? 'selected' : ''}>İşe Alındı</option>
+                        <option value="reddedildi" ${record && record.status === 'reddedildi' ? 'selected' : ''}>Reddedildi</option>
+                    </select>
+                </div>
+            `;
+        }
+
+        function saveRecord() {
+            const formData = {
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                phone: document.getElementById('phone').value,
+                position: document.getElementById('position').value,
+                department: document.getElementById('department').value,
+                level: document.getElementById('level').value,
+                city: document.getElementById('city').value,
+                salary: document.getElementById('salary').value,
+                experience: document.getElementById('experience').value,
+                education: document.getElementById('education').value,
+                age: document.getElementById('age').value,
+                skills: document.getElementById('skills').value,
+                status: document.getElementById('status').value
+            };
+
+            if (currentEditingRow) {
+                // Update existing record
+                const index = data.findIndex(r => r.id === currentEditingRow.id);
+                if (index !== -1) {
+                    data[index] = { ...data[index], ...formData };
+                }
+            } else {
+                // Create new record
+                const newRecord = {
+                    ...formData,
+                    id: `CAND-2025-${String(data.length + 1).padStart(4, '0')}`,
+                    applicationDate: new Date().toLocaleDateString('tr-TR'),
+                    lastUpdate: new Date().toLocaleDateString('tr-TR')
+                };
+                data.push(newRecord);
+            }
+
+            applyFilters();
+            renderMobileAccordion();
+            renderDesktopTable();
+            closeCreateModal();
+        }
+
+        function applyFilters() {
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+            const departmentFilter = document.getElementById('departmentFilter').value;
+            const levelFilter = document.getElementById('levelFilter').value;
+            const cityFilter = document.getElementById('cityFilter').value;
+            const statusFilter = document.querySelector('.filter-chip.active').dataset.status;
+
+            filteredData = data.filter(row => {
+                const matchesSearch = !searchTerm ||
+                    row.name.toLowerCase().includes(searchTerm) ||
+                    row.email.toLowerCase().includes(searchTerm) ||
+                    row.phone.includes(searchTerm);
+
+                const matchesDepartment = !departmentFilter || row.department === departmentFilter;
+                const matchesLevel = !levelFilter || row.level === levelFilter;
+                const matchesCity = !cityFilter || row.city === cityFilter;
+                const matchesStatus = statusFilter === 'all' || row.status === statusFilter;
+
+                return matchesSearch && matchesDepartment && matchesLevel && matchesCity && matchesStatus;
+            });
+        }
+
+        // Event listeners
+        document.getElementById('searchInput').addEventListener('input', () => {
+            applyFilters();
+            renderMobileAccordion();
+            renderDesktopTable();
+        });
+
+        document.getElementById('departmentFilter').addEventListener('change', () => {
+            applyFilters();
+            renderMobileAccordion();
+            renderDesktopTable();
+        });
+
+        document.getElementById('levelFilter').addEventListener('change', () => {
+            applyFilters();
+            renderMobileAccordion();
+            renderDesktopTable();
+        });
+
+        document.getElementById('cityFilter').addEventListener('change', () => {
+            applyFilters();
+            renderMobileAccordion();
+            renderDesktopTable();
+        });
+
+        // Status filter chips
+        document.querySelectorAll('.filter-chip').forEach(chip => {
+            chip.addEventListener('click', () => {
+                document.querySelectorAll('.filter-chip').forEach(c => c.classList.remove('active'));
+                chip.classList.add('active');
+                applyFilters();
+                renderMobileAccordion();
+                renderDesktopTable();
+            });
+        });
+
+        // Bulk operations (placeholder functions)
+        function bulkEdit() {
+            alert('Toplu düzenleme özelliği yakında eklenecek');
+        }
+
+        function bulkDelete() {
+            if (confirm(`${selectedRows.size} kaydı silmek istediğinizden emin misiniz?`)) {
+                selectedRows.forEach(id => {
+                    const index = data.findIndex(r => r.id === id);
+                    if (index !== -1) {
+                        data.splice(index, 1);
+                    }
+                });
+                selectedRows.clear();
+                applyFilters();
+                renderMobileAccordion();
+                renderDesktopTable();
+                updateBulkActions();
+            }
+        }
+
+        function bulkReport() {
+            alert('Toplu rapor özelliği yakında eklenecek');
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            applyFilters();
+            renderMobileAccordion();
+            renderDesktopTable();
+        });
+    </script>
+</body>
+</html>
